@@ -9,6 +9,7 @@ const cors = require('cors');
 // Routes
 const authRoutes = require('./Routes/auth');
 const profileRoutes = require('./Routes/profile');
+const bookmarkRoutes = require('./Routes/bookmarkRoutes');
 
 // Middleware
 const { authenticateToken } = require('./midleware/authMidleware');
@@ -74,6 +75,7 @@ sequelize
 // Routes
 app.use('api/destinAsyik', authRoutes)
 app.use('api/destinAsyik', authenticateToken, profileRoutes)
+app.use('api/destinAsyik', authenticateToken, bookmarkRoutes);
 
 const port = process.env.PORT 
 
