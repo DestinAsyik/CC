@@ -81,7 +81,7 @@ exports.getDataUser = async (req, res) => {
   const Username = req.user.username;
 
   try {
-    const user = await User.findByPk(Username);
+    const user = await User.findOne(Username);
 
     if (!user) {
       return res.status(404).json({ error: 'Data pengguna tidak ditemukan.' });

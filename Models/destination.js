@@ -2,46 +2,53 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize(process.env.MYSQL_URL)
 
 const Destination = sequelize.define('destination', {
+    item_id: {
+      type : DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement:true,
+      allowNull:false
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     gambar: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     category: {
-      type: DataTypes.ENUM,
+      type: DataTypes.ENUM('Budaya', 'Taman Hiburan', 'Cagar Alam', 'Bahari',
+        'Pusat Perbelanjaan', 'Tempat Ibadah', 'Agrowisata',
+        'Belanja', 'Alam', 'Rekreasi', 'Religius'),
       allowNull: false,
     },
-    location: {
-      type: DataTypes.ENUM,
+    city: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     price: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      defaultValue: 0,
     },
     rating_avg: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     lat: {
-     type: DataTypes.STRING,
+     type: DataTypes.FLOAT,
      allowNull: false,
     },
     long: {
-     type: DataTypes.STRING,
+     type: DataTypes.FLOAT,
      allowNull: false,
     },
     coordinate: {
      type: DataTypes.STRING,
-     allowNull: false
+     allowNull: true
     },
   }, {
     freezeTableName: true,

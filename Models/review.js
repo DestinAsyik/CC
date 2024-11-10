@@ -1,8 +1,8 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize(process.env.MYSQL_URL)
 
-const Destination = require('./destination')
-const User = require('./user')
+const Destination = require('./destination');
+const User = require('./user');
 
 const Review = sequelize.define('review', {
     review_id: {
@@ -11,24 +11,24 @@ const Review = sequelize.define('review', {
       autoIncrement:true,
       primaryKey: true,
     },
-    name: {
-      type: DataTypes.STRING,
+    item_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: Destination,
-        key:'name',
+        key:'item_id',
       }
     },
-    username: {
-      type: DataTypes.STRING,
+    user_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: User,
-        key: 'username',
+        key: 'user_id',
       }
     },
     rating: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     review: {
@@ -40,10 +40,10 @@ const Review = sequelize.define('review', {
     timestamps: false,
   });
 
-  Review.belongsTo(Destination, { foreignKey: 'name', onDelete: 'CASCADE' });
-  Destination.hasMany(Review, { foreignKey: 'name' });
+  Review.belongsTo(Destination, { foreignKey: 'item_id', onDelete: 'CASCADE' });
+  Destination.hasMany(Review, { foreignKey: 'item_id' });
   
-  Review.belongsTo(User, { foreignKey: 'username', onDelete: 'CASCADE' });
-  User.hasMany(Review, { foreignKey: 'username' });
+  Review.belongsTo(User, { foreignKey: 'user_id', onDelete: 'CASCADE' });
+  User.hasMany(Review, { foreignKey: 'user_id' });
   
   module.exports = Review;
