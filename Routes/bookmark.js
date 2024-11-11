@@ -1,5 +1,5 @@
 const express = require('express');
-const bookmarkController = require('../Controllers/bookmark');
+const bookmarkController = require('../Controllers/bookmarkController');
 const router = express.Router();
 
 router.post('bookmark/add', bookmarkController.addBookmark); 

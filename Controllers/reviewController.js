@@ -16,7 +16,8 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 exports.createReview = async (req, res) => {
     try {
       const  user_id  =  req.user.user_id
-      const { item_id, rating, review, userLat, userLon } = req.body;
+      const { rating, review, userLat, userLon } = req.body;
+      const { item_id } = req.params;
 
         const destination = await Destination.findByPk(req.params.item_id);
         if (!destination) {
