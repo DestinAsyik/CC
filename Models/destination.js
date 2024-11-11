@@ -8,7 +8,7 @@ const Destination = sequelize.define('destination', {
       autoIncrement:true,
       allowNull:false
     },
-    name: {
+    place_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },

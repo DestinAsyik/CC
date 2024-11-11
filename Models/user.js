@@ -29,7 +29,7 @@ const User = sequelize.define('user', {
       allowNull: false,
     },
     city: {
-      type: DataTypes.ENUM,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     prefered_category: {

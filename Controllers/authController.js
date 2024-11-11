@@ -77,10 +77,10 @@ exports.login = async (req, res) => {
 };
 
 exports.getDataUser = async (req, res) => {
-  const Username = req.user.username;
+  const user_id = req.user.user_id;
 
   try {
-    const user = await User.findOne(Username);
+    const user = await User.findByPk(user_id);
 
     if (!user) {
       return res.status(404).json({ error: 'Data pengguna tidak ditemukan.' });
@@ -96,7 +96,7 @@ exports.getDataUser = async (req, res) => {
 exports.updateProfile = async (req, res) => {
   try {
     const { username, name, age, email, city, prefered_category } = req.body;
-    const Username = req.user.email;
+    const Username = req.user.username;
 
     const updatedData = {
       username, 
@@ -117,7 +117,7 @@ exports.updateProfile = async (req, res) => {
       return res.status(404).send({ message: "Pengguna tidak ditemukan atau tidak ada perubahan yang diterapkan" });
     }
 
-    res.status(200).send({ message: "Profil berhasil di ubah" });
+    res.status(200).send({ message: "Profil berhasil di ubah", updatedData});
   } catch (error) {
     res.status(500).send(error.message);
   }

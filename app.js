@@ -9,7 +9,8 @@ const cors = require('cors');
 // Routes
 const authRoutes = require('./Routes/auth');
 const profileRoutes = require('./Routes/profile');
-const bookmarkRoutes = require('./Routes/bookmarkRoutes');
+const bookmarkRoutes = require('./Routes/bookmark');
+const reviewRoutes = require('./Routes/review');
 
 // Middleware
 const { authenticateToken } = require('./midleware/authMidleware');
@@ -54,14 +55,8 @@ app.use(session({
 }));
 
 // Sequelize Initialization
-const sequelize = new Sequelize({
-    dialect: process.env.dialect,
-    username: process.env.username,
-    password: process.env.password,
-    host: process.env.host,
-    port: process.env.port,
-    database: process.env.database,
-});
+const sequelize = new Sequelize(process.env.MYSQL_URL);
+
 
 sequelize
     .authenticate()
@@ -73,14 +68,16 @@ sequelize
     });
 
 // Routes
-app.use('api/destinAsyik', authRoutes)
-app.use('api/destinAsyik', authenticateToken, profileRoutes)
-app.use('api/destinAsyik', authenticateToken, bookmarkRoutes);
+app.use('/api/destinAsyik', authRoutes);
+app.use('/api/destinAsyik', authenticateToken, profileRoutes);
+app.use('/api/destinAsyik', authenticateToken, bookmarkRoutes);
+app.use('/api/destinAsyik', authenticateToken, reviewRoutes);
 
-const port = process.env.PORT 
 
-app.listen(port, () => {
-    console.log(`Berjalan di port ${port}`);
+const PORT = process.env.PORT 
+
+app.listen(PORT, () => {
+    console.log(`Berjalan di PORT ${PORT}`);
 });
 
 // Global Error Handling

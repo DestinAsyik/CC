@@ -27,7 +27,10 @@ const Bookmark = sequelize.define('bookmark', {
             key: 'item_id'
         }
     }
-});
+},{
+    freezeTableName: true,
+    timestamps: false,
+  });
 
 Bookmark.belongsTo(Destination, { foreignKey: 'item_id', onDelete: 'CASCADE' });
 Destination.hasMany(Bookmark, { foreignKey: 'item_id' });
@@ -35,4 +38,4 @@ Destination.hasMany(Bookmark, { foreignKey: 'item_id' });
 Bookmark.belongsTo(User, { foreignKey: 'user_id', onDelete: 'CASCADE' });
 User.hasMany(Bookmark, { foreignKey: 'user_id' });
 
-module.exports(Bookmark);
+module.exports = Bookmark;
