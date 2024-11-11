@@ -13,7 +13,6 @@ exports.register = async (req, res) => {
       return res.status(400).send({ message: 'Semua field harus diisi.' });
     }
     
-    // Periksa apakah email sudah terdaftar
     const existingUser = await User.findOne({ where: { email } });
     if (existingUser) {
       console.log(`Email sudah terdaftar: ${email}`);
@@ -67,7 +66,7 @@ exports.login = async (req, res) => {
       return res.status(401).send({ message: "Kata sandi salah" });
     }
 
-    const token = jwt.sign({ username: user.username }, process.env.SECRET_KEY, { expiresIn: '1h' });
+    const token = jwt.sign({ user_id:user.user_id, username: user.username }, process.env.SECRET_KEY, { expiresIn: '1h' });
     const decodedToken = jwt.decode(token);
     console.log(decodedToken);
 

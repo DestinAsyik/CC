@@ -20,7 +20,7 @@ exports.getBookmarks = async (req, res) => {
             where: { user_id },
             include: [Destination],
         });
-        res.status(200).json(bookmarks);
+        res.status(200).json({message: "Data berhasil di dapatkan", bookmarks});
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -28,14 +28,14 @@ exports.getBookmarks = async (req, res) => {
 
 exports.deleteBookmark = async (req, res) => {
     try {
-        const { id } = req.params;
+        const { bookmark_id } = req.params;
         const user_id = req.user.user_id;
-        const bookmark = await Bookmark.findOne({ where: { bookmark_id: id, user_id } });
+        const bookmark = await Bookmark.findOne({ where: { bookmark_id: bookmark_id, user_id: user_id } });
 
         if (!bookmark) return res.status(404).json({ message: 'Bookmark tidak ditemukan' });
 
         await bookmark.destroy();
-        res.status(200).json({ message: 'Bookmark dihapus' });
+        res.status(200).json({ message: 'Bookmark berhasil dihapus' });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

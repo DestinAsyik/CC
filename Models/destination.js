@@ -38,11 +38,11 @@ const Destination = sequelize.define('destination', {
       type: DataTypes.FLOAT,
       allowNull: true,
     },
-    lat: {
+    latitude: {
      type: DataTypes.FLOAT,
      allowNull: false,
     },
-    long: {
+    longitude: {
      type: DataTypes.FLOAT,
      allowNull: false,
     },
