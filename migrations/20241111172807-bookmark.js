@@ -5,13 +5,13 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable ('bookmark', {
       bookmark_id:{
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
     },
     user_id:{
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull:false,
         references: {
             model: User,
@@ -21,7 +21,7 @@ module.exports = {
         onUpdate: 'CASCADE',
     },
     item_id:{
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull:false,
         references: {
             model: Destination,
@@ -34,6 +34,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-
+    await queryInterface.dropTable('bookmark');
   }
 };

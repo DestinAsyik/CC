@@ -4,4 +4,4 @@ const router = express.Router()
 
 router.post('/destination/:item_id/review/', reviewController.createReview)
 
-module.exports = router
+module.exports = router;
