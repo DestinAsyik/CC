@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const { Sequelize } = require('sequelize');
+const config = require('../config/config');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
@@ -17,7 +18,7 @@ const recomRoutes =  require('./Routes/reccom');
 const { authenticateToken } = require('./midleware/authMidleware');
 
 const app = express();
-const allowedOrigins = ['https://bangkit.com'];
+const allowedOrigins = ['https://cc-production-3fdc.up.railway.app/'];
 
 // CORS Configuration
 app.use(cors({
@@ -56,8 +57,17 @@ app.use(session({
 }));
 
 // Sequelize Initialization
-const sequelize = new Sequelize(process.env.MYSQL_URL);
+const env = process.env.NODE_ENV || 'development';
+const dbConfig = config[env];
 
+const sequelize = new Sequelize({
+    dialect: dbConfig.dialect,
+    username: dbConfig.username,
+    password: dbConfig.password,
+    host: dbConfig.host,
+    port: dbConfig.port,
+    database: dbConfig.database,
+});
 
 sequelize
     .authenticate()
