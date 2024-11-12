@@ -80,8 +80,9 @@
     "vary": "^1.1.2"
   },
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "npm run migrate:production && node app.js",
+    "dev": "nodemon app.js",
+    "migrate:production": "npx sequelize-cli db:migrate --env production"
   },
   "author": "Bangkit Team",
   "license": "ISC",
