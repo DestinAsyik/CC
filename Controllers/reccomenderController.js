@@ -3,6 +3,7 @@ const Review = require('../Models/review')
 const Destination =  require('../Models/destination')
 const axios = require('axios');
 const { Op } = require('sequelize');
+const BASE_URL = process.env.MODEL_BASE_URL || 'http://localhost:8000';
 
 exports.reccomByContent = async (req, res) => {
     try{
@@ -18,7 +19,7 @@ exports.reccomByContent = async (req, res) => {
 
         const preferredCategory = content.prefered_category;
 
-        const reccomResponseContent = await axios.post('http://localhost:8000/recommendations/category', {
+        const reccomResponseContent = await axios.post(`${BASE_URL}/recommendations/content`, {
             category: preferredCategory
         });
 
@@ -45,7 +46,7 @@ exports.reccomByJarak = async (req, res) => {
     try{
         const { latitude, longitude } = req.body
 
-        const reccomResponseJarak = await axios.post('http://localhost:8000/recommendations/nearby', {
+        const reccomResponseJarak = await axios.post(`${BASE_URL}/recommendations/nearby`, {
                 user_lat: latitude,
                 user_long: longitude
         });

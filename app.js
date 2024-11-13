@@ -18,7 +18,7 @@ const recomRoutes =  require('./Routes/reccom');
 const { authenticateToken } = require('./midleware/authMidleware');
 
 const app = express();
-const allowedOrigins = ['https://cc-production-3fdc.up.railway.app/'];
+const allowedOrigins = ['https://cc-production-3fdc.up.railway.app/', 'http://localhost:8000'];
 
 // CORS Configuration
 app.use(cors({
