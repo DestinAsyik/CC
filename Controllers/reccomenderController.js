@@ -19,7 +19,7 @@ exports.reccomByContent = async (req, res) => {
 
         const preferredCategory = content.prefered_category;
 
-        const reccomResponseContent = await axios.post(`${BASE_URL}/recommendations/content`, {
+        const reccomResponseContent = await axios.post(`${BASE_URL}recommendations/content`, {
             category: preferredCategory
         });
 
@@ -46,7 +46,7 @@ exports.reccomByJarak = async (req, res) => {
     try{
         const { latitude, longitude } = req.body
 
-        const reccomResponseJarak = await axios.post(`${BASE_URL}/recommendations/nearby`, {
+        const reccomResponseJarak = await axios.post(`${BASE_URL}recommendations/nearby`, {
                 user_lat: latitude,
                 user_long: longitude
         });
