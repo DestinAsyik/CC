@@ -13,6 +13,7 @@ const profileRoutes = require('./Routes/profile');
 const bookmarkRoutes = require('./Routes/bookmark');
 const reviewRoutes = require('./Routes/review');
 const recomRoutes =  require('./Routes/reccom');
+const likeRoutes = require('./Routes/likes')
 
 // Middleware
 const { authenticateToken } = require('./midleware/authMidleware');
@@ -84,6 +85,7 @@ app.use('/api/destinAsyik', authenticateToken, profileRoutes);
 app.use('/api/destinAsyik', authenticateToken, bookmarkRoutes);
 app.use('/api/destinAsyik', authenticateToken, reviewRoutes);
 app.use('/api/destinAsyik', authenticateToken, recomRoutes);
+app.use('/api/destinAsyik', authenticateToken, likeRoutes);
 
 
 const PORT = process.env.PORT 
