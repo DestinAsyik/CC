@@ -3,6 +3,7 @@ require('dotenv').config();
 const bcrypt = require('bcrypt');
 const User = require('../Models/user');
 const Sequelize = require('sequelize');
+const { message } = require('statuses');
 
 exports.register = async (req, res) => {
   try {
@@ -86,7 +87,7 @@ exports.getDataUser = async (req, res) => {
       return res.status(404).json({ error: 'Data pengguna tidak ditemukan.' });
     }
 
-    res.status(200).json({ user });
+    res.status(200).json({ message : "data anda", user });
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ error: 'Terjadi kesalahan saat mengambil data pengguna.' });

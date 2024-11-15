@@ -40,6 +40,10 @@ module.exports = {
         type: Sequelize.FLOAT,
         allowNull: true,
       },
+      rating_count: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+      },
       latitude: {
        type: Sequelize.FLOAT,
        allowNull: false,

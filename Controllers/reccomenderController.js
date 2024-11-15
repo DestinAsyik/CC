@@ -1,5 +1,6 @@
 const User = require('../Models/user')
 const Review = require('../Models/review')
+const Bookmark =  require('../Models/bookmark')
 const Destination =  require('../Models/destination')
 const axios = require('axios');
 const { Op } = require('sequelize');
@@ -77,8 +78,12 @@ exports.reccomByReview = async (req, res) => {
             user_id: user_id
         }});
 
+        const userBookmark = await Bookmark.findAll({where : {
+            user_id: user_id
+        }})
+
         const reccomResponseReview = axios.post('http://localhost:8000/reccom', {
-            userReviews
+            userReviews, userBookmark
         });
 
         const reccomReview = (await reccomResponseReview).data;

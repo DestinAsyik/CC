@@ -38,6 +38,10 @@ const Destination = sequelize.define('destination', {
       type: DataTypes.FLOAT,
       allowNull: true,
     },
+    rating_count: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
     latitude: {
      type: DataTypes.FLOAT,
      allowNull: false,
