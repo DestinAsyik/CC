@@ -70,37 +70,50 @@ exports.reccomByJarak = async (req, res) => {
     }
 };
 
-exports.reccomByReview = async (req, res) => {
-    try{
-        const user_id = req.user.user_id
+exports.reccomHybrid = async (req, res) => {
+    try {
+        const user_id = req.user.user_id;
 
-        const userReviews = await Review.findAll({where : {
-            user_id: user_id
-        }});
-
-        const userBookmark = await Bookmark.findAll({where : {
-            user_id: user_id
-        }})
-
-        const reccomResponseReview = axios.post('http://localhost:8000/reccom', {
-            userReviews, userBookmark
+        const userReviews = await Review.findAll({
+            where: { user_id },
+            attributes: ['item_id', 'rating']
         });
 
-        const reccomReview = (await reccomResponseReview).data;
+        const userBookmarks = await Bookmark.findAll({
+            where: { user_id },
+            attributes: ['item_id']
+        });
 
-        res.status(201).json({message: "Rekomendasi untuk kamu berdasarkan review kamu :", reccomReview });
+        const userLikes = await Likes.findAll({
+            where: { user_id },
+            attributes: ['item_id']
+        });
+
+        //validasi untuk kirim data yang di butuhkan
+        const hybridData = {
+            reviews: userReviews.map(review => ({
+                item_id: review.item_id,
+                rating: review.rating,
+            })),
+            bookmarks: userBookmarks.map(bookmark => ({
+                item_id: bookmark.item_id,
+            })),
+            likes: userLikes.map(like => ({
+                item_id: like.item_id,
+            }))
+        };
+
+        const reccomResponse = await axios.post(`${BASE_URL}recommendations/hybrid`, hybridData);
+
+        res.status(201).json({
+            message: "Rekomendasi untuk kamu berdasarkan aktivitasmu:",
+            recommendations: reccomResponse.data
+        });
     } catch (error) {
         console.error("Error:", error.message);
-        res.status(500).json({ message: 'Terjadi kesalahan pada server', error: error.message });
-    }
-};
-
-exports.reccomHybrid = async (req, res) => {
-    try{
-        
-
-    } catch (error) {
-        console.error("Error:", error.message);
-        res.status(500).json({ message: 'Terjadi kesalahan pada server', error: error.message });
+        res.status(500).json({
+            message: 'Terjadi kesalahan pada server',
+            error: error.message
+        });
     }
 };

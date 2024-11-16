@@ -13,7 +13,7 @@ const profileRoutes = require('./Routes/profile');
 const bookmarkRoutes = require('./Routes/bookmark');
 const reviewRoutes = require('./Routes/review');
 const recomRoutes =  require('./Routes/reccom');
-const likeRoutes = require('./Routes/likes')
+const likeRoutes = require('./Routes/likes');
 
 // Middleware
 const { authenticateToken } = require('./midleware/authMidleware');
