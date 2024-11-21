@@ -1,0 +1,25 @@
+[
+    [
+        {
+            "item_id":1,
+            "rating":4,
+            "review":"oke oke aja",
+            "userLat":-61753900,
+            "userLon":1068270000
+        },
+        {
+            "item_id":3,
+            "rating":5,
+            "review":"bagus banget",
+            "userLat":-61253100,
+            "userLon":1068340000
+        },
+        {
+            "item_id":26,
+            "rating":5,
+            "review":"bagus banget",
+            "userLat":-61427600,
+            "userLon":1068140000
+        }
+    ]   
+]

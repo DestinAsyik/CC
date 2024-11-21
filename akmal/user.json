@@ -1,0 +1,20 @@
+[
+    {
+        "username":"Afreborn",
+        "name":"Akmal Fauzan",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"Afreborn@gmail.com",
+        "city":"Sleman",
+        "prefered_category":"Taman Hiburan"
+    },
+    {
+        "username":"alifia",
+        "name":"alifia rizki",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"alifia@gmail.com",
+        "city":"Bali",
+        "prefered_category":"Budaya"
+    }
+]
