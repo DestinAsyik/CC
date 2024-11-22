@@ -36,8 +36,6 @@ const Destination =  require('../Models/destination')
                 });
             }
 
-            // Generate coordinate string
-            const coordinate = `${latitude},${longitude}`;
 
             // Create new destination
             const newDestination = await Destination.create({
@@ -49,7 +47,6 @@ const Destination =  require('../Models/destination')
                 price: price || 0,
                 latitude: parseFloat(latitude),
                 longitude: parseFloat(longitude),
-                coordinate: `${latitude},${longitude}`,
                 rating_avg: null,
                 rating_count: 0
             });

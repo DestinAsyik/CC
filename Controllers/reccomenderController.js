@@ -53,13 +53,15 @@ exports.reccomByJarak = async (req, res) => {
         });
 
         const reccomJarak = reccomResponseJarak.data;
-
         console.log(reccomJarak)
+        const placeNames = reccomJarak.nearby_places.map((place) => place.place_name);
 
         const reccomByJarak = await Destination.findAll({
             where: {
-                place_name: reccomJarak.nearby_places.map(place => place.place_Name)
-            }
+                place_name: {
+                    [Op.in]: placeNames, 
+                },
+            },
         });
         
 
