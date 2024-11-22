@@ -1,0 +1,142 @@
+[
+    {
+        "item_id": 78,
+        "rating": 5,
+        "review": "hutan yang asri",
+        "userLat": -62106900,
+        "userLon": 1067640000
+    },
+    {
+        "item_id": 79,
+        "rating": 4,
+        "review": "tempatnya sangat bagus",
+        "userLat": -63226100,
+        "userLon": 1068240000
+    },
+    {
+        "item_id": 80,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -61939300,
+        "userLon": 1068220000
+    },
+    {
+        "item_id": 81,
+        "rating": 4,
+        "review": "bagus",
+        "userLat": -61946100,
+        "userLon": 106818000
+    },
+    {
+        "item_id": 82,
+        "rating": 4,
+        "review": "asyik banget tempatnya",
+        "userLat": -62317000,
+        "userLon": 1068190000
+    },
+    {
+        "item_id": 83,
+        "rating": 5,
+        "review": "keren banget",
+        "userLat": -61175300,
+        "userLon": 106857000
+    },
+    {
+        "item_id": 84,
+        "rating": 5,
+        "review": "bagus banget tempatnya bisa buat kulineran bareng keluarga",
+        "userLat": -61842600,
+        "userLon": 106824000
+    },
+    {
+        "item_id": 85,
+        "rating": 4,
+        "review": "rame banget",
+        "userLat": -78006700,
+        "userLon": 1103680000
+    },
+    {
+        "item_id": 86,
+        "rating": 5,
+        "review": "bisa belajar sejarah keraton jogja",
+        "userLat": -78052800,
+        "userLon": 1103640000
+    },
+    {
+        "item_id": 87,
+        "rating": 5,
+        "review": "banyak wahana yang wajib dicoba",
+        "userLat": -77673000,
+        "userLon": 1103540000
+    },
+    {
+        "item_id": 88,
+        "rating": 5,
+        "review": "saya menjadi banyak tahu tentang sejarah museum/benteng ini",
+        "userLat": -78002000,
+        "userLon": 1103660000
+    },
+    {
+        "item_id": 89,
+        "rating": 4,
+        "review": "wajib kesini",
+        "userLat": -78163200,
+        "userLon": 1103870000
+    },
+    {
+        "item_id": 90,
+        "rating": 5,
+        "review": "worth it",
+        "userLat": -78100700,
+        "userLon": 1103590000
+    },
+    {
+        "item_id": 91,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -78102700,
+        "userLon": 1103930000
+    },
+    {
+        "item_id": 92,
+        "rating": 4,
+        "review": "nyaman banget",
+        "userLat": -78013800,
+        "userLon": 1103650000
+    },
+    {
+        "item_id": 93,
+        "rating": 5,
+        "review": "rame banget",
+        "userLat": -78062300,
+        "userLon": 1103970000
+    },
+    {
+        "item_id": 94,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -78087900,
+        "userLon": 1103590000
+    },
+    {
+        "item_id": 95,
+        "rating": 4,
+        "review": "asyik banget",
+        "userLat": -78229100,
+        "userLon": 1103760000
+    },
+    {
+        "item_id": 96,
+        "rating": 5,
+        "review": "keren banget",
+        "userLat": -78116700,
+        "userLon": 110363000
+    },
+    {
+        "item_id": 97,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -77495900,
+        "userLon": 1103700000
+    }
+]

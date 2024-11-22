@@ -1,0 +1,142 @@
+[
+    {
+        "item_id": 270,
+        "rating": 5,
+        "review": "bukit yang indah",
+        "userLat": -68417800,
+        "userLon": 1076770000
+    },
+    {
+        "item_id": 271,
+        "rating": 4,
+        "review": "tempatnya sangat bagus",
+        "userLat": -69140500,
+        "userLon": 1076100000
+    },
+    {
+        "item_id": 272,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -6870100,
+        "userLon": 1076160000
+    },
+    {
+        "item_id": 273,
+        "rating": 4,
+        "review": "bagus",
+        "userLat": -6790390,
+        "userLon": 1075780000
+    },
+    {
+        "item_id": 274,
+        "rating": 4,
+        "review": "asyik banget tempatnya",
+        "userLat": -68853700,
+        "userLon": 1076110000
+    },
+    {
+        "item_id": 275,
+        "rating": 5,
+        "review": "keren banget",
+        "userLat": -67992000,
+        "userLon": 1075920000
+    },
+    {
+        "item_id": 276,
+        "rating": 5,
+        "review": "spot fotonya unik",
+        "userLat": -68980600,
+        "userLon": 1076090000
+    },
+    {
+        "item_id": 277,
+        "rating": 4,
+        "review": "rame banget",
+        "userLat": -69318000,
+        "userLon": 1075880000
+    },
+    {
+        "item_id": 278,
+        "rating": 5,
+        "review": "masjid yang megah",
+        "userLat": -6863530,
+        "userLon": 1075900000
+    },
+    {
+        "item_id": 279,
+        "rating": 5,
+        "review": "nyaman banget mampir sholat di masjid ini",
+        "userLat": -69259600,
+        "userLon": 1076350000
+    },
+    {
+        "item_id": 280,
+        "rating": 5,
+        "review": "gereja bersejarah",
+        "userLat": -69347700,
+        "userLon": 1076250000
+    },
+    {
+        "item_id": 281,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -70096000,
+        "userLon": 1076060000
+    },
+    {
+        "item_id": 282,
+        "rating": 4,
+        "review": "wajib kesini",
+        "userLat": -68908900,
+        "userLon": 1077310000
+    },
+    {
+        "item_id": 283,
+        "rating": 5,
+        "review": "worth it",
+        "userLat": -69001000,
+        "userLon": 1076050000
+    },
+    {
+        "item_id": 284,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -69177000,
+        "userLon": 1076040000
+    },
+    {
+        "item_id": 285,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -69103100,
+        "userLon": 1076100000
+    },
+    {
+        "item_id": 286,
+        "rating": 5,
+        "review": "tempat yang menarik untuk dikunjungi",
+        "userLat": -69204200,
+        "userLon": 1076000000
+    },
+    {
+        "item_id": 287,
+        "rating": 4,
+        "review": "bagus banget",
+        "userLat": -6852210,
+        "userLon": 107494000
+    },
+    {
+        "item_id": 288,
+        "rating": 5,
+        "review": "rame banget",
+        "userLat": -68936600,
+        "userLon": 107611000
+    },
+    {
+        "item_id": 289,
+        "rating": 5,
+        "review": "nyaman banget",
+        "userLat": -67875600,
+        "userLon": 1075820000
+    }
+]

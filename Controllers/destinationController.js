@@ -1,6 +1,5 @@
 const Destination =  require('../Models/destination')
 
-
     // Add new destination
     exports.addDestination = async (req, res) => {
         try {

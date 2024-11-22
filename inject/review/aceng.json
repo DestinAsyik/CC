@@ -1,0 +1,142 @@
+[
+    {
+        "item_id": 110,
+        "rating": 5,
+        "review": "monumen ikonik di yogyakarta",
+        "userLat": -78010100,
+        "userLon": 1103650000
+    },
+    {
+        "item_id": 111,
+        "rating": 4,
+        "review": "tempatnya sangat bagus",
+        "userLat": -79020400,
+        "userLon": 1104370000
+    },
+    {
+        "item_id": 112,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -78458400,
+        "userLon": 1104800000
+    },
+    {
+        "item_id": 113,
+        "rating": 4,
+        "review": "bagus",
+        "userLat": -78001500,
+        "userLon": 1103640000
+    },
+    {
+        "item_id": 114,
+        "rating": 4,
+        "review": "asyik banget tempatnya",
+        "userLat": -76041600,
+        "userLon": 1104510000
+    },
+    {
+        "item_id": 115,
+        "rating": 5,
+        "review": "keren banget",
+        "userLat": -77881700,
+        "userLon": 1103720000
+    },
+    {
+        "item_id": 116,
+        "rating": 5,
+        "review": "bagus tempatnya",
+        "userLat": -79401100,
+        "userLon": 1104300000
+    },
+    {
+        "item_id": 117,
+        "rating": 4,
+        "review": "rame banget",
+        "userLat": -76209000,
+        "userLon": 1104220000
+    },
+    {
+        "item_id": 118,
+        "rating": 5,
+        "review": "taman yang asri",
+        "userLat": -78024500,
+        "userLon": 1103640000
+    },
+    {
+        "item_id": 119,
+        "rating": 5,
+        "review": "wisata yang unik",
+        "userLat": -78081500,
+        "userLon": 1104600000
+    },
+    {
+        "item_id": 120,
+        "rating": 5,
+        "review": "bukit yang indah",
+        "userLat": -79583700,
+        "userLon": 1104410000
+    },
+    {
+        "item_id": 121,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -77520200,
+        "userLon": 1104910000
+    },
+    {
+        "item_id": 122,
+        "rating": 4,
+        "review": "wajib kesini",
+        "userLat": -79274100,
+        "userLon": 1104120000
+    },
+    {
+        "item_id": 123,
+        "rating": 5,
+        "review": "worth it",
+        "userLat": -78152800,
+        "userLon": 1103990000
+    },
+    {
+        "item_id": 124,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -78010300,
+        "userLon": 1103750000
+    },
+    {
+        "item_id": 125,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -78039000,
+        "userLon": 1103640000
+    },
+    {
+        "item_id": 126,
+        "rating": 5,
+        "review": "tempat yang menarik untuk dikunjungi",
+        "userLat": -7999420,
+        "userLon": 110249000
+    },
+    {
+        "item_id": 127,
+        "rating": 4,
+        "review": "bagus banget",
+        "userLat": -77044400,
+        "userLon": 11045000
+    },
+    {
+        "item_id": 128,
+        "rating": 5,
+        "review": "rame banget",
+        "userLat": -80173300,
+        "userLon": 1103180000
+    },
+    {
+        "item_id": 129,
+        "rating": 5,
+        "review": "nyaman banget",
+        "userLat": -79158000,
+        "userLon": 1104370000
+    }
+]

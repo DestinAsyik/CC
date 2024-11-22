@@ -1,0 +1,142 @@
+[
+    {
+        "item_id": 498,
+        "rating": 5,
+        "review": "tempat religius yang terawat",
+        "userLat": -8.3718,
+        "userLon": 115.103
+    },
+    {
+        "item_id": 499,
+        "rating": 4,
+        "review": "tempatnya sangat bagus",
+        "userLat": -8.48129,
+        "userLon": 115.262
+    },
+    {
+        "item_id": 500,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -8.54017,
+        "userLon": 115.172
+    },
+    {
+        "item_id": 501,
+        "rating": 4,
+        "review": "bagus",
+        "userLat": -8.6209,
+        "userLon": 115.087
+    },
+    {
+        "item_id": 502,
+        "rating": 4,
+        "review": "asyik banget tempatnya",
+        "userLat": -8.41552,
+        "userLon": 115.315
+    },
+    {
+        "item_id": 503,
+        "rating": 5,
+        "review": "keren banget",
+        "userLat": -8.82889,
+        "userLon": 115.085
+    },
+    {
+        "item_id": 504,
+        "rating": 5,
+        "review": "bagus banget tempatnya",
+        "userLat": -8.5443,
+        "userLon": 115.272
+    },
+    {
+        "item_id": 505,
+        "rating": 4,
+        "review": "rame banget",
+        "userLat": -8.75303,
+        "userLon": 115.219
+    },
+    {
+        "item_id": 506,
+        "rating": 5,
+        "review": "banyak belajar budaya baru",
+        "userLat": -8.60411,
+        "userLon": 115.253
+    },
+    {
+        "item_id": 507,
+        "rating": 5,
+        "review": "belajar banyak sejarah disini",
+        "userLat": -8.83027,
+        "userLon": 115.085
+    },
+    {
+        "item_id": 508,
+        "rating": 5,
+        "review": "saya sangat puas setelah kesini",
+        "userLat": -8.43389,
+        "userLon": 115.279
+    },
+    {
+        "item_id": 509,
+        "rating": 4,
+        "review": "wajib kesini",
+        "userLat": -8.41207,
+        "userLon": 115.587
+    },
+    {
+        "item_id": 510,
+        "rating": 5,
+        "review": "worth it",
+        "userLat": -8.72829,
+        "userLon": 115.169
+    },
+    {
+        "item_id": 511,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -8.4397,
+        "userLon": 115.281
+    },
+    {
+        "item_id": 512,
+        "rating": 4,
+        "review": "nyaman banget",
+        "userLat": -8.54724,
+        "userLon": 115.257
+    },
+    {
+        "item_id": 1,
+        "rating": 5,
+        "review": "nyaman banget",
+        "userLat": -61753900,
+        "userLon": 1068270000
+    },
+    {
+        "item_id": 2,
+        "rating": 4,
+        "review": "tempatnya menarik",
+        "userLat": -61376400,
+        "userLon": 1068170000
+    },
+    {
+        "item_id": 3,
+        "rating": 5,
+        "review": "sangat informatif",
+        "userLat": -61253100,
+        "userLon": 1068340000
+    },
+    {
+        "item_id": 4,
+        "rating": 4,
+        "review": "layak dikunjungi",
+        "userLat": -63024500,
+        "userLon": 1068950000
+    },
+    {
+        "item_id": 5,
+        "rating": 5,
+        "review": "pengalaman yang luar biasa",
+        "userLat": -612419,
+        "userLon": 106839000
+    }
+]

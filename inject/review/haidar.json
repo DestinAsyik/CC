@@ -1,0 +1,142 @@
+[
+    {
+        "item_id": 158,
+        "rating": 5,
+        "review": "salah satu pantai terbaik di jogja",
+        "userLat": -81554500,
+        "userLon": 1106220000
+    },
+    {
+        "item_id": 159,
+        "rating": 4,
+        "review": "tempatnya sangat bagus",
+        "userLat": -79209200,
+        "userLon": 1104360000
+    },
+    {
+        "item_id": 160,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -78363200,
+        "userLon": 1104580000
+    },
+    {
+        "item_id": 161,
+        "rating": 4,
+        "review": "bagus",
+        "userLat": -80268600,
+        "userLon": 1103460000
+    },
+    {
+        "item_id": 162,
+        "rating": 4,
+        "review": "asyik banget tempatnya",
+        "userLat": -78105500,
+        "userLon": 1103700000
+    },
+    {
+        "item_id": 163,
+        "rating": 5,
+        "review": "keren banget",
+        "userLat": -7947120,
+        "userLon": 110441
+    },
+    {
+        "item_id": 164,
+        "rating": 5,
+        "review": "bagus banget tempatnya bisa buat refreshing bareng keluarga",
+        "userLat": -7913610,
+        "userLon": 110438000
+    },
+    {
+        "item_id": 165,
+        "rating": 4,
+        "review": "rame banget",
+        "userLat": -7813090,
+        "userLon": 110616000
+    },
+    {
+        "item_id": 166,
+        "rating": 5,
+        "review": "taman yang asri",
+        "userLat": -7647050,
+        "userLon": 1101410000
+    },
+    {
+        "item_id": 167,
+        "rating": 5,
+        "review": "sangat adem tempatnya",
+        "userLat": -7974290,
+        "userLon": 1104360000
+    },
+    {
+        "item_id": 168,
+        "rating": 5,
+        "review": "cocok untuk melihat sunset",
+        "userLat": -81759300,
+        "userLon": 1106620000
+    },
+    {
+        "item_id": 169,
+        "rating": 4,
+        "review": "wajib kesini",
+        "userLat": -81026200,
+        "userLon": 1104560000
+    },
+    {
+        "item_id": 170,
+        "rating": 5,
+        "review": "worth it",
+        "userLat": -76078700,
+        "userLon": 1102040000
+    },
+    {
+        "item_id": 171,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -77838300,
+        "userLon": 1105120000
+    },
+    {
+        "item_id": 172,
+        "rating": 4,
+        "review": "nyaman banget",
+        "userLat": -81508400,
+        "userLon": 1106130000
+    },
+    {
+        "item_id": 173,
+        "rating": 5,
+        "review": "rame banget",
+        "userLat": -81827000,
+        "userLon": 1106790000
+    },
+    {
+        "item_id": 174,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -77987900,
+        "userLon": 110367000
+    },
+    {
+        "item_id": 175,
+        "rating": 4,
+        "review": "asyik banget",
+        "userLat": -75978700,
+        "userLon": 1104230000
+    },
+    {
+        "item_id": 176,
+        "rating": 5,
+        "review": "keren banget",
+        "userLat": -76159300,
+        "userLon": 1104240000
+    },
+    {
+        "item_id": 177,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -8024610,
+        "userLon": 1103300000
+    }
+]

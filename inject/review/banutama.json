@@ -1,0 +1,142 @@
+[
+    {
+        "item_id": 230,
+        "rating": 5,
+        "review": "taman yang sangat indah",
+        "userLat": -68281500,
+        "userLon": 1074350000
+    },
+    {
+        "item_id": 231,
+        "rating": 4,
+        "review": "tempatnya sangat bagus",
+        "userLat": -6833120,
+        "userLon": 1076040000
+    },
+    {
+        "item_id": 232,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -68422200,
+        "userLon": 1076770000
+    },
+    {
+        "item_id": 233,
+        "rating": 4,
+        "review": "bagus",
+        "userLat": -73193300,
+        "userLon": 1077310000
+    },
+    {
+        "item_id": 234,
+        "rating": 4,
+        "review": "asyik banget tempatnya",
+        "userLat": -68516600,
+        "userLon": 1075960000
+    },
+    {
+        "item_id": 235,
+        "rating": 5,
+        "review": "keren banget",
+        "userLat": -68544600,
+        "userLon": 1076380000
+    },
+    {
+        "item_id": 236,
+        "rating": 5,
+        "review": "balai kota yang sangat ramai",
+        "userLat": -6912970,
+        "userLon": 1076100000
+    },
+    {
+        "item_id": 237,
+        "rating": 4,
+        "review": "rame banget",
+        "userLat": -69614000,
+        "userLon": 1076230000
+    },
+    {
+        "item_id": 238,
+        "rating": 5,
+        "review": "taman yang asri",
+        "userLat": -68761100,
+        "userLon": 1077440000
+    },
+    {
+        "item_id": 239,
+        "rating": 5,
+        "review": "banyak binatang di sini",
+        "userLat": -68059200,
+        "userLon": 1075920000
+    },
+    {
+        "item_id": 240,
+        "rating": 5,
+        "review": "saya menjadi banyak tahu tentang lalu lintas di taman ini",
+        "userLat": -6911210,
+        "userLon": 1076130000
+    },
+    {
+        "item_id": 241,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -6847900,
+        "userLon": 1076280000
+    },
+    {
+        "item_id": 242,
+        "rating": 4,
+        "review": "wajib kesini",
+        "userLat": -68655200,
+        "userLon": 1076180000
+    },
+    {
+        "item_id": 243,
+        "rating": 5,
+        "review": "worth it",
+        "userLat": -69154500,
+        "userLon": 107641000
+    },
+    {
+        "item_id": 244,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -70093600,
+        "userLon": 1076070000
+    },
+    {
+        "item_id": 245,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -6819600,
+        "userLon": 1075960000
+    },
+    {
+        "item_id": 246,
+        "rating": 5,
+        "review": "tempat yang menarik untuk dikunjungi",
+        "userLat": -67905700,
+        "userLon": 1075830000
+    },
+    {
+        "item_id": 247,
+        "rating": 4,
+        "review": "bagus banget",
+        "userLat": -69159500,
+        "userLon": 1076420000
+    },
+    {
+        "item_id": 248,
+        "rating": 5,
+        "review": "rame banget",
+        "userLat": -68778600,
+        "userLon": 1075720000
+    },
+    {
+        "item_id": 249,
+        "rating": 5,
+        "review": "nyaman banget",
+        "userLat": -68963,
+        "userLon": 107617
+    }
+]

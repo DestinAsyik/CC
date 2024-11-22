@@ -1,0 +1,142 @@
+[
+    {
+        "item_id": 298,
+        "rating": 5,
+        "review": "gunung yang bagus",
+        "userLat": -69580600,
+        "userLon": 1075210000
+    },
+    {
+        "item_id": 299,
+        "rating": 4,
+        "review": "tempatnya sangat bagus",
+        "userLat": -67495300,
+        "userLon": 107479000
+    },
+    {
+        "item_id": 300,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -68765100,
+        "userLon": 1073420000
+    },
+    {
+        "item_id": 301,
+        "rating": 4,
+        "review": "bagus",
+        "userLat": -6842540,
+        "userLon": 107623000
+    },
+    {
+        "item_id": 302,
+        "rating": 4,
+        "review": "asyik banget tempatnya",
+        "userLat": -69000700,
+        "userLon": 10762600
+    },
+    {
+        "item_id": 303,
+        "rating": 5,
+        "review": "keren banget",
+        "userLat": -6919420,
+        "userLon": 1076080000
+    },
+    {
+        "item_id": 304,
+        "rating": 5,
+        "review": "unik tempatnya",
+        "userLat": -71923300,
+        "userLon": 1075510000
+    },
+    {
+        "item_id": 305,
+        "rating": 4,
+        "review": "rame banget",
+        "userLat": -7233690,
+        "userLon": 1075340000
+    },
+    {
+        "item_id": 306,
+        "rating": 5,
+        "review": "sungai yang indah",
+        "userLat": -71965000,
+        "userLon": 1075450000
+    },
+    {
+        "item_id": 307,
+        "rating": 5,
+        "review": "kebun teh yang indah",
+        "userLat": -72274500,
+        "userLon": 1076050000
+    },
+    {
+        "item_id": 308,
+        "rating": 5,
+        "review": "nyaman,bisa berendam air panas disini",
+        "userLat": -67380900,
+        "userLon": 1076570000
+    },
+    {
+        "item_id": 309,
+        "rating": 4,
+        "review": "wajib kesini",
+        "userLat": -68246300,
+        "userLon": 1076170000
+    },
+    {
+        "item_id": 310,
+        "rating": 5,
+        "review": "worth it",
+        "userLat": -68038900,
+        "userLon": 1075870000
+    },
+    {
+        "item_id": 311,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -68294100,
+        "userLon": 1076870000
+    },
+    {
+        "item_id": 312,
+        "rating": 4,
+        "review": "nyaman banget",
+        "userLat": -68585800,
+        "userLon": 1076310000
+    },
+    {
+        "item_id": 313,
+        "rating": 5,
+        "review": "rame banget",
+        "userLat": -68260200,
+        "userLon": 1076380000
+    },
+    {
+        "item_id": 314,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -68426400,
+        "userLon": 1076230000
+    },
+    {
+        "item_id": 315,
+        "rating": 4,
+        "review": "asyik banget",
+        "userLat": -68131800,
+        "userLon": 1077140000
+    },
+    {
+        "item_id": 316,
+        "rating": 5,
+        "review": "keren banget",
+        "userLat": -70182400,
+        "userLon": 1072070000
+    },
+    {
+        "item_id": 317,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -67977400,
+        "userLon": 1075780000
+    }
+]

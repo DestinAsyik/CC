@@ -1,0 +1,142 @@
+[
+    {
+        "item_id": 350,
+        "rating": 5,
+        "review": "pantai dengan pemandangan yang bagus",
+        "userLat": -69486400,
+        "userLon": 1104100000
+    },
+    {
+        "item_id": 351,
+        "rating": 4,
+        "review": "tempatnya sangat bagus",
+        "userLat": -69684100,
+        "userLon": 1104260000
+    },
+    {
+        "item_id": 352,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -69683500,
+        "userLon": 1104270000
+    },
+    {
+        "item_id": 353,
+        "rating": 4,
+        "review": "bagus",
+        "userLat": -69681700,
+        "userLon": 1104280000
+    },
+    {
+        "item_id": 354,
+        "rating": 4,
+        "review": "asyik banget tempatnya",
+        "userLat": -69675,
+        "userLon": 1104280
+    },
+    {
+        "item_id": 355,
+        "rating": 5,
+        "review": "keren banget",
+        "userLat": -71945900,
+        "userLon": 1103730000
+    },
+    {
+        "item_id": 356,
+        "rating": 5,
+        "review": "bagus banget tempatnya bisa buat refreshing bareng keluarga",
+        "userLat": -72807300,
+        "userLon": 1104600000
+    },
+    {
+        "item_id": 357,
+        "rating": 4,
+        "review": "rame banget",
+        "userLat": -71158000,
+        "userLon": 1104220000
+    },
+    {
+        "item_id": 358,
+        "rating": 5,
+        "review": "masjid yang unik",
+        "userLat": -70187800,
+        "userLon": 1102940000
+    },
+    {
+        "item_id": 359,
+        "rating": 5,
+        "review": "banyak bunga yang jarang saya lihat disini",
+        "userLat": -72255000,
+        "userLon": 1103460000
+    },
+    {
+        "item_id": 360,
+        "rating": 5,
+        "review": "air terjun yang masih terawat",
+        "userLat": -73581000,
+        "userLon": 1104210000
+    },
+    {
+        "item_id": 361,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -72141600,
+        "userLon": 1103770000
+    },
+    {
+        "item_id": 362,
+        "rating": 4,
+        "review": "wajib kesini",
+        "userLat": -72854900,
+        "userLon": 1104320000
+    },
+    {
+        "item_id": 363,
+        "rating": 5,
+        "review": "worth it",
+        "userLat": -69545700,
+        "userLon": 1103600000
+    },
+    {
+        "item_id": 364,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -70218900,
+        "userLon": 1104380000
+    },
+    {
+        "item_id": 365,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -70370500,
+        "userLon": 1103480000
+    },
+    {
+        "item_id": 366,
+        "rating": 4,
+        "review": "bagus banget",
+        "userLat": -7132110,
+        "userLon": 110395000
+    },
+    {
+        "item_id": 367,
+        "rating": 5,
+        "review": "rame banget",
+        "userLat": -73126600,
+        "userLon": 1103750000
+    },
+    {
+        "item_id": 368,
+        "rating": 5,
+        "review": "nyaman banget",
+        "userLat": -7267540,
+        "userLon": 110418000
+    },
+    {
+        "item_id": 369,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -72598900,
+        "userLon": 1104030000
+    }
+]

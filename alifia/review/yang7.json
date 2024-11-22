@@ -1,0 +1,142 @@
+[
+    {
+        "item_id": 250,
+        "rating": 1,
+        "review": "Tidak puas sama sekali",
+        "userLat": -70409200,
+        "userLon": 1075270000
+    },
+    {
+        "item_id": 337,
+        "rating": 5,
+        "review": "Luar biasa!",
+        "userLat": -69888800,
+        "userLon": 1104080000
+    },
+    {
+        "item_id": 91,
+        "rating": 2,
+        "review": "Bisa lebih baik",
+        "userLat": -78102700,
+        "userLon": 1103930000
+    },
+    {
+        "item_id": 124,
+        "rating": 4,
+        "review": "Sangat memuaskan",
+        "userLat": -78039000,
+        "userLon": 1103750000
+    },
+    {
+        "item_id": 357,
+        "rating": 5,
+        "review": "Luar biasa!",
+        "userLat": -71158000,
+        "userLon": 1104220000
+    },
+    {
+        "item_id": 170,
+        "rating": 5,
+        "review": "Sangat direkomendasikan!",
+        "userLat": -76078700,
+        "userLon": 1102040000
+    },
+    {
+        "item_id": 450,
+        "rating": 4,
+        "review": "Sangat memuaskan",
+        "userLat": -8.23985,
+        "userLon": 115.108
+    },
+    {
+        "item_id": 277,
+        "rating": 5,
+        "review": "Pengalaman yang fantastis",
+        "userLat": -69318000,
+        "userLon": 1075880000
+    },
+    {
+        "item_id": 22,
+        "rating": 2,
+        "review": "Kurang memuaskan",
+        "userLat": -617017,
+        "userLon": 10683100
+    },
+    {
+        "item_id": 125,
+        "rating": 3,
+        "review": "Lumayan",
+        "userLat": -78039000,
+        "userLon": 1103640000
+    },
+    {
+        "item_id": 229,
+        "rating": 4,
+        "review": "Sangat memuaskan",
+        "userLat": -68669500,
+        "userLon": 1076100000
+    },
+    {
+        "item_id": 187,
+        "rating": 3,
+        "review": "Standar",
+        "userLat": -81818200,
+        "userLon": 1106830000
+    },
+    {
+        "item_id": 268,
+        "rating": 2,
+        "review": "Bisa lebih baik",
+        "userLat": -68423600,
+        "userLon": 1076230000
+    },
+    {
+        "item_id": 146,
+        "rating": 1,
+        "review": "Sangat buruk",
+        "userLat": -78001100,
+        "userLon": 1101240000
+    },
+    {
+        "item_id": 82,
+        "rating": 3,
+        "review": "Cukup baik",
+        "userLat": -62317000,
+        "userLon": 1068190000
+    },
+    {
+        "item_id": 472,
+        "rating": 3,
+        "review": "Cukup baik",
+        "userLat": -8.42196,
+        "userLon": 115.359
+    },
+    {
+        "item_id": 484,
+        "rating": 2,
+        "review": "Bisa lebih baik",
+        "userLat": -8.79553,
+        "userLon": 115.233
+    },
+    {
+        "item_id": 28,
+        "rating": 3,
+        "review": "Standar",
+        "userLat": -63568100,
+        "userLon": 1069060000
+    },
+    {
+        "item_id": 141,
+        "rating": 4,
+        "review": "Menyenangkan",
+        "userLat": -75829200,
+        "userLon": 1104480000
+    },
+    {
+        "item_id": 504,
+        "rating": 4,
+        "review": "Sangat memuaskan",
+        "userLat": -8.5443,
+        "userLon": 115.272
+    }
+]

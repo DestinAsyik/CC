@@ -1,0 +1,142 @@
+[
+    {
+        "item_id": 510,
+        "rating": 5,
+        "review": "bisa berenang dan main banyak wahana disini",
+        "userLat": -8.72829,
+        "userLon": 115.169
+    },
+    {
+        "item_id": 511,
+        "rating": 4,
+        "review": "tempatnya sangat bagus",
+        "userLat": -8.43970,
+        "userLon": 115.281
+    },
+    {
+        "item_id": 512,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -8.54724,
+        "userLon": 115.257
+    },
+    {
+        "item_id": 1,
+        "rating": 5,
+        "review": "monumen ikonik di jakarta",
+        "userLat": -61753900,
+        "userLon": 1068270000
+    },
+    {
+        "item_id": 2,
+        "rating": 4,
+        "review": "tempatnya sangat bagus",
+        "userLat": -61376400,
+        "userLon": 1068170000
+    },
+    {
+        "item_id": 3,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -61253100,
+        "userLon": 1068340000
+    },
+    {
+        "item_id": 4,
+        "rating": 4,
+        "review": "bagus",
+        "userLat": -63024500,
+        "userLon": 1068950000
+    },
+    {
+        "item_id": 5,
+        "rating": 4,
+        "review": "asyik banget tempatnya",
+        "userLat": -612419,
+        "userLon": 106839000
+    },
+    {
+        "item_id": 6,
+        "rating": 5,
+        "review": "keren banget",
+        "userLat": -61173300,
+        "userLon": 1068580000
+    },
+    {
+        "item_id": 7,
+        "rating": 5,
+        "review": "bagus banget tempatnya bisa buat refreshing bareng keluarga",
+        "userLat": -63124600,
+        "userLon": 1068200000
+    },
+    {
+        "item_id": 8,
+        "rating": 4,
+        "review": "rame banget",
+        "userLat": -61258000,
+        "userLon": 1068360000
+    },
+    {
+        "item_id": 9,
+        "rating": 5,
+        "review": "pelabuhan yang bagus",
+        "userLat": 107888,
+        "userLon": 1039310000
+    },
+    {
+        "item_id": 10,
+        "rating": 5,
+        "review": "pulau yang keren",
+        "userLat": -58032100,
+        "userLon": 1065240000
+    },
+    {
+        "item_id": 11,
+        "rating": 5,
+        "review": "pulau ini sangat indah",
+        "userLat": -6035830,
+        "userLon": 1067470000
+    },
+    {
+        "item_id": 12,
+        "rating": 4,
+        "review": "wajib kesini",
+        "userLat": -59074300,
+        "userLon": 1065860000
+    },
+    {
+        "item_id": 13,
+        "rating": 5,
+        "review": "worth it",
+        "userLat": -5745960,
+        "userLon": 1066140000
+    },
+    {
+        "item_id": 14,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -5587060,
+        "userLon": 1065880
+    },
+    {
+        "item_id": 15,
+        "rating": 5,
+        "review": "nyaman banget",
+        "userLat": -61766900,
+        "userLon": 1068420000
+    },
+    {
+        "item_id": 16,
+        "rating": 4,
+        "review": "bagus banget",
+        "userLat": -61314600,
+        "userLon": 1068110000
+    },
+    {
+        "item_id": 17,
+        "rating": 5,
+        "review": "rame banget",
+        "userLat": -61364500,
+        "userLon": 1068130000
+    }
+]

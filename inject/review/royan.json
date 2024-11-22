@@ -1,0 +1,142 @@
+[
+        {
+            "item_id":50,
+            "rating":5,
+            "review":"banyak koleksi",
+            "userLat":-61861800,
+            "userLon":1068360000
+        },
+        {
+            "item_id":51,
+            "rating":4,
+            "review":"tempatnya sangat bagus",
+            "userLat":-61900800,
+            "userLon":1068390000
+        },
+        {
+            "item_id":52,
+            "rating":5,
+            "review":"bagus banget",
+            "userLat":-63651400,
+            "userLon":1067620000
+        },
+        {
+            "item_id":53,
+            "rating":4,
+            "review":"bagus",
+            "userLat":-610016,
+            "userLon":10696100
+        },
+        {
+            "item_id":54,
+            "rating":4,
+            "review":" asyik banget tempatnya",
+            "userLat":-63401500,
+            "userLon":1069010000
+        },
+        {
+            "item_id":55,
+            "rating":5,
+            "review":"keren banget",
+            "userLat":-61444700,
+            "userLon":1068130000
+        },
+        {
+            "item_id":56,
+            "rating":5,
+            "review":"bagus banget tempatnya bisa buat refreshing bareng keluarga",
+            "userLat":-61194200,
+            "userLon":1068500000
+        },
+        {
+            "item_id":57,
+            "rating":4,
+            "review":"rame banget",
+            "userLat":-6170560,
+            "userLon":1068350000
+        },
+        {
+            "item_id":58,
+            "rating":5,
+            "review":"taman yang asri",
+            "userLat":-62452300,
+            "userLon":1067950000
+        },
+        {
+            "item_id":59,
+            "rating":5,
+            "review":"belajar banyak sejarah disini",
+            "userLat":-61838400,
+            "userLon":1068430000
+        },
+        {
+            "item_id":60,
+            "rating":5,
+            "review":"saya menjadi banyak tahu tentang tekstil di museum ini",
+            "userLat":-61879600,
+            "userLon":1068100000
+        },
+        {
+            "item_id":61,
+            "rating":5,
+            "review":"bagus banget",
+            "userLat":-62030500,
+            "userLon":1068470000
+        },
+        {
+            "item_id":62,
+            "rating":4,
+            "review":"wajib kesini",
+            "userLat":-63039000,
+            "userLon":1068940000
+        },
+        {
+            "item_id":63,
+            "rating":5,
+            "review":"worth it",
+            "userLat":-6178350,
+            "userLon":106838000
+        },
+        {
+            "item_id":64,
+            "rating":5,
+            "review":"bagus banget",
+            "userLat":-62046300,
+            "userLon":1068370000
+        },
+        {
+            "item_id":65,
+            "rating":5,
+            "review":" banget",
+            "userLat":-62897900,
+            "userLon":1067930000
+        },
+        {
+            "item_id":66,
+            "rating":5,
+            "review":"tempat yang menarik untuk dikunjungi",
+            "userLat":-63080300,
+            "userLon":106791000
+        },
+        {
+            "item_id":67,
+            "rating":4,
+            "review":"bagus banget",
+            "userLat":-61160100,
+            "userLon":1067690000
+        },
+        {
+            "item_id":68,
+            "rating":5,
+            "review":"rame banget",
+            "userLat":-61436700,
+            "userLon":1068130000
+        },
+        {
+            "item_id":69,
+            "rating":5,
+            "review":"nyaman banget",
+            "userLat":-62022500,
+            "userLon":1068450000
+        }
+    ]   

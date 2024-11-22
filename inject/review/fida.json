@@ -1,0 +1,142 @@
+[
+    {
+        "item_id": 18,
+        "rating": 5,
+        "review": "museum favorit saya",
+        "userLat": -6137130,
+        "userLon": 106813000
+    },
+    {
+        "item_id": 19,
+        "rating": 4,
+        "review": "tempatnya sangat bagus",
+        "userLat": -62250700,
+        "userLon": 1068100000
+    },
+    {
+        "item_id": 20,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -61722200,
+        "userLon": 1068190000
+    },
+    {
+        "item_id": 21,
+        "rating": 4,
+        "review": "bagus",
+        "userLat": -61349100,
+        "userLon": 1068120000
+    },
+    {
+        "item_id": 22,
+        "rating": 4,
+        "review": "asyik banget tempatnya",
+        "userLat": -617017,
+        "userLon": 10683100
+    },
+    {
+        "item_id": 23,
+        "rating": 5,
+        "review": "keren banget",
+        "userLat": -6169220,
+        "userLon": 106833000
+    },
+    {
+        "item_id": 24,
+        "rating": 5,
+        "review": "museum yang banyak koleksi sejarah dan geografi",
+        "userLat": -61764000,
+        "userLon": 1068220000
+    },
+    {
+        "item_id": 25,
+        "rating": 4,
+        "review": "rame banget",
+        "userLat": -61890100,
+        "userLon": 1068120000
+    },
+    {
+        "item_id": 26,
+        "rating": 5,
+        "review": "pusat perbelanjaan yang lengkap",
+        "userLat": -61427600,
+        "userLon": 1068140000
+    },
+    {
+        "item_id": 27,
+        "rating": 5,
+        "review": "bagus sekali tempat ini",
+        "userLat": -61264800,
+        "userLon": 106843000
+    },
+    {
+        "item_id": 28,
+        "rating": 5,
+        "review": "wisata edukasi yang wajib dikunjungi",
+        "userLat": -63568100,
+        "userLon": 1069060000
+    },
+    {
+        "item_id": 29,
+        "rating": 4,
+        "review": "wajib kesini",
+        "userLat": -61667900,
+        "userLon": 1068270000
+    },
+    {
+        "item_id": 30,
+        "rating": 5,
+        "review": "worth it",
+        "userLat": -61964100,
+        "userLon": 1068290000
+    },
+    {
+        "item_id": 31,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -6105330,
+        "userLon": 106736000
+    },
+    {
+        "item_id": 32,
+        "rating": 4,
+        "review": "nyaman banget",
+        "userLat": -63416700,
+        "userLon": 1068240000
+    },
+    {
+        "item_id": 33,
+        "rating": 5,
+        "review": "rame banget",
+        "userLat": -61994000,
+        "userLon": 1068330000
+    },
+    {
+        "item_id": 34,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -6241370,
+        "userLon": 1067890000
+    },
+    {
+        "item_id": 35,
+        "rating": 4,
+        "review": "asyik banget",
+        "userLat": -61951800,
+        "userLon": 1068200000
+    },
+    {
+        "item_id": 36,
+        "rating": 5,
+        "review": "keren banget",
+        "userLat": -6179000,
+        "userLon": 106792000
+    },
+    {
+        "item_id": 37,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -63602500,
+        "userLon": 106894000
+    }
+]

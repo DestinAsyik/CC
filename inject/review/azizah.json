@@ -1,0 +1,142 @@
+[
+    {
+        "item_id": 210,
+        "rating": 5,
+        "review": "pantai yang cocok untuk wisata di weekend",
+        "userLat": -79075400,
+        "userLon": 1100540000
+    },
+    {
+        "item_id": 211,
+        "rating": 4,
+        "review": "tempatnya sangat bagus",
+        "userLat": -67596400,
+        "userLon": 1076100000
+    },
+    {
+        "item_id": 212,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -69150500,
+        "userLon": 1076090000
+    },
+    {
+        "item_id": 213,
+        "rating": 4,
+        "review": "bagus",
+        "userLat": -69024800,
+        "userLon": 10761900
+    },
+    {
+        "item_id": 214,
+        "rating": 4,
+        "review": "asyik banget tempatnya",
+        "userLat": -69250900,
+        "userLon": 1076360000
+    },
+    {
+        "item_id": 215,
+        "rating": 5,
+        "review": "keren banget",
+        "userLat": -68565800,
+        "userLon": 1076320000
+    },
+    {
+        "item_id": 216,
+        "rating": 5,
+        "review": "bagus banget tempatnya bisa buat refreshing bareng keluarga",
+        "userLat": -6832970,
+        "userLon": 1076060000
+    },
+    {
+        "item_id": 217,
+        "rating": 4,
+        "review": "rame banget",
+        "userLat": -68897200,
+        "userLon": 1076080000
+    },
+    {
+        "item_id": 218,
+        "rating": 5,
+        "review": "bagus, bisa melihat kawah secara langsung",
+        "userLat": -71662000,
+        "userLon": 1074020000
+    },
+    {
+        "item_id": 219,
+        "rating": 5,
+        "review": "tebing yang indah",
+        "userLat": -68340700,
+        "userLon": 1076640000
+    },
+    {
+        "item_id": 220,
+        "rating": 5,
+        "review": "wisata yang sangat bagus",
+        "userLat": -67897100,
+        "userLon": 1075790000
+    },
+    {
+        "item_id": 221,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -69007200,
+        "userLon": 1076210000
+    },
+    {
+        "item_id": 222,
+        "rating": 4,
+        "review": "wajib kesini",
+        "userLat": -69211100,
+        "userLon": 107610000
+    },
+    {
+        "item_id": 223,
+        "rating": 5,
+        "review": "worth it",
+        "userLat": -69216900,
+        "userLon": 1076060000
+    },
+    {
+        "item_id": 224,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -68486400,
+        "userLon": 107626000
+    },
+    {
+        "item_id": 225,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -6780490,
+        "userLon": 107637000
+    },
+    {
+        "item_id": 226,
+        "rating": 5,
+        "review": "tempat yang menarik untuk dikunjungi",
+        "userLat": -68419800,
+        "userLon": 107623000
+    },
+    {
+        "item_id": 227,
+        "rating": 4,
+        "review": "bagus banget",
+        "userLat": -69218600,
+        "userLon": 1076070000
+    },
+    {
+        "item_id": 228,
+        "rating": 5,
+        "review": "rame banget",
+        "userLat": -69375700,
+        "userLon": 107604000
+    },
+    {
+        "item_id": 229,
+        "rating": 5,
+        "review": "nyaman banget",
+        "userLat": -68669500,
+        "userLon": 1076100000
+    }
+]

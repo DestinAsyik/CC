@@ -1,0 +1,452 @@
+[
+    {
+        "username":"royan",
+        "name":"royan aditya",
+        "password":"bangkit2024",
+        "age":20,
+        "email":"royan@gmail.com",
+        "city":"Yogyakarta",
+        "prefered_category":"Cagar Alam"
+    },
+    {
+        "username":"abdee",
+        "name":"abdee rizki",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"abdee@gmail.com",
+        "city":"Bali",
+        "prefered_category":"Budaya"
+    },
+    {
+        "username":"abraar",
+        "name":"abraar anggoro",
+        "password":"bangkit2024",
+        "age":21,
+        "email":"abraar@gmail.com",
+        "city":"Jakarta",
+        "prefered_category":"Taman Hiburan"
+    },
+    {
+        "username":"aceng",
+        "name":"aceng langit",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"aceng@gmail.com",
+        "city":"Surakarta",
+        "prefered_category":"Budaya"
+    },
+    {
+        "username":"adit",
+        "name":"adit muhammad",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"adit@gmail.com",
+        "city":"Bandung",
+        "prefered_category":"Pusat Perbelanjaan"
+    },
+    {
+        "username":"afifah",
+        "name":"afifah khairunisa",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"afifah@gmail.com",
+        "city":"Bantul",
+        "prefered_category":"Alam"
+    },
+    {
+        "username":"agan",
+        "name":"agan perkasa",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"agan@gmail.com",
+        "city":"Jakarta",
+        "prefered_category":"Rekreasi"
+    },
+    {
+        "username":"andika",
+        "name":"andika rizki",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"andika@gmail.com",
+        "city":"Semarang",
+        "prefered_category":"Bahari"
+    },
+    {
+        "username":"azizah",
+        "name":"azizah dwi",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"azizah@gmail.com",
+        "city":"Bandung",
+        "prefered_category":"Alam"
+    },
+    {
+        "username":"banutama",
+        "name":"banutama akbar",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"banutama@gmail.com",
+        "city":"Sleman",
+        "prefered_category":"Belanja"
+    },
+    {
+        "username":"balqis",
+        "name":"balqis alimah",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"balqis@gmail.com",
+        "city":"Bali",
+        "prefered_category":"Agrowisata"
+    },
+    {
+        "username":"calvin",
+        "name":"calvin stephanie",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"calvin@gmail.com",
+        "city":"Surabaya",
+        "prefered_category":"Religius"
+    },
+    {
+        "username":"caca",
+        "name":"caca putri",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"caca@gmail.com",
+        "city":"Purwokerto",
+        "prefered_category":"Belanja"
+    },
+    {
+        "username":"cristopher",
+        "name":"cristopher jason",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"cristopher@gmail.com",
+        "city":"Bekasi",
+        "prefered_category":"Rekreasi"
+    },
+    {
+        "username":"devina",
+        "name":"devina cahya",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"devina@gmail.com",
+        "city":"Jakarta",
+        "prefered_category":"Pusat Perbelanjaan"
+    },
+    {
+        "username":"dira",
+        "name":"dira anintya",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"dira@gmail.com",
+        "city":"Semarang",
+        "prefered_category":"Belanja"
+    },
+    {
+        "username":"daffa",
+        "name":"daffa haqqi",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"daffa@gmail.com",
+        "city":"Magelang",
+        "prefered_category":"Alam"
+    },
+    {
+        "username":"dela",
+        "name":"dela tri",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"dela@gmail.com",
+        "city":"Semarang",
+        "prefered_category":"Alam"
+    },
+    {
+        "username":"fajri",
+        "name":"fajri cipto",
+        "password":"bangkit2024",
+        "age":21,
+        "email":"fajri@gmail.com",
+        "city":"garut",
+        "prefered_category":"Religius"
+    },
+    {
+        "username":"fira",
+        "name":"fira nabila",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"fira@gmail.com",
+        "city":"Sleman",
+        "prefered_category":"Taman Hiburan"
+    },
+    {
+        "username":"fajrin",
+        "name":"fajrin muhammad",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"fajrin@gmail.com",
+        "city":"Bandung",
+        "prefered_category":"Rekreasi"
+    },
+    {
+        "username":"fairul",
+        "name":"fairul imron",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"fairul@gmail.com",
+        "city":"Bantul",
+        "prefered_category":"Belanja"
+    },
+    {
+        "username":"fitra",
+        "name":"fitra perkasa",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"fitra@gmail.com",
+        "city":"Jakarta",
+        "prefered_category":"Pusat Perbelanjaan"
+    },
+    {
+        "username":"fatih",
+        "name":"fatih rizki",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"fatih@gmail.com",
+        "city":"Kudus",
+        "prefered_category":"Budaya"
+    },
+    {
+        "username":"fida",
+        "name":"fida dwi",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"fida@gmail.com",
+        "city":"Banten",
+        "prefered_category":"Agrowisata"
+    },
+    {
+        "username":"faris",
+        "name":"faris akbar",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"faris@gmail.com",
+        "city":"Sleman",
+        "prefered_category":"Belanja"
+    },
+    {
+        "username":"gani",
+        "name":"gani sakti",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"gani@gmail.com",
+        "city":"Wonosobo",
+        "prefered_category":"Alam"
+    },
+    {
+        "username":"gina",
+        "name":"gina putri",
+        "password":"bangkit2024",
+        "age":20,
+        "email":"gina@gmail.com",
+        "city":"Bantul",
+        "prefered_category":"Bahari"
+    },
+    {
+        "username":"gofar",
+        "name":"gofar andika",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"gofar@gmail.com",
+        "city":"Malang",
+        "prefered_category":"Pusat Perbelanjaan"
+    },
+    {
+        "username":"greesella",
+        "name":"greesella sophina",
+        "password":"bangkit2024",
+        "age":21,
+        "email":"greesella@gmail.com",
+        "city":"Bandung",
+        "prefered_category":"Rekreasi"
+    },
+    {
+        "username":"gazel",
+        "name":"gazel langit",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"gazel@gmail.com",
+        "city":"Surakarta",
+        "prefered_category":"Budaya"
+    },
+    {
+        "username":"haidar",
+        "name":"haidar muhammad",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"haidar@gmail.com",
+        "city":"Tegal",
+        "prefered_category":"Alam"
+    },
+    {
+        "username":"heru",
+        "name":"heru khairunisa",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"heru@gmail.com",
+        "city":"Bantul",
+        "prefered_category":"Tempat Ibadah"
+    },
+    {
+        "username":"hida",
+        "name":"hida perkasa",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"hida@gmail.com",
+        "city":"Malang",
+        "prefered_category":"Rekreasi"
+    },
+    {
+        "username":"indra",
+        "name":"indra rizki",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"indra@gmail.com",
+        "city":"Jakarta",
+        "prefered_category":"Religius"
+    },
+    {
+        "username":"indira",
+        "name":"indira dwi",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"indira@gmail.com",
+        "city":"Bandung",
+        "prefered_category":"Alam"
+    },
+    {
+        "username":"ira",
+        "name":"ira akbar",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"ira@gmail.com",
+        "city":"Sleman",
+        "prefered_category":"Budaya"
+    },
+    {
+        "username":"ifah",
+        "name":"ifah rizka",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"ifah@gmail.com",
+        "city":"Bandung",
+        "prefered_category":"Cagar Alam"
+    },
+    {
+        "username":"ica",
+        "name":"ica insyuzuu",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"ica@gmail.com",
+        "city":"Magelang",
+        "prefered_category":"Tempat Ibadah"
+    },
+    {
+        "username":"jeje",
+        "name":"jeje putri",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"jeje@gmail.com",
+        "city":"Purwodadi",
+        "prefered_category":"Alam"
+    },
+    {
+        "username":"josua",
+        "name":"josua jason",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"josua@gmail.com",
+        "city":"Bogor",
+        "prefered_category":"Rekreasi"
+    },
+    {
+        "username":"jovan",
+        "name":"jovan rogo",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"jovan@gmail.com",
+        "city":"Bantul",
+        "prefered_category":"Religius"
+    },
+    {
+        "username":"kevin",
+        "name":"kevin pratama",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"kevin@gmail.com",
+        "city":"Semarang",
+        "prefered_category":"Tempat Ibadah"
+    },
+    {
+        "username":"kira",
+        "name":"kira haqqi",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"kira@gmail.com",
+        "city":"Bandung",
+        "prefered_category":"Belanja"
+    },
+    {
+        "username":"karlo",
+        "name":"karlo tri",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"karlo@gmail.com",
+        "city":"Klaten",
+        "prefered_category":"Alam"
+    },
+    {
+        "username":"lidya",
+        "name":"lidya arum",
+        "password":"bangkit2024",
+        "age":21,
+        "email":"lidya@gmail.com",
+        "city":"Surakarta",
+        "prefered_category":"Alam"
+    },
+    {
+        "username":"laili",
+        "name":"laili nabila",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"laili@gmail.com",
+        "city":"Sleman",
+        "prefered_category":"Bahari"
+    },
+    {
+        "username":"loli",
+        "name":"loli muhammad",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"loli@gmail.com",
+        "city":"Bantul",
+        "prefered_category":"Rekreasi"
+    },
+    {
+        "username":"momo",
+        "name":"momo imron",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"momo@gmail.com",
+        "city":"Jakarta",
+        "prefered_category":"Taman Hiburan"
+    },
+    {
+        "username":"mima",
+        "name":"mima kadri",
+        "password":"bangkit2024",
+        "age":22,
+        "email":"mima@gmail.com",
+        "city":"Sleman",
+        "prefered_category":"Bahari"
+    }
+]

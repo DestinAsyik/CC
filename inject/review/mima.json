@@ -1,0 +1,142 @@
+[
+    {
+        "item_id": 6,
+        "rating": 5,
+        "review": "sangat ramai, tempatya bagus",
+        "userLat": -61173300,
+        "userLon": 1068580000
+    },
+    {
+        "item_id": 7,
+        "rating": 4,
+        "review": "tempatnya sangat bagus, banyak hewan yang menarik",
+        "userLat": -63124600,
+        "userLon": 1068200000
+    },
+    {
+        "item_id": 8,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -61258000,
+        "userLon": 1068360000
+    },
+    {
+        "item_id": 9,
+        "rating": 4,
+        "review": "bagus",
+        "userLat": 107888,
+        "userLon": 103931000
+    },
+    {
+        "item_id": 10,
+        "rating": 4,
+        "review": "asyik banget tempatnya",
+        "userLat": -58032100,
+        "userLon": 1065240000
+    },
+    {
+        "item_id": 11,
+        "rating": 5,
+        "review": "keren banget",
+        "userLat": -6035830,
+        "userLon": 106747000
+    },
+    {
+        "item_id": 12,
+        "rating": 5,
+        "review": "bagus banget tempatnya bisa buat refreshing bareng keluarga",
+        "userLat": -59074300,
+        "userLon": 1065860000
+    },
+    {
+        "item_id": 13,
+        "rating": 4,
+        "review": "rame banget",
+        "userLat": -5745960,
+        "userLon": 1066140000
+    },
+    {
+        "item_id": 14,
+        "rating": 5,
+        "review": "pulau yang unik",
+        "userLat": -5587060,
+        "userLon": 1065880
+    },
+    {
+        "item_id": 15,
+        "rating": 5,
+        "review": "belajar banyak seni disini",
+        "userLat": -61766900,
+        "userLon": 1068420000
+    },
+    {
+        "item_id": 16,
+        "rating": 4,
+        "review": "saya baru tahu ini jembatan sudah dari jaman voc",
+        "userLat": -61314600,
+        "userLon": 1068110000
+    },
+    {
+        "item_id": 17,
+        "rating": 5,
+        "review": "wajib kesini",
+        "userLat": -61364500,
+        "userLon": 1068130000
+    },
+    {
+        "item_id": 18,
+        "rating": 4,
+        "review": "nyaman banget",
+        "userLat": -6137130,
+        "userLon": 106813000
+    },
+    {
+        "item_id": 19,
+        "rating": 5,
+        "review": "worth it",
+        "userLat": -62250700,
+        "userLon": 1068100000
+    },
+    {
+        "item_id": 20,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -61722200,
+        "userLon": 1068190000
+    },
+    {
+        "item_id": 21,
+        "rating": 4,
+        "review": "asyik banget",
+        "userLat": -61349100,
+        "userLon": 1068120000
+    },
+    {
+        "item_id": 22,
+        "rating": 5,
+        "review": "keren banget",
+        "userLat": -617017,
+        "userLon": 10683100
+    },
+    {
+        "item_id": 23,
+        "rating": 5,
+        "review": "bagus banget",
+        "userLat": -6169220,
+        "userLon": 106833000
+    },
+    {
+        "item_id": 24,
+        "rating": 4,
+        "review": "nyaman banget",
+        "userLat": -61764000,
+        "userLon": 1068220000
+    },
+    {
+        "item_id": 25,
+        "rating": 5,
+        "review": "rame banget",
+        "userLat": -61890100,
+        "userLon": 1068120000
+    }
+]

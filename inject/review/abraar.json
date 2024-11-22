@@ -1,0 +1,142 @@
+[
+    {
+        "item_id":90,
+        "rating":5,
+        "review":"bagus dan unik",
+        "userLat":-78100700,
+        "userLon":1103590000
+    },
+    {
+        "item_id":91,
+        "rating":4,
+        "review":"tempatnya sangat bagus",
+        "userLat":-78102700,
+        "userLon":1103930000
+    },
+    {
+        "item_id":92,
+        "rating":5,
+        "review":"bagus banget",
+        "userLat":-78013800,
+        "userLon":1103650000
+    },
+    {
+        "item_id":93,
+        "rating":4,
+        "review":"bagus koleksinya lengkap",
+        "userLat":-78062300,
+        "userLon":1103970000
+    },
+    {
+        "item_id":94,
+        "rating":4,
+        "review":" asyik banget tempatnya",
+        "userLat":-78087900,
+        "userLon":1103590000
+    },
+    {
+        "item_id":95,
+        "rating":5,
+        "review":"keren, adem banget",
+        "userLat":-78229100,
+        "userLon":1103760000
+    },
+    {
+        "item_id":96,
+        "rating":5,
+        "review":"bagus banget tempatnya bisa buat hangout bareng teman",
+        "userLat":-78116700,
+        "userLon":110363000
+    },
+    {
+        "item_id":97,
+        "rating":4,
+        "review":"rame banget",
+        "userLat":-77495900,
+        "userLon":1103700000
+    },
+    {
+        "item_id":98,
+        "rating":5,
+        "review":"taman yang sangat berwarna",
+        "userLat":-77505300,
+        "userLon":1103690000
+    },
+    {
+        "item_id":99,
+        "rating":5,
+        "review":"sangat unik",
+        "userLat":-7806090,
+        "userLon":11035800
+    },
+    {
+        "item_id":100,
+        "rating":5,
+        "review":"ini tempat yang menarik",
+        "userLat":-78001000,
+        "userLon":1103680000
+    },
+    {
+        "item_id":101,
+        "rating":5,
+        "review":"bagus banget",
+        "userLat":-779219,
+        "userLon":110362000
+    },
+    {
+        "item_id":102,
+        "rating":4,
+        "review":"wajib kesini",
+        "userLat":-78011200,
+        "userLon":1103650000
+    },
+    {
+        "item_id":103,
+        "rating":5,
+        "review":"bangunan bersejarah, bagus",
+        "userLat":-77829400,
+        "userLon":1103670000
+    },
+    {
+        "item_id":104,
+        "rating":5,
+        "review":"bagus banget, bisa liat jogja dari sini",
+        "userLat":-77815700,
+        "userLon":1105050000
+    },
+    {
+        "item_id":105,
+        "rating":5,
+        "review":" budayanya dapet banget",
+        "userLat":-77955600,
+        "userLon":1103610000
+    },
+    {
+        "item_id":106,
+        "rating":5,
+        "review":"tempat yang menarik untuk dikunjungi",
+        "userLat":-7793170,
+        "userLon":1103660000
+    },
+    {
+        "item_id":107,
+        "rating":4,
+        "review":"bagus banget",
+        "userLat":-78052800,
+        "userLon":1103640000
+    },
+    {
+        "item_id":108,
+        "rating":5,
+        "review":"rame banget banyak orang joging",
+        "userLat":-7756230,
+        "userLon":1104150000
+    },
+    {
+        "item_id":109,
+        "rating":5,
+        "review":"nyaman banget dan asri",
+        "userLat":-78704800,
+        "userLon":1104600000
+    }
+]   
