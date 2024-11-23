@@ -36,6 +36,7 @@ const Destination =  require('../Models/destination')
                 });
             }
 
+            const gambar = req.uploadedFile ? req.uploadedFile.path : null;
 
             // Create new destination
             const newDestination = await Destination.create({

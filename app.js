@@ -6,6 +6,8 @@ const config = require('./config/config');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const fs = require('fs');
+const path = require('path');
 
 // Routes
 const authRoutes = require('./Routes/auth');
@@ -22,8 +24,17 @@ const userbarRoutes = require('./Routes/userbar');
 // Middleware
 const { authenticateToken } = require('./midleware/authMidleware');
 
+
+
 const app = express();
 const allowedOrigins = ['https://cc-production-3fdc.up.railway.app/', 'http://localhost:8000'];
+
+// Create uploads directory 
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)){
+    fs.mkdirSync(uploadsDir, { recursive: true });
+}
+
 
 // CORS Configuration
 app.use(cors({
@@ -95,7 +106,8 @@ app.use('/api/destinAsyik', authenticateToken, destinationRoutes);
 app.use('/api/destinAsyik', authenticateToken, userbarRoutes);
 
 
-
+// Serve static files from uploads directory
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 const PORT = process.env.PORT 
 
