@@ -1,6 +1,7 @@
 const User = require('../Models/user')
 const Review = require('../Models/review')
 const Bookmark =  require('../Models/bookmark')
+const Likes = require('../Models/likes')
 const Destination =  require('../Models/destination')
 const axios = require('axios');
 const { Op } = require('sequelize');
@@ -76,6 +77,7 @@ exports.reccomHybrid = async (req, res) => {
     try {
         const user_id = req.user.user_id;
 
+        // Ambil data review, bookmark, dan likes pengguna
         const userReviews = await Review.findAll({
             where: { user_id },
             attributes: ['item_id', 'rating']
@@ -91,26 +93,38 @@ exports.reccomHybrid = async (req, res) => {
             attributes: ['item_id']
         });
 
-        //validasi untuk kirim data yang di butuhkan
+        // Validasi dan format data yang akan dikirim ke FastAPI
         const hybridData = {
-            reviews: userReviews.map(review => ({
+            user_id: user_id, 
+            review_data: userReviews.map(review => ({
+                user_id: user_id, 
                 item_id: review.item_id,
-                rating: review.rating,
+                rating: review.rating
             })),
-            bookmarks: userBookmarks.map(bookmark => ({
-                item_id: bookmark.item_id,
-            })),
-            likes: userLikes.map(like => ({
-                item_id: like.item_id,
-            }))
+            bookmarks: userBookmarks.map(bookmark => bookmark.item_id), 
+            likes: userLikes.map(like => like.item_id) 
         };
 
-        const reccomResponse = await axios.post(`${BASE_URL}recommendations/hybrid`, hybridData);
+        console.log(hybridData)
 
-        res.status(201).json({
-            message: "Rekomendasi untuk kamu berdasarkan aktivitasmu:",
-            recommendations: reccomResponse.data
+        const reccomResponse = await axios.post(`${BASE_URL}recommendations/collaborative`, hybridData);
+        const recommendedItemIds = reccomResponse.data.collaborative_recommendations;
+
+        console.log(recommendedItemIds)
+
+        const recommendedItems = await Destination.findAll({
+            where: {
+                item_id: {
+                    [Op.in]: recommendedItemIds 
+                }
+            }
         });
+
+        res.status(200).json({
+            message: "Rekomendasi untuk kamu berdasarkan aktivitasmu:",
+            recommendations: recommendedItems 
+        });
+
     } catch (error) {
         console.error("Error:", error.message);
         res.status(500).json({

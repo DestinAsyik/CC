@@ -105,10 +105,6 @@ app.use('/api/destinAsyik', authenticateToken, costRoutes);
 app.use('/api/destinAsyik', authenticateToken, destinationRoutes);
 app.use('/api/destinAsyik', authenticateToken, userbarRoutes);
 
-
-// Serve static files from uploads directory
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
 const PORT = process.env.PORT 
 
 app.listen(PORT, () => {

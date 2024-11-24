@@ -21,3 +21,32 @@ exports.toggleLike = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+// exports.toggleLikes = async (req, res) => {
+//     try {
+//         const items = req.body; 
+//         const user_id = req.user.user_id;
+//         const results = [];
+
+//         for (const item of items) {
+//             const { item_id } = item;
+
+//             // Cari like yang sesuai
+//             const existingLike = await Likes.findOne({ where: { user_id, item_id } });
+
+//             if (existingLike) {
+//                 // Jika sudah ada, hapus like
+//                 await existingLike.destroy();
+//                 results.push({ item_id, message: 'Like berhasil dihapus', isLiked: false });
+//             } else {
+//                 // Jika belum ada, tambahkan like
+//                 const newLike = await Likes.create({ user_id, item_id });
+//                 results.push({ item_id, message: 'Like ditambahkan', isLiked: true });
+//             }
+//         }
+
+//         res.status(201).json(results);
+//     } catch (error) {
+//         res.status(500).json({ error: error.message });
+//     }
+// };
