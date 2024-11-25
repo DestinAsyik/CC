@@ -3,13 +3,13 @@ require('dotenv').config();
 const bcrypt = require('bcrypt');
 const User = require('../Models/user');
 const Sequelize = require('sequelize');
-const { message } = require('statuses');
+const moment = require('moment');
 
 exports.register = async (req, res) => {
   try {
-    const { username, name, password, age, email, city, prefered_category } = req.body;
+    const { username, name, password, date_birth, email, city, prefered_category } = req.body;
 
-    if (!username || !name || !password || !age || !email || !city || !prefered_category) {
+    if (!username || !name || !password || !date_birth || !email || !city || !prefered_category) {
       console.log('Field kosong ditemukan');
       return res.status(400).send({ message: 'Semua field harus diisi.' });
     }
@@ -25,13 +25,22 @@ exports.register = async (req, res) => {
       username,
       name,
       password: hashedPassword,
-      age,
+      date_birth,
       email,
       city,
       prefered_category,
     });
+    const data = {
+      user_id: user.user_id,
+      username: user.username,
+      name: user.name,
+      email: user.email,
+      age: moment().diff(moment(user.date_birth), 'years'),
+      city: user.city,
+      prefered_category: user.prefered_category,
+    };
 
-    res.status(201).send({ message: 'Pengguna berhasil terdaftar', user });
+    res.status(201).send({ message: 'Pengguna berhasil terdaftar', data });
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -71,7 +80,7 @@ exports.login = async (req, res) => {
     const decodedToken = jwt.decode(token);
     console.log(decodedToken);
 
-    res.status(200).send({ message: "Login berhasil", user, token });
+    res.status(200).send({ message: "Login berhasil", token });
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -96,13 +105,13 @@ exports.getDataUser = async (req, res) => {
 
 exports.updateProfile = async (req, res) => {
   try {
-    const { username, name, age, email, city, prefered_category } = req.body;
+    const { username, name, date_birth, email, city, prefered_category } = req.body;
     const Username = req.user.username;
 
-    const updatedData = {
+    const data = {
       username, 
       name, 
-      age, 
+      date_birth,
       email, 
       city, 
       prefered_category
@@ -118,7 +127,7 @@ exports.updateProfile = async (req, res) => {
       return res.status(404).send({ message: "Pengguna tidak ditemukan atau tidak ada perubahan yang diterapkan" });
     }
 
-    res.status(200).send({ message: "Profil berhasil di ubah", updatedData});
+    res.status(200).send({ message: "Profil berhasil di ubah", data});
   } catch (error) {
     res.status(500).send(error.message);
   }
