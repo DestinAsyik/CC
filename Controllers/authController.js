@@ -3,13 +3,12 @@ require('dotenv').config();
 const bcrypt = require('bcrypt');
 const User = require('../Models/user');
 const Sequelize = require('sequelize');
-const { message } = require('statuses');
 
 exports.register = async (req, res) => {
   try {
-    const { username, name, password, age, email, city, prefered_category } = req.body;
+    const { username, name, password, tanggal_lahir, email, city, prefered_category } = req.body;
 
-    if (!username || !name || !password || !age || !email || !city || !prefered_category) {
+    if (!username || !name || !password || !tanggal_lahir || !email || !city || !prefered_category) {
       console.log('Field kosong ditemukan');
       return res.status(400).send({ message: 'Semua field harus diisi.' });
     }
@@ -25,7 +24,7 @@ exports.register = async (req, res) => {
       username,
       name,
       password: hashedPassword,
-      age,
+      tanggal_lahir,
       email,
       city,
       prefered_category,
@@ -87,7 +86,20 @@ exports.getDataUser = async (req, res) => {
       return res.status(404).json({ error: 'Data pengguna tidak ditemukan.' });
     }
 
-    res.status(200).json({ message : "data anda", user });
+    const today = new Date();
+    const birthDate = new Date(user.tanggal_lahir);
+    const age = today.getFullYear() - birthDate.getFullYear();
+    const monthDifference = today.getMonth() - birthDate.getMonth();
+    const adjustedAge = (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate()))
+      ? age - 1
+      : age;
+
+    await user.update({ age: adjustedAge }); 
+
+    res.status(200).json({ 
+      message: "Data pengguna berhasil diambil", 
+      user: { ...user.toJSON()} 
+    });
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ error: 'Terjadi kesalahan saat mengambil data pengguna.' });
@@ -96,16 +108,16 @@ exports.getDataUser = async (req, res) => {
 
 exports.updateProfile = async (req, res) => {
   try {
-    const { username, name, age, email, city, prefered_category } = req.body;
+    const { username, name, email, city, prefered_category, tanggal_lahir } = req.body;
     const Username = req.user.username;
 
     const updatedData = {
       username, 
       name, 
-      age, 
       email, 
       city, 
-      prefered_category
+      prefered_category,
+      tanggal_lahir,
     };
 
     // Update informasi profil pengguna

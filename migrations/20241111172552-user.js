@@ -24,7 +24,7 @@ module.exports = {
       },
       age: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       email: {
         type: Sequelize.STRING,
@@ -38,6 +38,10 @@ module.exports = {
         type: Sequelize.ENUM('Budaya', 'Taman Hiburan', 'Cagar Alam', 'Bahari',
           'Pusat Perbelanjaan', 'Tempat Ibadah', 'Agrowisata', 'Belanja',
           'Alam', 'Rekreasi', 'Religius'),
+        allowNull: false,
+      },
+      tanggal_lahir: {
+        type: Sequelize.DATE,
         allowNull: false,
       },
     });
