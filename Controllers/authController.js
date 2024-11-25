@@ -96,7 +96,12 @@ exports.getDataUser = async (req, res) => {
       return res.status(404).json({ error: 'Data pengguna tidak ditemukan.' });
     }
 
-    res.status(200).json({ message : "data anda", user });
+    await user.update({ age: moment().diff(moment(user.date_birth), 'years') }); 
+
+    res.status(200).json({ 
+      message: "Data pengguna berhasil diambil", 
+      user: { ...user.toJSON()} 
+    });
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ error: 'Terjadi kesalahan saat mengambil data pengguna.' });
@@ -114,7 +119,7 @@ exports.updateProfile = async (req, res) => {
       date_birth,
       email, 
       city, 
-      prefered_category
+      prefered_category,
     };
 
     // Update informasi profil pengguna

@@ -37,7 +37,11 @@ const User = sequelize.define('user', {
         'Pusat Perbelanjaan', 'Tempat Ibadah', 'Agrowisata', 'Belanja',
         'Alam', 'Rekreasi', 'Religius'),
       allowNull: false,
-  },
+    },
+    tanggal_lahir: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
   }, {
     freezeTableName: true,
     timestamps: false,
