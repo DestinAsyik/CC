@@ -44,7 +44,7 @@ if (!fs.existsSync(uploadsDir)){
 // CORS Configuration
 app.use(cors({
     origin: process.env.NODE_ENV === 'production' 
-        ? ['https://destinasyik.com', 'https://api.destinasyik.com']
+        ? ['https://api-destinasyik.vercel.app']
         : ['http://localhost:8000', 'http://localhost:3000'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
