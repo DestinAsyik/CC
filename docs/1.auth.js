@@ -2,7 +2,7 @@
  * @swagger
  * tags:
  *   name: Auth
- *   description: Autentikasi pengguna mulai dari register, login, get profile, update profile
+ *   description: Autentikasi pengguna mulai dari register, login, get profile, update profile, dan logout
  */
 
 /**
@@ -54,7 +54,6 @@
  *               prefered_category:
  *                 type: string
  *                 example: "Alam"
- *                 description: Kategori preferensi baru
  *                 enum:
  *                   - Budaya
  *                   - Taman Hiburan
@@ -77,19 +76,25 @@
  *               properties:
  *                 message:
  *                   type: string
+ *                   example: "Pengguna berhasil terdaftar"
  *                 user:
  *                   type: object
  *                   properties:
  *                     username:
  *                       type: string
+ *                       example: "aligondrong"
  *                     name:
  *                       type: string
+ *                       example: "Ali Gondrong Labanan"
  *                     email:
  *                       type: string
+ *                       example: "aligondrong@gmail.com"
  *                     city:
  *                       type: string
+ *                       example: "Sleman"
  *                     prefered_category:
  *                       type: string
+ *                       example: "Alam"
  *       400:
  *         description: Kesalahan validasi input atau email sudah digunakan
  *         content:
@@ -99,6 +104,7 @@
  *               properties:
  *                 error:
  *                   type: string
+ *                   example: "Email sudah terdaftar. Silakan gunakan email lain."
  *       500:
  *         description: Kesalahan server
  *         content:
@@ -108,6 +114,7 @@
  *               properties:
  *                 error:
  *                   type: string
+ *                   example: "Terjadi kesalahan saat mendaftar pengguna."
  */
 
 /**
@@ -129,9 +136,11 @@
  *               username:
  *                 type: string
  *                 description: Nama pengguna atau email
+ *                 example: "aligondrong"
  *               password:
  *                 type: string
  *                 description: Kata sandi pengguna
+ *                 example: "gondrong123"
  *     responses:
  *       200:
  *         description: Login berhasil, token JWT diberikan
@@ -142,21 +151,28 @@
  *               properties:
  *                 message:
  *                   type: string
+ *                   example: "Login berhasil"
  *                 token:
  *                   type: string
+ *                   example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
  *                 user:
  *                   type: object
  *                   properties:
  *                     username:
  *                       type: string
+ *                       example: "aligondrong"
  *                     name:
  *                       type: string
+ *                       example: "Ali Gondrong Labanan"
  *                     email:
  *                       type: string
+ *                       example: "aligondrong@gmail.com"
  *                     city:
  *                       type: string
+ *                       example: "Sleman"
  *                     prefered_category:
  *                       type: string
+ *                       example: "Alam"
  *       400:
  *         description: Data input tidak valid
  *         content:
@@ -166,6 +182,7 @@
  *               properties:
  *                 error:
  *                   type: string
+ *                   example: "Field username harus diisi."
  *       401:
  *         description: Kredensial salah
  *         content:
@@ -175,6 +192,7 @@
  *               properties:
  *                 error:
  *                   type: string
+ *                   example: "Kata sandi salah."
  *       500:
  *         description: Kesalahan server
  *         content:
@@ -184,11 +202,12 @@
  *               properties:
  *                 error:
  *                   type: string
+ *                   example: "Terjadi kesalahan saat login."
  */
 
 /**
  * @swagger
- * /profile:
+ * /auth/profile:
  *   get:
  *     summary: Mendapatkan profil pengguna
  *     tags: [Auth]
@@ -204,21 +223,30 @@
  *               properties:
  *                 message:
  *                   type: string
+ *                   example: "Data pengguna berhasil diambil"
  *                 user:
  *                   type: object
  *                   properties:
  *                     username:
  *                       type: string
+ *                       example: "aligondrong"
  *                     name:
  *                       type: string
+ *                       example: "Ali Gondrong Labanan"
  *                     email:
  *                       type: string
+ *                       example: "aligondrong@gmail.com"
  *                     city:
  *                       type: string
+ *                       example: "Sleman"
  *                     prefered_category:
  *                       type: string
- *       404:
- *         description: Pengguna tidak ditemukan
+ *                       example: "Alam"
+ *                     age:
+ *                       type: integer
+ *                       example: 49
+ *       401:
+ *         description: Token tidak valid
  *         content:
  *           application/json:
  *             schema:
@@ -226,6 +254,7 @@
  *               properties:
  *                 error:
  *                   type: string
+ *                   example: "Unauthorized: No token provided."
  *       500:
  *         description: Kesalahan server
  *         content:
@@ -235,11 +264,12 @@
  *               properties:
  *                 error:
  *                   type: string
+ *                   example: "Terjadi kesalahan saat mengambil data pengguna."
  */
 
 /**
  * @swagger
- * /profile/update:
+ * /auth/profile/update:
  *   put:
  *     summary: Memperbarui profil pengguna
  *     tags: [Auth]
@@ -255,18 +285,23 @@
  *               username:
  *                 type: string
  *                 description: Nama pengguna baru
+ *                 example: "alidongok"
  *               name:
  *                 type: string
  *                 description: Nama lengkap baru
+ *                 example: "Ali Gondrong Dongok"
  *               email:
  *                 type: string
  *                 description: Email baru
+ *                 example: "alidongok@gmail.com"
  *               city:
  *                 type: string
  *                 description: Kota baru
+ *                 example: "Yogyakarta"
  *               prefered_category:
  *                 type: string
  *                 description: Kategori preferensi baru
+ *                 example: "Budaya"
  *                 enum:
  *                   - Budaya
  *                   - Taman Hiburan
@@ -283,6 +318,7 @@
  *                 type: string
  *                 format: date
  *                 description: Tanggal lahir baru
+ *                 example: "1975-01-01"
  *     responses:
  *       200:
  *         description: Profil berhasil diperbarui
@@ -293,19 +329,25 @@
  *               properties:
  *                 message:
  *                   type: string
+ *                   example: "Profil berhasil diubah"
  *                 updatedData:
  *                   type: object
  *                   properties:
  *                     username:
  *                       type: string
+ *                       example: "alidongok"
  *                     name:
  *                       type: string
+ *                       example: "Ali Gondrong Labanan Dongok"
  *                     email:
  *                       type: string
+ *                       example: "alidongok@gmail.com"
  *                     city:
  *                       type: string
+ *                       example: "Yogyakarta"
  *                     prefered_category:
  *                       type: string
+ *                       example: "Budaya"
  *       400:
  *         description: Data input tidak valid
  *         content:
@@ -315,6 +357,7 @@
  *               properties:
  *                 error:
  *                   type: string
+ *                   example: "Field username harus diisi."
  *       404:
  *         description: Pengguna tidak ditemukan
  *         content:
@@ -324,6 +367,7 @@
  *               properties:
  *                 error:
  *                   type: string
+ *                   example: "Pengguna tidak ditemukan atau tidak ada perubahan yang diterapkan."
  *       500:
  *         description: Kesalahan server
  *         content:
@@ -333,6 +377,7 @@
  *               properties:
  *                 error:
  *                   type: string
+ *                   example: "Terjadi kesalahan saat mengubah profil pengguna."
  */
 
 /**
@@ -351,6 +396,7 @@
  *               properties:
  *                 message:
  *                   type: string
+ *                   example: "Logout berhasil"
  *       500:
  *         description: Kesalahan server
  *         content:
