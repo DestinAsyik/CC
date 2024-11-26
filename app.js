@@ -1,5 +1,7 @@
 require('dotenv').config();
 const express = require('express');
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsDoc = require('swagger-jsdoc');
 const session = require('express-session');
 const { Sequelize } = require('sequelize');
 const config = require('./config/config');
@@ -27,7 +29,11 @@ const { authenticateToken } = require('./midleware/authMidleware');
 
 
 const app = express();
-const allowedOrigins = ['https://cc-production-3fdc.up.railway.app/', 'http://localhost:8000'];
+const allowedOrigins = [
+    'http://localhost:8000',
+    'http://localhost:3000',
+    undefined
+];
 
 // Create uploads directory 
 const uploadsDir = path.join(__dirname, 'uploads');
@@ -35,30 +41,19 @@ if (!fs.existsSync(uploadsDir)){
     fs.mkdirSync(uploadsDir, { recursive: true });
 }
 
-
 // CORS Configuration
 app.use(cors({
-    origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    credentials: true
+    origin: process.env.NODE_ENV === 'production' 
+        ? ['https://destinasyik.com', 'https://api.destinasyik.com']
+        : ['http://localhost:8000', 'http://localhost:3000'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
+    credentials: true,
+    preflightContinue: false,
+    optionsSuccessStatus: 204
 }));
 
-// Handle preflight requests
-app.options('*', (req, res) => {
-    const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
-        res.setHeader('Access-Control-Allow-Origin', origin);
-    }
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    res.sendStatus(204);
-});
+app.options('*', cors());
 
 // Other Middlewares
 app.use(express.json());
@@ -94,16 +89,56 @@ sequelize
         console.error('Unable to connect to the database:', err);
     });
 
+// Swagger setup
+const swaggerOptions = {
+    swaggerDefinition: {
+      swagger: '2.0',
+      info: {
+        title: 'DestinAsyik API Documentation',
+        version: '1.0.0',
+        description: 'API documentation for DestinAsyik',
+      },
+      basePath: '/api/v1',
+      securityDefinitions: {
+        bearerAuth: {
+          type: 'apiKey',
+          name: 'Authorization',
+          in: 'header'
+        }
+      },
+      security: [{
+        bearerAuth: []
+      }],
+    },
+    apis: ['./Routes/*.js'],
+  };
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+
+// Add CORS headers specifically for Swagger
+app.use('/api/docs', (req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+}, swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
 // Routes
-app.use('/api/destinAsyik', authRoutes);
-app.use('/api/destinAsyik', authenticateToken, profileRoutes);
-app.use('/api/destinAsyik', authenticateToken, bookmarkRoutes);
-app.use('/api/destinAsyik', authenticateToken, reviewRoutes);
-app.use('/api/destinAsyik', authenticateToken, recomRoutes);
-app.use('/api/destinAsyik', authenticateToken, likeRoutes);
-app.use('/api/destinAsyik', authenticateToken, costRoutes);
-app.use('/api/destinAsyik', authenticateToken, destinationRoutes);
-app.use('/api/destinAsyik', authenticateToken, userbarRoutes);
+const router = express.Router();
+app.use('/api/v1', router);
+
+// Public Routes
+router.use(authRoutes);
+
+// Private Routes
+router.use(authenticateToken, recomRoutes);
+router.use(authenticateToken, likeRoutes);
+router.use(authenticateToken, reviewRoutes);
+router.use(authenticateToken, profileRoutes);
+router.use(authenticateToken, bookmarkRoutes);
+router.use(authenticateToken, destinationRoutes);
+router.use(authenticateToken, costRoutes);
+router.use(authenticateToken, userbarRoutes);
 
 const PORT = process.env.PORT 
 
@@ -113,6 +148,10 @@ app.listen(PORT, () => {
 
 // Global Error Handling
 app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Something broke!');
+    console.error('Error:', err);
+    res.status(500).json({
+        status: 'error',
+        message: 'Terjadi kesalahan pada server',
+        error: err.message
+    });
 });

@@ -95,8 +95,18 @@ exports.getDataUser = async (req, res) => {
     if (!user) {
       return res.status(404).json({ error: 'Data pengguna tidak ditemukan.' });
     }
+    
+    const data = {
+      user_id: user.user_id,
+      username: user.username,
+      name: user.name,
+      email: user.email,
+      age: moment().diff(moment(user.date_birth), 'years'),
+      city: user.city,
+      prefered_category: user.prefered_category,
+    };
 
-    res.status(200).json({ message : "data anda", user });
+    res.status(200).json({ message : "data anda", data });
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ error: 'Terjadi kesalahan saat mengambil data pengguna.' });

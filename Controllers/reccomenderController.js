@@ -37,10 +37,21 @@ exports.reccomByContent = async (req, res) => {
             }
         });
 
-        res.status(200).json({ message: "rekomendasi untuk kamu : ", reccomByContent, preferredCategory });
+        res.status(200).json({
+            status: 'success',
+            message: "Rekomendasi berhasil didapatkan",
+            data: {
+                recommendations: reccomByContent,
+                preferredCategory
+            }
+        });
     } catch (error) {
         console.error("Error:", error.message);
-        res.status(500).json({ message: 'Terjadi kesalahan pada server', error: error.message });
+        res.status(500).json({
+            status: 'error',
+            message: 'Terjadi kesalahan pada server',
+            error: error.message
+        });
     }
 };
 
