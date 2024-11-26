@@ -3,12 +3,13 @@ require('dotenv').config();
 const bcrypt = require('bcrypt');
 const User = require('../Models/user');
 const Sequelize = require('sequelize');
+const moment = require('moment');
 
 exports.register = async (req, res) => {
   try {
-    const { username, name, password, tanggal_lahir, email, city, prefered_category } = req.body;
+    const { username, name, password, date_birth, email, city, prefered_category } = req.body;
 
-    if (!username || !name || !password || !tanggal_lahir || !email || !city || !prefered_category) {
+    if (!username || !name || !password || !date_birth || !email || !city || !prefered_category) {
       console.log('Field kosong ditemukan');
       return res.status(400).send({ message: 'Semua field harus diisi.' });
     }
@@ -24,13 +25,22 @@ exports.register = async (req, res) => {
       username,
       name,
       password: hashedPassword,
-      tanggal_lahir,
+      date_birth,
       email,
       city,
       prefered_category,
     });
+    const data = {
+      user_id: user.user_id,
+      username: user.username,
+      name: user.name,
+      email: user.email,
+      age: moment().diff(moment(user.date_birth), 'years'),
+      city: user.city,
+      prefered_category: user.prefered_category,
+    };
 
-    res.status(201).send({ message: 'Pengguna berhasil terdaftar', user });
+    res.status(201).send({ message: 'Pengguna berhasil terdaftar', data });
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -70,7 +80,7 @@ exports.login = async (req, res) => {
     const decodedToken = jwt.decode(token);
     console.log(decodedToken);
 
-    res.status(200).send({ message: "Login berhasil", user, token });
+    res.status(200).send({ message: "Login berhasil", token });
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -85,21 +95,18 @@ exports.getDataUser = async (req, res) => {
     if (!user) {
       return res.status(404).json({ error: 'Data pengguna tidak ditemukan.' });
     }
+    
+    const data = {
+      user_id: user.user_id,
+      username: user.username,
+      name: user.name,
+      email: user.email,
+      age: moment().diff(moment(user.date_birth), 'years'),
+      city: user.city,
+      prefered_category: user.prefered_category,
+    };
 
-    const today = new Date();
-    const birthDate = new Date(user.tanggal_lahir);
-    const age = today.getFullYear() - birthDate.getFullYear();
-    const monthDifference = today.getMonth() - birthDate.getMonth();
-    const adjustedAge = (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate()))
-      ? age - 1
-      : age;
-
-    await user.update({ age: adjustedAge }); 
-
-    res.status(200).json({ 
-      message: "Data pengguna berhasil diambil", 
-      user: { ...user.toJSON()} 
-    });
+    res.status(200).json({ message : "data anda", data });
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ error: 'Terjadi kesalahan saat mengambil data pengguna.' });
@@ -108,12 +115,13 @@ exports.getDataUser = async (req, res) => {
 
 exports.updateProfile = async (req, res) => {
   try {
-    const { username, name, email, city, prefered_category, tanggal_lahir } = req.body;
+    const { username, name, date_birth, email, city, prefered_category } = req.body;
     const Username = req.user.username;
 
-    const updatedData = {
+    const data = {
       username, 
-      name, 
+      name,
+      date_birth,
       email, 
       city, 
       prefered_category,
@@ -130,7 +138,7 @@ exports.updateProfile = async (req, res) => {
       return res.status(404).send({ message: "Pengguna tidak ditemukan atau tidak ada perubahan yang diterapkan" });
     }
 
-    res.status(200).send({ message: "Profil berhasil di ubah", updatedData});
+    res.status(200).send({ message: "Profil berhasil di ubah", data});
   } catch (error) {
     res.status(500).send(error.message);
   }

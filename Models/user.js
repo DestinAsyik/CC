@@ -20,9 +20,9 @@ const User = sequelize.define('user', {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    age: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
+    date_birth: {
+      type: DataTypes.DATE,
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,

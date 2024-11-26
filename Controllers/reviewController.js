@@ -50,8 +50,19 @@ exports.createReviews = async (req, res) => {
 
         res.status(201).json(newReview);
 
+        res.status(201).json({
+            status: 'success',
+            message: 'Reviews berhasil ditambahkan',
+            data: {
+                reviews: results
+            }
+        });
     } catch (error) {
-      res.status(500).json({ error: error.message });
+        res.status(500).json({
+            status: 'error',
+            message: 'Terjadi kesalahan pada server',
+            error: error.message
+        });
     }
 };
 

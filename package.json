@@ -1,7 +1,7 @@
 {
   "name": "api",
   "version": "1.0.0",
-  "description": "API for destinAsyik",
+  "author": "Bangkit Team",
   "main": "app.js",
   "dependencies": {
     "accepts": "^1.3.8",
@@ -73,20 +73,22 @@
     "setprototypeof": "^1.2.0",
     "side-channel": "^1.0.6",
     "statuses": "^2.0.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "toidentifier": "^1.0.1",
     "type-is": "^1.6.18",
     "unpipe": "^1.0.0",
     "utils-merge": "^1.0.1",
     "vary": "^1.1.2"
   },
+  "description": "API for destinAsyik",
+  "license": "ISC",
   "scripts": {
-    "start": "npm run migrate:production && node app.js",
+    "start": "node app.js",
     "dev": "nodemon app.js",
     "migrate:production": "npx sequelize-cli db:migrate --env production"
   },
-  "author": "Bangkit Team",
-  "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^3.1.7"
-  }
+  "trustedDependencies": [
+    "es5-ext"
+  ]
 }

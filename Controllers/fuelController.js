@@ -43,15 +43,23 @@ exports.fuelReccomendations = async (req, res) => {
 
         // Kirim hasil ke klien
         res.status(200).json({
-            destination: destination.name,
-            distance: distance.toFixed(2), 
-            fuelNeeded: fuelNeeded.toFixed(2), 
-            fuelCost: fuelCost.toFixed(2), 
-            ticketPrice: ticketPrice.toFixed(2), 
-            totalCost: totalCost.toFixed(2) 
+            status: 'success',
+            message: 'Rekomendasi biaya berhasil dihitung',
+            data: {
+                destination: destination.name,
+                distance: distance.toFixed(2),
+                fuelNeeded: fuelNeeded.toFixed(2),
+                fuelCost: fuelCost.toFixed(2),
+                ticketPrice: ticketPrice.toFixed(2),
+                totalCost: totalCost.toFixed(2)
+            }
         });
 
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({
+            status: 'error',
+            message: 'Terjadi kesalahan pada server',
+            error: error.message
+        });
     }
 };
