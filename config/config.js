@@ -1,4 +1,5 @@
 require('dotenv').config();
+import mysql2 from 'mysql2';
 
 module.exports = {
   development: {
@@ -24,6 +25,6 @@ module.exports = {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     dialect: 'mysql',
-    dialectModule: "mysql2",
+    dialectModule: mysql2,
   }
 };
