@@ -1,15 +1,30 @@
-const Bookmark = require('../Models/bookmark');
-const Destination = require('../Models/destination');
+const { Destination, Bookmark } = require('../Models');
 
-exports.addBookmark = async (req, res) => {
+const handleError = (res, message, statusCode = 500) => {
+    return res.status(statusCode).json({ error: message });
+};
+
+exports.toggleBookmark = async (req, res) => {
     try {
         const { item_id } = req.body;
         const user_id = req.user.user_id;
 
-        const newBookmark = await Bookmark.create({ user_id, item_id });
-        res.status(201).json({ message: 'Bookmark ditambahkan', newBookmark });
+        if (!item_id) {
+            return handleError(res, "item_id tidak ditemukan di request body", 400);
+        }
+
+        const existingBookmark = await Bookmark.findOne({ where: { user_id, item_id } });
+
+        if (existingBookmark) {
+            await existingBookmark.destroy();
+            return res.status(200).json({ message: 'Bookmark berhasil dihapus' });
+        } else {
+            const newBookmark = await Bookmark.create({ user_id, item_id });
+            return res.status(201).json({ message: 'Bookmark berhasil ditambahkan', newBookmark });
+        }
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        console.error(error);
+        return handleError(res, error.message);
     }
 };
 
@@ -20,23 +35,9 @@ exports.getBookmarks = async (req, res) => {
             where: { user_id },
             include: [Destination],
         });
-        res.status(200).json({message: "Data berhasil di dapatkan", bookmarks});
+        res.status(200).json({ message: "Data berhasil diambil", bookmarks });
     } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-};
-
-exports.deleteBookmark = async (req, res) => {
-    try {
-        const { bookmark_id } = req.params;
-        const user_id = req.user.user_id;
-        const bookmark = await Bookmark.findOne({ where: { bookmark_id: bookmark_id, user_id: user_id } });
-
-        if (!bookmark) return res.status(404).json({ message: 'Bookmark tidak ditemukan' });
-
-        await bookmark.destroy();
-        res.status(200).json({ message: 'Bookmark berhasil dihapus' });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
+        console.error(error);
+        return handleError(res, "Terjadi kesalahan saat mengambil data bookmark.");
     }
 };

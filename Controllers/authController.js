@@ -1,38 +1,55 @@
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 const bcrypt = require('bcrypt');
-const User = require('../Models/user');
+const { User } = require('../Models');
 const Sequelize = require('sequelize');
+require('dotenv').config();
+
+const validateRequestBody = (requiredFields, body) => {
+  for (let field of requiredFields) {
+    if (!body[field]) {
+      return { success: false, message: `Field ${field} harus diisi.` };
+    }
+  }
+  return { success: true };
+};
+
+const sendErrorResponse = (res, statusCode, message) => {
+  return res.status(statusCode).json({ error: message });
+};
 
 exports.register = async (req, res) => {
   try {
     const { username, name, password, tanggal_lahir, email, city, prefered_category } = req.body;
-
-    if (!username || !name || !password || !tanggal_lahir || !email || !city || !prefered_category) {
-      console.log('Field kosong ditemukan');
-      return res.status(400).send({ message: 'Semua field harus diisi.' });
-    }
     
+    const validation = validateRequestBody(['username', 
+                                            'name', 
+                                            'password', 
+                                            'tanggal_lahir', 
+                                            'email', 
+                                            'city', 
+                                            'prefered_category'], req.body);
+    if (!validation.success) {
+      return sendErrorResponse(res, 400, validation.message);
+    }
+
     const existingUser = await User.findOne({ where: { email } });
     if (existingUser) {
-      console.log(`Email sudah terdaftar: ${email}`);
-      return res.status(400).send({ message: 'Email sudah terdaftar. Silakan gunakan email lain.' });
+      return sendErrorResponse(res, 400, 'Email sudah terdaftar. Silakan gunakan email lain.');
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = await User.create({
-      username,
-      name,
-      password: hashedPassword,
-      tanggal_lahir,
-      email,
-      city,
-      prefered_category,
-    });
+    const user = await User.create({ username, 
+                                     name, 
+                                     password: hashedPassword, 
+                                     tanggal_lahir, 
+                                     email, 
+                                     city, 
+                                     prefered_category });
 
-    res.status(201).send({ message: 'Pengguna berhasil terdaftar', user });
+    res.status(201).json({ message: 'Pengguna berhasil terdaftar', user });
   } catch (error) {
-    res.status(500).send(error.message);
+    console.error(error);
+    sendErrorResponse(res, 500, 'Terjadi kesalahan saat mendaftar pengguna.');
   }
 };
 
@@ -41,38 +58,25 @@ exports.login = async (req, res) => {
     const { username, email, password } = req.body;
 
     if (!username && !email) {
-      return res.status(400).send({ message: "Diperlukan nama pengguna atau email" });
+      return sendErrorResponse(res, 400, 'Diperlukan nama pengguna atau email');
     }
 
     const whereCondition = {};
-    if (username) {
-      whereCondition[Sequelize.Op.or] = [{ username: username }];
-    } else {
-      whereCondition[Sequelize.Op.or] = [{ email: email }];
-    }
-
-    const user = await User.findOne({
-      where: whereCondition
-    }).catch(error => {
-      return res.status(500).send({ message: "Server sedang gangguan", error: error.message });
-    });
-
-    if (!user) {
-      return res.status(404).send({ message: "Pengguna tidak di temukan" });
-    }
+    if (username) whereCondition[Sequelize.Op.or] = [{ username }];
+    else whereCondition[Sequelize.Op.or] = [{ email }];
+    
+    const user = await User.findOne({ where: whereCondition });
+    if (!user) return sendErrorResponse(res, 404, 'Pengguna tidak ditemukan');
 
     const match = await bcrypt.compare(password, user.password);
-    if (!match) {
-      return res.status(401).send({ message: "Kata sandi salah" });
-    }
+    if (!match) return sendErrorResponse(res, 401, 'Kata sandi salah');
 
-    const token = jwt.sign({ user_id:user.user_id, username: user.username }, process.env.SECRET_KEY, { expiresIn: '1h' });
-    const decodedToken = jwt.decode(token);
-    console.log(decodedToken);
+    const token = jwt.sign({ user_id: user.user_id, username: user.username }, process.env.SECRET_KEY, { expiresIn: '1h' });
 
-    res.status(200).send({ message: "Login berhasil", user, token });
+    res.status(200).json({ message: 'Login berhasil', user, token });
   } catch (error) {
-    res.status(500).send(error.message);
+    console.error(error);
+    sendErrorResponse(res, 500, 'Terjadi kesalahan saat login.');
   }
 };
 
@@ -81,64 +85,44 @@ exports.getDataUser = async (req, res) => {
 
   try {
     const user = await User.findByPk(user_id);
-
-    if (!user) {
-      return res.status(404).json({ error: 'Data pengguna tidak ditemukan.' });
-    }
+    if (!user) return sendErrorResponse(res, 404, 'Data pengguna tidak ditemukan.');
 
     const today = new Date();
     const birthDate = new Date(user.tanggal_lahir);
-    const age = today.getFullYear() - birthDate.getFullYear();
+    let age = today.getFullYear() - birthDate.getFullYear();
     const monthDifference = today.getMonth() - birthDate.getMonth();
-    const adjustedAge = (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate()))
-      ? age - 1
-      : age;
+    age -= (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) ? 1 : 0;
 
-    await user.update({ age: adjustedAge }); 
+    await user.update({ age });
 
-    res.status(200).json({ 
-      message: "Data pengguna berhasil diambil", 
-      user: { ...user.toJSON()} 
-    });
+    res.status(200).json({ message: 'Data pengguna berhasil diambil', user: user.toJSON() });
   } catch (error) {
-    console.error('Error:', error);
-    res.status(500).json({ error: 'Terjadi kesalahan saat mengambil data pengguna.' });
+    console.error(error);
+    sendErrorResponse(res, 500, 'Terjadi kesalahan saat mengambil data pengguna.');
   }
 };
 
 exports.updateProfile = async (req, res) => {
   try {
     const { username, name, email, city, prefered_category, tanggal_lahir } = req.body;
-    const Username = req.user.username;
+    const currentUsername = req.user.username;
 
-    const updatedData = {
-      username, 
-      name, 
-      email, 
-      city, 
-      prefered_category,
-      tanggal_lahir,
-    };
+    const updatedData = { username, name, email, city, prefered_category, tanggal_lahir };
 
-    // Update informasi profil pengguna
-    const updatedDataUser = await User.update(
-      updatedData,
-      { where: { username: Username } } 
-    );
+    const [updatedRows] = await User.update(updatedData, { where: { username: currentUsername } });
 
-    if (updatedDataUser[0] === 0) {
-      return res.status(404).send({ message: "Pengguna tidak ditemukan atau tidak ada perubahan yang diterapkan" });
+    if (updatedRows === 0) {
+      return sendErrorResponse(res, 404, 'Pengguna tidak ditemukan atau tidak ada perubahan yang diterapkan');
     }
 
-    res.status(200).send({ message: "Profil berhasil di ubah", updatedData});
+    res.status(200).json({ message: 'Profil berhasil diubah', updatedData });
   } catch (error) {
-    res.status(500).send(error.message);
+    console.error(error);
+    sendErrorResponse(res, 500, 'Terjadi kesalahan saat mengubah profil pengguna.');
   }
 };
 
-exports.logout = async (req, res) => {
-
-  res.clearCookie('token'); 
+exports.logout = (req, res) => {
+  res.clearCookie('token');
   res.status(200).json({ message: 'Logout berhasil' });
-  
 };

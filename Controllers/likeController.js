@@ -1,52 +1,47 @@
-const Likes = require('../Models/likes');
+const { Likes } = require('../Models');
+
+const sendResponse = (res, statusCode, status, message, data = null) => {
+    return res.status(statusCode).json({ status, message, data });
+};
+
+const validateLikeInput = async (user_id, item_id) => {
+    const item = await Destination.findByPk(item_id); 
+    if (!item) {
+        return 'Item tidak ditemukan';
+    }
+
+    if (!user_id) {
+        return 'User tidak valid';
+    }
+
+    return null;
+};
 
 exports.toggleLike = async (req, res) => {
     try {
         const { item_id } = req.body;
         const user_id = req.user.user_id;
 
-        // Cari like yang sesuai
+        // Validasi inputan
+        const validationError = await validateLikeInput(user_id, item_id);
+        if (validationError) {
+            return sendResponse(res, 400, 'error', validationError);
+        }
+
+        // Cari like yang sudah ada
         const existingLike = await Likes.findOne({ where: { user_id, item_id } });
 
         if (existingLike) {
             // Jika sudah ada, hapus like
             await existingLike.destroy();
-            return res.status(200).json({ message: 'Likes berhasil dihapus', isLiked: false });
+            return sendResponse(res, 200, 'success', 'Likes berhasil dihapus', { isLiked: false });
         } else {
             // Jika belum ada, tambahkan like
             const newLike = await Likes.create({ user_id, item_id });
-            return res.status(201).json({ message: 'Likes ditambahkan', isLiked: true, newLike });
+            return sendResponse(res, 201, 'success', 'Likes ditambahkan', { isLiked: true, newLike });
         }
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        console.error('Error toggling like:', error);
+        sendResponse(res, 500, 'error', 'Terjadi kesalahan pada server', { error: error.message });
     }
 };
-
-// exports.toggleLikes = async (req, res) => {
-//     try {
-//         const items = req.body; 
-//         const user_id = req.user.user_id;
-//         const results = [];
-
-//         for (const item of items) {
-//             const { item_id } = item;
-
-//             // Cari like yang sesuai
-//             const existingLike = await Likes.findOne({ where: { user_id, item_id } });
-
-//             if (existingLike) {
-//                 // Jika sudah ada, hapus like
-//                 await existingLike.destroy();
-//                 results.push({ item_id, message: 'Like berhasil dihapus', isLiked: false });
-//             } else {
-//                 // Jika belum ada, tambahkan like
-//                 const newLike = await Likes.create({ user_id, item_id });
-//                 results.push({ item_id, message: 'Like ditambahkan', isLiked: true });
-//             }
-//         }
-
-//         res.status(201).json(results);
-//     } catch (error) {
-//         res.status(500).json({ error: error.message });
-//     }
-// };

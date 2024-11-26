@@ -1,12 +1,10 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize(process.env.MYSQL_URL)
-
-const User = sequelize.define('user', {
+module.exports = (sequelize, DataTypes) => {
+  const User = sequelize.define('User', {
     user_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
-      allowNull:false
+      allowNull: false,
     },
     username: {
       type: DataTypes.STRING,
@@ -20,10 +18,6 @@ const User = sequelize.define('user', {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    age: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -33,9 +27,11 @@ const User = sequelize.define('user', {
       allowNull: false,
     },
     prefered_category: {
-      type: DataTypes.ENUM('Budaya', 'Taman Hiburan', 'Cagar Alam', 'Bahari',
-        'Pusat Perbelanjaan', 'Tempat Ibadah', 'Agrowisata', 'Belanja',
-        'Alam', 'Rekreasi', 'Religius'),
+      type: DataTypes.ENUM(
+        'Budaya', 'Taman Hiburan', 'Cagar Alam', 'Bahari',
+        'Pusat Perbelanjaan', 'Tempat Ibadah', 'Agrowisata',
+        'Belanja', 'Alam', 'Rekreasi', 'Religius'
+      ),
       allowNull: false,
     },
     tanggal_lahir: {
@@ -47,5 +43,12 @@ const User = sequelize.define('user', {
     timestamps: false,
   });
 
-  
-  module.exports = User;
+  // Relasi dengan model lain
+  User.associate = function (models) {
+    User.hasMany(models.Likes, { foreignKey: 'user_id' });
+    User.hasMany(models.Bookmark, { foreignKey: 'user_id' });
+    User.hasMany(models.Review, { foreignKey: 'user_id' });
+  };
+
+  return User;
+};

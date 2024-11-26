@@ -1,42 +1,35 @@
-const Destination =  require('../Models/destination')
+const { Destination } = require('../Models');
 
-// Add new destination
+const sendResponse = (res, statusCode, status, message, data = null) => {
+    return res.status(statusCode).json({ status, message, data });
+};
+
+const validateDestinationInput = ({ place_name, description, category, city, latitude, longitude }) => {
+    if (!place_name || !description || !category || !city || !latitude || !longitude) {
+        return 'Semua field wajib diisi kecuali gambar, rating, dan coordinate';
+    }
+
+    const validCategories = [
+        'Budaya', 'Taman Hiburan', 'Cagar Alam', 'Bahari',
+        'Pusat Perbelanjaan', 'Tempat Ibadah', 'Agrowisata',
+        'Belanja', 'Alam', 'Rekreasi', 'Religius'
+    ];
+    if (!validCategories.includes(category)) {
+        return 'Kategori tidak valid';
+    }
+
+    return null; 
+};
+
 exports.addDestination = async (req, res) => {
     try {
-        const { 
-            place_name,
-            description,
-            category,
-            city,
-            price,
-            latitude,
-            longitude
-        } = req.body;
+        const { place_name, description, category, city, price, latitude, longitude } = req.body;
 
-        // Validasi input
-        if (!place_name || !description || !category || !city || !latitude || !longitude) {
-            return res.status(400).json({
-                status: 'error',
-                message: 'Semua field wajib diisi kecuali gambar, rating, dan coordinate'
-            });
+        const validationError = validateDestinationInput({ place_name, description, category, city, latitude, longitude });
+        if (validationError) {
+            return sendResponse(res, 400, 'error', validationError);
         }
 
-        // Validasi category
-        const validCategories = [
-            'Budaya', 'Taman Hiburan', 'Cagar Alam', 'Bahari',
-            'Pusat Perbelanjaan', 'Tempat Ibadah', 'Agrowisata',
-            'Belanja', 'Alam', 'Rekreasi', 'Religius'
-        ];
-
-        if (!validCategories.includes(category)) {
-            return res.status(400).json({
-                status: 'error',
-                message: 'Kategori tidak valid'
-            });
-        }
-
-
-        // Create new destination
         const newDestination = await Destination.create({
             place_name,
             description,
@@ -50,18 +43,9 @@ exports.addDestination = async (req, res) => {
             rating_count: 0
         });
 
-        res.status(201).json({
-            status: 'success',
-            message: 'Destination berhasil ditambahkan',
-            data: newDestination
-        });
-
+        sendResponse(res, 201, 'success', 'Destination berhasil ditambahkan', newDestination);
     } catch (error) {
         console.error('Error adding destination:', error);
-        res.status(500).json({
-            status: 'error',
-            message: 'Terjadi kesalahan saat menambahkan destination',
-            error: error.message
-        });
+        sendResponse(res, 500, 'error', 'Terjadi kesalahan saat menambahkan destination', { error: error.message });
     }
-}
+};

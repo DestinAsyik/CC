@@ -1,8 +1,4 @@
-const User = require('../Models/user')
-const Review = require('../Models/review')
-const Bookmark =  require('../Models/bookmark')
-const Likes = require('../Models/likes')
-const Destination =  require('../Models/destination')
+const { User, Review, Bookmark, Likes, Destination } = require('../Models')
 const axios = require('axios');
 const { Op } = require('sequelize');
 const BASE_URL = process.env.MODEL_BASE_URL || 'http://localhost:8000/';

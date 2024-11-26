@@ -1,12 +1,10 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize(process.env.MYSQL_URL)
-
-const Destination = sequelize.define('destination', {
+module.exports = (sequelize, DataTypes) => {
+  const Destination = sequelize.define('Destination', {
     item_id: {
-      type : DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement:true,
-      allowNull:false
+      autoIncrement: true,
+      allowNull: false,
     },
     place_name: {
       type: DataTypes.STRING,
@@ -21,9 +19,11 @@ const Destination = sequelize.define('destination', {
       allowNull: true,
     },
     category: {
-      type: DataTypes.ENUM('Budaya', 'Taman Hiburan', 'Cagar Alam', 'Bahari',
+      type: DataTypes.ENUM(
+        'Budaya', 'Taman Hiburan', 'Cagar Alam', 'Bahari',
         'Pusat Perbelanjaan', 'Tempat Ibadah', 'Agrowisata',
-        'Belanja', 'Alam', 'Rekreasi', 'Religius'),
+        'Belanja', 'Alam', 'Rekreasi', 'Religius'
+      ),
       allowNull: false,
     },
     city: {
@@ -34,30 +34,25 @@ const Destination = sequelize.define('destination', {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
-    rating_avg: {
-      type: DataTypes.FLOAT,
-      allowNull: true,
-    },
-    rating_count: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
     latitude: {
-     type: DataTypes.FLOAT,
-     allowNull: false,
+      type: DataTypes.FLOAT,
+      allowNull: false,
     },
     longitude: {
-     type: DataTypes.FLOAT,
-     allowNull: false,
-    },
-    coordinate: {
-     type: DataTypes.STRING,
-     allowNull: true
+      type: DataTypes.FLOAT,
+      allowNull: false,
     },
   }, {
     freezeTableName: true,
     timestamps: false,
   });
 
-  
-  module.exports = Destination;
+  // Relasi dengan model lain
+  Destination.associate = function (models) {
+    Destination.hasMany(models.Likes, { foreignKey: 'item_id' });
+    Destination.hasMany(models.Bookmark, { foreignKey: 'item_id' });
+    Destination.hasMany(models.Review, { foreignKey: 'item_id' });
+  };
+
+  return Destination;
+};
