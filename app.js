@@ -78,16 +78,35 @@ const sequelize = new Sequelize({
     host: dbConfig.host,
     port: dbConfig.port,
     database: dbConfig.database,
+    dialectModule: require('mysql2'),
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    },
+    dialectOptions: {
+        connectTimeout: 60000,
+        // SSL for production (if your DB requires it)
+        ssl: process.env.NODE_ENV === 'production' ? {
+            rejectUnauthorized: true
+        } : null
+    }
 });
 
-sequelize
-    .authenticate()
-    .then(() => {
+// Add retry logic for database connection
+const connectWithRetry = async () => {
+    try {
+        await sequelize.authenticate();
         console.log('Connection to the database has been established successfully.');
-    })
-    .catch((err) => {
+    } catch (err) {
         console.error('Unable to connect to the database:', err);
-    });
+        console.log('Retrying in 5 seconds...');
+        setTimeout(connectWithRetry, 5000);
+    }
+};
+
+connectWithRetry();
 
 // Swagger setup
 const swaggerOptions = {
