@@ -9,7 +9,6 @@ FROM node:18-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN npm ci && npm run build   # If you have a build step
 
 # Stage 3: Runner
 FROM node:18-alpine AS runner
