@@ -79,31 +79,32 @@ const sequelize = new Sequelize({
     port: dbConfig.port,
     database: dbConfig.database,
     dialectModule: require('mysql2'),
-    pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000
-    },
     dialectOptions: {
-        connectTimeout: 60000,
-        // SSL for production (if your DB requires it)
-        ssl: process.env.NODE_ENV === 'production' ? {
-            rejectUnauthorized: true
-        } : null
-    }
-});
+      ssl: {
+        require: true,
+        rejectUnauthorized: false // Be careful with this in production
+      }
+    },
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000
+    },
+    logging: false // Set to console.log for debugging
+  }
+);
 
-// Add retry logic for database connection
+// Add retry logic
 const connectWithRetry = async () => {
-    try {
-        await sequelize.authenticate();
-        console.log('Connection to the database has been established successfully.');
-    } catch (err) {
-        console.error('Unable to connect to the database:', err);
-        console.log('Retrying in 5 seconds...');
-        setTimeout(connectWithRetry, 5000);
-    }
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+    console.log('Retrying in 5 seconds...');
+    setTimeout(connectWithRetry, 5000);
+  }
 };
 
 connectWithRetry();
