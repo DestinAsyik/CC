@@ -35,10 +35,10 @@ const allowedOrigins = [
     undefined
 ];
 
-// Create uploads directory 
-const uploadsDir = path.join(__dirname, 'uploads');
-if (!fs.existsSync(uploadsDir)){
-    fs.mkdirSync(uploadsDir, { recursive: true });
+// Create upload directory if it doesn't exist
+const uploadDir = process.env.NODE_ENV === 'production' ? '/tmp' : 'uploads';
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir);
 }
 
 // CORS Configuration

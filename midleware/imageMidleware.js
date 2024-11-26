@@ -4,7 +4,8 @@ const path = require('path');
 // Storage configuration
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/');
+        const uploadPath = process.env.NODE_ENV === 'production' ? '/tmp' : 'uploads/';
+        cb(null, uploadPath);
     },
     filename: (req, file, cb) => {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
