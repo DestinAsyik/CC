@@ -84,7 +84,7 @@
   "description": "API for destinAsyik",
   "license": "ISC",
   "scripts": {
-    "start": "npm run migrate:production && node app.js",
+    "start": "node app.js",
     "dev": "nodemon app.js",
     "migrate:production": "npx sequelize-cli db:migrate --env production"
   },
