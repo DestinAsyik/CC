@@ -11,13 +11,19 @@ exports.register = async (req, res) => {
 
     if (!username || !name || !password || !date_birth || !email || !city || !prefered_category) {
       console.log('Field kosong ditemukan');
-      return res.status(400).send({ message: 'Semua field harus diisi.' });
+      return res.status(400).json({
+        status: 'error',
+        message: 'Semua field harus diisi.'
+      });
     }
     
     const existingUser = await User.findOne({ where: { email } });
     if (existingUser) {
       console.log(`Email sudah terdaftar: ${email}`);
-      return res.status(400).send({ message: 'Email sudah terdaftar. Silakan gunakan email lain.' });
+      return res.status(400).json({
+        status: 'error',
+        message: 'Email sudah terdaftar. Silakan gunakan email lain.'
+      });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -40,9 +46,17 @@ exports.register = async (req, res) => {
       prefered_category: user.prefered_category,
     };
 
-    res.status(201).send({ message: 'Pengguna berhasil terdaftar', data });
+    res.status(201).json({
+      status: 'success',
+      message: 'Pengguna berhasil terdaftar',
+      data
+    });
   } catch (error) {
-    res.status(500).send(error.message);
+    res.status(500).json({
+      status: 'error',
+      message: 'Terjadi kesalahan pada server',
+      error: error.message
+    });
   }
 };
 
@@ -80,9 +94,23 @@ exports.login = async (req, res) => {
     const decodedToken = jwt.decode(token);
     console.log(decodedToken);
 
-    res.status(200).send({ message: "Login berhasil", token });
+    res.status(200).json({
+      status: 'success',
+      message: 'Login berhasil',
+      data: {
+        token,
+        user: {
+          user_id: user.user_id,
+          username: user.username
+        }
+      }
+    });
   } catch (error) {
-    res.status(500).send(error.message);
+    res.status(500).json({
+      status: 'error',
+      message: 'Terjadi kesalahan pada server',
+      error: error.message
+    });
   }
 };
 
@@ -106,10 +134,17 @@ exports.getDataUser = async (req, res) => {
       prefered_category: user.prefered_category,
     };
 
-    res.status(200).json({ message : "data anda", data });
+    res.status(200).json({
+      status: 'success',
+      message: 'Data pengguna berhasil diambil',
+      data
+    });
   } catch (error) {
-    console.error('Error:', error);
-    res.status(500).json({ error: 'Terjadi kesalahan saat mengambil data pengguna.' });
+    res.status(500).json({
+      status: 'error',
+      message: 'Terjadi kesalahan pada server',
+      error: error.message
+    });
   }
 };
 
@@ -138,15 +173,27 @@ exports.updateProfile = async (req, res) => {
       return res.status(404).send({ message: "Pengguna tidak ditemukan atau tidak ada perubahan yang diterapkan" });
     }
 
-    res.status(200).send({ message: "Profil berhasil di ubah", data});
+    res.status(200).json({
+      status: 'success',
+      message: 'Profil berhasil diubah',
+      data
+    });
   } catch (error) {
-    res.status(500).send(error.message);
+    res.status(500).json({
+      status: 'error',
+      message: 'Terjadi kesalahan pada server',
+      error: error.message
+    });
   }
 };
 
 exports.logout = async (req, res) => {
 
   res.clearCookie('token'); 
-  res.status(200).json({ message: 'Logout berhasil' });
+  res.status(200).json({
+    status: 'success',
+    message: 'Logout berhasil',
+    data: null
+  });
   
 };

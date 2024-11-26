@@ -18,7 +18,7 @@
  *             - name
  *             - password
  *             - date_birth
- *             - email
+ *             - emailt
  *             - city
  *             - prefered_category
  *           properties:
