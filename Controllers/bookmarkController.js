@@ -7,9 +7,17 @@ exports.addBookmark = async (req, res) => {
         const user_id = req.user.user_id;
 
         const newBookmark = await Bookmark.create({ user_id, item_id });
-        res.status(201).json({ message: 'Bookmark ditambahkan', newBookmark });
+        res.status(201).json({
+            status: 'success',
+            message: 'Bookmark berhasil ditambahkan',
+            data: newBookmark
+        });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({
+            status: 'error',
+            message: 'Terjadi kesalahan pada server',
+            error: error.message
+        });
     }
 };
 
@@ -20,9 +28,17 @@ exports.getBookmarks = async (req, res) => {
             where: { user_id },
             include: [Destination],
         });
-        res.status(200).json({message: "Data berhasil di dapatkan", bookmarks});
+        res.status(200).json({
+            status: 'success',
+            message: "Data berhasil didapatkan",
+            data: bookmarks
+        });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({
+            status: 'error',
+            message: 'Terjadi kesalahan pada server',
+            error: error.message
+        });
     }
 };
 

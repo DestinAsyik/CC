@@ -20,9 +20,9 @@ const User = sequelize.define('user', {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    age: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
+    date_birth: {
+      type: DataTypes.DATE,
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
@@ -36,10 +36,6 @@ const User = sequelize.define('user', {
       type: DataTypes.ENUM('Budaya', 'Taman Hiburan', 'Cagar Alam', 'Bahari',
         'Pusat Perbelanjaan', 'Tempat Ibadah', 'Agrowisata', 'Belanja',
         'Alam', 'Rekreasi', 'Religius'),
-      allowNull: false,
-    },
-    tanggal_lahir: {
-      type: DataTypes.DATE,
       allowNull: false,
     },
   }, {

@@ -11,14 +11,26 @@ exports.toggleLike = async (req, res) => {
         if (existingLike) {
             // Jika sudah ada, hapus like
             await existingLike.destroy();
-            return res.status(200).json({ message: 'Likes berhasil dihapus', isLiked: false });
+            return res.status(200).json({
+                status: 'success',
+                message: 'Like berhasil dihapus',
+                data: { isLiked: false }
+            });
         } else {
             // Jika belum ada, tambahkan like
             const newLike = await Likes.create({ user_id, item_id });
-            return res.status(201).json({ message: 'Likes ditambahkan', isLiked: true, newLike });
+            return res.status(201).json({
+                status: 'success',
+                message: 'Like berhasil ditambahkan',
+                data: { isLiked: true, like: newLike }
+            });
         }
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({
+            status: 'error',
+            message: 'Terjadi kesalahan pada server',
+            error: error.message
+        });
     }
 };
 

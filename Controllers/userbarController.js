@@ -17,15 +17,25 @@ exports.getAllDestinations = async (req, res) => {
 
     const totalPages = Math.ceil(destinations.count / limit);
 
-    res.json({
-      destinations: destinations.rows,
-      currentPage: parseInt(page),
-      totalPages: totalPages,
-      totalItems: destinations.count
+    res.status(200).json({
+      status: 'success',
+      message: 'Data destinasi berhasil didapatkan',
+      data: {
+        destinations: destinations.rows,
+        pagination: {
+          currentPage: parseInt(page),
+          totalPages: totalPages,
+          totalItems: destinations.count
+        }
+      }
     });
   } catch (error) {
     console.error('Error fetching all destinations:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({
+      status: 'error',
+      message: 'Terjadi kesalahan pada server',
+      error: error.message
+    });
   }
 };
 
@@ -33,21 +43,12 @@ exports.getAllDestinations = async (req, res) => {
 exports.searchDestinations = async (req, res) => {
   try {
     const { category, city, page = 1, limit = 10 } = req.query;
-    
     const whereClause = {};
     
-    if (category) {
-      whereClause.category = category;
-    }
-    
-    if (city) {
-      whereClause.city = {
-        [Op.like]: `%${city}%`
-      };
-    }
+    if (category) whereClause.category = category;
+    if (city) whereClause.city = { [Op.like]: `%${city}%` };
     
     const offset = (page - 1) * limit;
-    
     const destinations = await Destination.findAndCountAll({
       where: whereClause,
       limit: parseInt(limit),
@@ -57,15 +58,24 @@ exports.searchDestinations = async (req, res) => {
     
     const totalPages = Math.ceil(destinations.count / limit);
     
-    res.json({
-      destinations: destinations.rows,
-      currentPage: parseInt(page),
-      totalPages: totalPages,
-      totalItems: destinations.count
+    res.status(200).json({
+      status: 'success',
+      message: 'Pencarian destinasi berhasil',
+      data: {
+        destinations: destinations.rows,
+        pagination: {
+          currentPage: parseInt(page),
+          totalPages: totalPages,
+          totalItems: destinations.count
+        }
+      }
     });
   } catch (error) {
-    console.error('Error searching destinations:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({
+      status: 'error',
+      message: 'Terjadi kesalahan pada server',
+      error: error.message
+    });
   }
 };
 
@@ -85,15 +95,24 @@ exports.getDestinationsByCategory = async (req, res) => {
 
     const totalPages = Math.ceil(destinations.count / limit);
 
-    res.json({
-      destinations: destinations.rows,
-      currentPage: parseInt(page),
-      totalPages: totalPages,
-      totalItems: destinations.count
+    res.status(200).json({
+      status: 'success',
+      message: `Data destinasi kategori ${category} berhasil didapatkan`,
+      data: {
+        destinations: destinations.rows,
+        pagination: {
+          currentPage: parseInt(page),
+          totalPages: totalPages,
+          totalItems: destinations.count
+        }
+      }
     });
   } catch (error) {
-    console.error('Error fetching destinations by category:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({
+      status: 'error',
+      message: 'Terjadi kesalahan pada server',
+      error: error.message
+    });
   }
 };
 
@@ -124,7 +143,10 @@ exports.getDestinationsByCity = async (req, res) => {
       totalItems: destinations.count
     });
   } catch (error) {
-    console.error('Error fetching destinations by city:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({
+      status: 'error',
+      message: 'Terjadi kesalahan pada server',
+      error: error.message
+    });
   }
 };
