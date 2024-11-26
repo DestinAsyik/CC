@@ -1,13 +1,14 @@
 require('dotenv').config();
 const mysql2 = require('mysql2');
+const fs = require('fs');
 
 const config = {
   development: {
-    username: process.env.DB_USERNAME || 'root',
-    password: process.env.DB_PASSWORD || 'strongpassword',
-    database: process.env.DB_NAME || 'destinasyik',
-    host: process.env.DB_HOST || '127.0.0.1',
-    port: process.env.DB_PORT || 3306,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
     dialect: 'mysql',
     dialectModule: mysql2,
     pool: {
@@ -17,7 +18,11 @@ const config = {
       idle: 10000
     },
     dialectOptions: {
-      connectTimeout: 60000
+      ssl: {
+        require: true,
+        rejectUnauthorized: true,
+        ca: process.env.DB_SSL_CA ? fs.readFileSync(process.env.DB_SSL_CA) : undefined
+      }
     }
   },
   test: {
@@ -44,9 +49,10 @@ const config = {
       idle: 10000
     },
     dialectOptions: {
-      connectTimeout: 60000,
       ssl: {
-        rejectUnauthorized: true
+        require: true,
+        rejectUnauthorized: true,
+        ca: process.env.DB_SSL_CA ? fs.readFileSync(process.env.DB_SSL_CA) : undefined
       }
     }
   }
