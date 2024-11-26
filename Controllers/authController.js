@@ -120,11 +120,12 @@ exports.updateProfile = async (req, res) => {
 
     const data = {
       username, 
-      name, 
+      name,
       date_birth,
       email, 
       city, 
-      prefered_category
+      prefered_category,
+      tanggal_lahir,
     };
 
     // Update informasi profil pengguna

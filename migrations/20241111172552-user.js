@@ -40,6 +40,10 @@ module.exports = {
           'Alam', 'Rekreasi', 'Religius'),
         allowNull: false,
       },
+      tanggal_lahir: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
     });
   },
 
