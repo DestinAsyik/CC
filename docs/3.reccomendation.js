@@ -7,7 +7,7 @@
 
 /**
  * @swagger
- * /reccomendation/content:
+ * /recommendation/content:
  *   post:
  *     summary: Memberikan rekomendasi destinasi berdasarkan kategori preferensi pengguna
  *     tags:
@@ -82,7 +82,7 @@
 
 /**
  * @swagger
- * /reccomendation/nearby:
+ * /recommendation/nearby:
  *   post:
  *     summary: Memberikan rekomendasi destinasi berdasarkan lokasi pengguna
  *     tags:
@@ -184,7 +184,7 @@
 
 /**
  * @swagger
- * /reccomendation/colaborative:
+ * /recommendation/colaborative:
  *   post:
  *     summary: Memberikan rekomendasi destinasi berdasarkan aktivitas pengguna
  *     tags:
