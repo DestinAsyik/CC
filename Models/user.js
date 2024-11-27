@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
   });
 
-  // Relasi dengan model lain
+  // Relasi dengan tabel lain
   User.associate = function (models) {
     User.hasMany(models.Likes, { foreignKey: 'user_id' });
     User.hasMany(models.Bookmark, { foreignKey: 'user_id' });
