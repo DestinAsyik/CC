@@ -19,6 +19,7 @@ module.exports = {
         },
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
+        name: 'fk_review_item',
       },
       user_id: {
         type: Sequelize.INTEGER,
@@ -29,6 +30,7 @@ module.exports = {
         },
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
+        name: 'fk_review_user',
       },
       rating: {
         type: Sequelize.INTEGER,
