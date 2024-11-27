@@ -34,6 +34,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
+    rating_avg: {
+      type: DataTypes.FLOAT,
+      allowNull: true,
+    },
+    rating_count: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },    
     latitude: {
       type: DataTypes.FLOAT,
       allowNull: false,
@@ -41,6 +49,10 @@ module.exports = (sequelize, DataTypes) => {
     longitude: {
       type: DataTypes.FLOAT,
       allowNull: false,
+    },
+    coordinate: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
   }, {
     freezeTableName: true,
