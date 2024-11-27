@@ -17,7 +17,7 @@ router.use('/auth', authRoutes);
 router.use('/profile', authenticateToken, profileRoutes);
 router.use('/bookmarks', authenticateToken, bookmarkRoutes);
 router.use('/reviews', authenticateToken, reviewRoutes);
-router.use('/recommendations', authenticateToken, recomRoutes);
+router.use('/recommendation', authenticateToken, recomRoutes);
 router.use('/likes', authenticateToken, likeRoutes);
 router.use('/fuel', authenticateToken, costRoutes);
 router.use('/destinations', authenticateToken, destinationRoutes);
