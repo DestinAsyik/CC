@@ -207,7 +207,7 @@
 
 /**
  * @swagger
- * /auth/profile:
+ * /profile:
  *   get:
  *     summary: Mendapatkan profil pengguna
  *     tags: [Auth]
@@ -269,7 +269,7 @@
 
 /**
  * @swagger
- * /auth/profile/update:
+ * /profile/update:
  *   put:
  *     summary: Memperbarui profil pengguna
  *     tags: [Auth]
