@@ -41,28 +41,47 @@ exports.reccomByContent = async (req, res) => {
 };
 
 exports.reccomByJarak = async (req, res) => {
-    try{
-        const { latitude, longitude } = req.body
+    try {
+        const { latitude, longitude } = req.body;
 
+        // Memanggil endpoint ML untuk rekomendasi berdasarkan lokasi
         const reccomResponseJarak = await axios.post(`${BASE_URL}recommendations/nearby`, {
-                user_lat: latitude,
-                user_long: longitude
+            user_lat: latitude,
+            user_long: longitude
         });
 
         const reccomJarak = reccomResponseJarak.data;
-        console.log(reccomJarak)
-        const placeNames = reccomJarak.nearby_places.map((place) => place.place_name);
+        console.log(reccomJarak);
 
+        // Mendapatkan nama tempat dan distance_km dari respons
+        const nearbyPlaces = reccomJarak.nearby_places.map((place) => ({
+            place_name: place.place_name,
+            distance_km: place.distance_km
+        }));
+
+        // Mencari destinasi berdasarkan nama tempat yang direkomendasikan
         const reccomByJarak = await Destination.findAll({
             where: {
                 place_name: {
-                    [Op.in]: placeNames, 
+                    [Op.in]: nearbyPlaces.map((place) => place.place_name),
                 },
             },
         });
-        
 
-        res.status(200).json({ message: "Rekomendasi untuk kamu berdasarkan lokasi :", reccomByJarak });
+        // Menambahkan distance_km ke setiap destinasi yang ditemukan
+        const resultWithDistance = reccomByJarak.map((destination) => {
+            const matchedPlace = nearbyPlaces.find((place) => place.place_name === destination.place_name);
+            return {
+                ...destination.toJSON(),
+                distance_km: matchedPlace ? matchedPlace.distance_km : null,
+            };
+        });
+
+        // Mengirim respons ke client
+        res.status(200).json({ 
+            message: "Rekomendasi untuk kamu berdasarkan lokasi :", 
+            data: resultWithDistance 
+        });
     } catch (error) {
         console.error("Error:", error.message);
         res.status(500).json({ message: 'Terjadi kesalahan pada server', error: error.message });
