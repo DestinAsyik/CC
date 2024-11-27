@@ -256,7 +256,7 @@
 
 /**
  * @swagger
- * /destinations/{item_id}/cost:
+ * /fuel/{item_id}/cost:
  *   post:
  *     summary: Menghitung Estimasi biaya bahan bakar untuk destinasi tertentu
  *     tags:
