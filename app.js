@@ -12,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Allowed Origins for CORS
-const allowedOrigins = ['https://bangkit2024.up.railway.app/', 'http://localhost:8000', 'http://localhost:3000'];
+const allowedOrigins = ['https://bangkit2024.up.railway.app', 'http://localhost:8000', 'http://localhost:3000'];
 
 // CORS Configuration
 app.use(cors({
