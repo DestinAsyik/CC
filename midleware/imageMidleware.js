@@ -3,11 +3,11 @@ const multer = require('multer');
 
 // Konfigurasi Google Cloud Storage
 const storage = new Storage({
-    keyFilename: 'workdirkapp/service-account-key.json', 
+    keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS, 
     projectId: 'destinasyik',
 });
 
-// Tentukan bucket tempat menyimpan file
+// bucket tempat menyimpan file
 const bucket = storage.bucket('destinasyikfile'); 
 
 // Middleware Multer untuk menangani upload

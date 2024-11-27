@@ -1,7 +1,11 @@
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
-
 const path = require('path');
+
+const serverUrl =
+  process.env.NODE_ENV === 'production'
+    ? 'https://production-domain.com/api/destinAsyik/v1'
+    : 'http://localhost:3000/api/destinAsyik/v1';
 
 const options = {
   definition: {
@@ -13,7 +17,7 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:3000/api/destinAsyik/v1',
+        url: serverUrl,
       },
     ],
     components: {
