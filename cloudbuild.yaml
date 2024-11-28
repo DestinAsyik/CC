@@ -38,5 +38,5 @@ steps:
     ]
 
 substitutions:
-  _SERVICE_NAME: 'destinasyikreccomenders-service'
+  _SERVICE_NAME: 'destinasyikapi-service'
   _IMAGE_NAME: 'destinasyikapi'
