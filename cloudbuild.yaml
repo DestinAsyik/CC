@@ -1,5 +1,6 @@
 # Jika Anda di direktori repository
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/destinasyik', '.']
-images: ['gcr.io/destinasyik/destinasyikreccomenders']" > cloudbuild.yaml
+    args: ['build', '-t', 'gcr.io/destinasyik/destinasyikreccomenders', '.']
+images:
+  - 'gcr.io/destinasyik/destinasyikreccomenders'
