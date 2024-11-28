@@ -24,18 +24,20 @@ steps:
       - 'push'
       - 'gcr.io/$PROJECT_ID/destinasyikapi'
 
-  # Step 4: Jalankan Migrasi Database
+  # Step 4: Jalankan Migrasi Database (pastikan menggunakan kredensial dari Secret Manager)
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
+        # Ambil variabel dari Secret Manager
         DB_USERNAME=$(gcloud secrets versions access latest --secret=DB_USERNAME)
         DB_PASSWORD=$(gcloud secrets versions access latest --secret=DB_PASSWORD)
         DB_HOST=$(gcloud secrets versions access latest --secret=DB_HOST)
         DB_NAME=$(gcloud secrets versions access latest --secret=DB_NAME)
         DB_PORT=$(gcloud secrets versions access latest --secret=DB_PORT)
 
+        # Jalankan migrasi database dengan Docker (menggunakan environment variables yang diambil)
         docker run \
           --rm \
           -e DB_USERNAME="$DB_USERNAME" \
@@ -44,7 +46,7 @@ steps:
           -e DB_NAME="$DB_NAME" \
           -e DB_PORT="$DB_PORT" \
           gcr.io/$PROJECT_ID/destinasyikapi \
-          npm run migrate:production  # Jalankan perintah migrasi Anda
+          npm run migrate:production
 
   # Step 5: Deploy ke Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
@@ -52,6 +54,7 @@ steps:
     args:
       - '-c'
       - |
+        # Ambil variabel dari Secret Manager
         DB_USERNAME=$(gcloud secrets versions access latest --secret=DB_USERNAME)
         DB_PASSWORD=$(gcloud secrets versions access latest --secret=DB_PASSWORD)
         DB_HOST=$(gcloud secrets versions access latest --secret=DB_HOST)
@@ -64,7 +67,7 @@ steps:
         GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json
         GCS_BUCKET_NAME=destinasyikfile
 
-        # Deploy Cloud Run service dengan environment variables
+        # Deploy ke Cloud Run dengan environment variables yang telah diambil
         gcloud run deploy destinasyikreccomenders-service \
           --image gcr.io/$PROJECT_ID/destinasyikapi \
           --region asia-southeast2 \
@@ -72,4 +75,4 @@ steps:
           --allow-unauthenticated \
           --timeout=600 \
           --set-env-vars \
-          DB_USERNAME="$DB_USERNAME",DB_PASSWORD="$DB_PASSWORD",DB_HOST="$DB_HOST",DB_NAME="$DB_NAME",DB_PORT="$DB_PORT",NODE_ENV="$NODE_ENV",SECRET_KEY="$SECRET_KEY",PORT="$PORT",MODEL_BASE_URL="$MODEL_BASE_URL",GOOGLE_APPLICATION_CREDENTIALS="$GOOGLE_APPLICATION_CREDENTIALS",GCS_BUCKET_NAME="$GCS_BUCKET_NAME"
+          DB_USERNAME="$DB_USERNAME",DB_PASSWORD="$DB_PASSWORD",DB_HOST="$DB_HOST",DB_NAME="$DB_NAME",DB_PORT="$DB_PORT",NODE_ENV="$NODE_ENV",SECRET_KEY="$SECRET_KEY",PORT="$PORT",MODEL_BASE_URL="$MODEL_BASE_URL",GOOGLE_APPLICATION_CREDENTIALS="$GOOGLE_APPLICATION_CREDENTIALS",GCS_BUCKET_NAME="$GCS_BUCKET_NAME"options:
