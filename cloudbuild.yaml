@@ -3,3 +3,6 @@ steps:
     args: ['build', '-t', 'gcr.io/destinasyik/destinasyikreccomenders', '.']
 images:
   - 'gcr.io/destinasyik/destinasyikreccomenders'
+build:
+  service_account: aafauzan52@gmail.com
+  logs_bucket: gs://destinasyikfile
