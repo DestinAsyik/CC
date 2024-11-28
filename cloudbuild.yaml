@@ -67,7 +67,7 @@ steps:
         MODEL_BASE_URL=$(gcloud secrets versions access latest --secret=MODEL_BASE_URL)
         GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json
         GCS_BUCKET_NAME=destinasyikfile
-        
+
         # Deploy ke Cloud Run dengan variabel lingkungan yang sudah diambil
         gcloud run deploy ${_SERVICE_NAME} \
           --image gcr.io/$PROJECT_ID/destinasyikapi \
