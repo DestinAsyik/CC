@@ -24,7 +24,7 @@ steps:
       - 'push'
       - 'gcr.io/$PROJECT_ID/destinasyikapi'
 
-  # Step 4: Jalankan Migrasi Database (Pastikan menggunakan container dengan kredensial)
+  # Step 4: Jalankan Migrasi Database
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args:
@@ -36,7 +36,6 @@ steps:
         DB_NAME=$(gcloud secrets versions access latest --secret=DB_NAME)
         DB_PORT=$(gcloud secrets versions access latest --secret=DB_PORT)
 
-        # Jalankan migrasi menggunakan Docker container
         docker run \
           --rm \
           -e DB_USERNAME="$DB_USERNAME" \
