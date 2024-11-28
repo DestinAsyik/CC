@@ -40,12 +40,12 @@ steps:
 substitutions:
   _SERVICE_NAME: 'destinasyikapi-service'
   _IMAGE_NAME: 'destinasyikapi'
-  _DB_USERNAME: $(gcloud secrets versions access latest --secret=DB_USERNAME)
-  _DB_PASSWORD: $(gcloud secrets versions access latest --secret=DB_PASSWORD)
-  _DB_HOST: $(gcloud secrets versions access latest --secret=DB_HOST)
-  _DB_NAME: $(gcloud secrets versions access latest --secret=DB_NAME)
-  _DB_PORT: $(gcloud secrets versions access latest --secret=DB_PORT)
-  _NODE_ENV: $(gcloud secrets versions access latest --secret=NODE_ENV)
-  _SECRET_KEY: $(gcloud secrets versions access latest --secret=SECRET_KEY)
-  _PORT: $(gcloud secrets versions access latest --secret=PORT)
-  _MODEL_BASE_URL: $(gcloud secrets versions access latest --secret=MODEL_BASE_URL)
+  _DB_USERNAME: 'root'
+  _DB_PASSWORD: 'banngkit2024'
+  _DB_HOST: '/cloudsql/destinasyik:asia-southeast2:destinasyik-db'
+  _DB_NAME: 'destinasyik'
+  _DB_PORT: '3306'
+  _NODE_ENV: 'production'
+  _SECRET_KEY: 'a6fvv759jbg90bkyn56'
+  _PORT: '3000'
+  _MODEL_BASE_URL: 'https://destinasyikreccomenders-service-478353399681.asia-southeast2.run.app'
