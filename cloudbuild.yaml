@@ -25,18 +25,7 @@ steps:
       - 'push'
       - 'gcr.io/$PROJECT_ID/destinasyikapi'
 
-  # Step 4: Akses Cloud Storage (Bucket) untuk memungkinkan upload gambar
-  - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        STORAGE_BUCKET_NAME="destinasyikfile"
-        gcloud auth activate-service-account --key-file /workspace/destinasyik-API.json
-        
-        gcloud storage buckets list --filter="name:$STORAGE_BUCKET_NAME"
-
-  # Step 5: Deploy aplikasi ke Cloud Run
+  # Step 4: Deploy aplikasi ke Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args:
@@ -61,4 +50,4 @@ steps:
           --allow-unauthenticated \
           --timeout=600 \
           --set-env-vars \
-          DB_USERNAME="$DB_USERNAME",DB_PASSWORD="$DB_PASSWORD",DB_HOST="$DB_HOST",DB_NAME="$DB_NAME",DB_PORT="$DB_PORT",NODE_ENV="$NODE_ENV",SECRET_KEY="$SECRET_KEY",PORT="$PORT",GOOGLE_APPLICATION_CREDENTIALS="$GOOGLE_APPLICATION_CREDENTIALS",GCS_BUCKET_NAME="$GCS_BUCKET_NAME"
+          DB_USERNAME="$DB_USERNAME",DB_PASSWORD="$DB_PASSWORD",DB_HOST="$DB_HOST",DB_NAME="$DB_NAME",DB_PORT="$DB_PORT",NODE_ENV="$NODE_ENV",SECRET_KEY="$SECRET_KEY",PORT="$PORT",GOOGLE_APPLICATION_CREDENTIALS="$GOOGLE_APPLICATION_CREDENTIALS",GCS_BUCKET_NAME=destinasyikfile
