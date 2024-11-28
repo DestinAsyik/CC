@@ -7,10 +7,8 @@ steps:
     entrypoint: 'bash'
     args:
       - '-c'
-      - |
-        # Ambil service key dari Secret Manager
-        gcloud secrets versions access latest --secret=GOOGLE_APPLICATION_CREDENTIALS > /workspace/destinasyik-API.json
-
+      - gcloud secrets versions access latest --secret=GOOGLE_APPLICATION_CREDENTIALS > /workspace/destinasyik-API.json
+      # Ambil service key dari Secret Manager
   # Step 2: Build Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args:
@@ -30,13 +28,13 @@ steps:
     entrypoint: 'bash'
     args:
       - '-c'
-      - |
         # Ambil nilai-nilai dari Secret Manager untuk migrasi
-        DB_USERNAME=$(gcloud secrets versions access latest --secret=DB_USERNAME)
+      - DB_USERNAME=$(gcloud secrets versions access latest --secret=DB_USERNAME)
         DB_PASSWORD=$(gcloud secrets versions access latest --secret=DB_PASSWORD)
         DB_HOST=$(gcloud secrets versions access latest --secret=DB_HOST)
         DB_NAME=$(gcloud secrets versions access latest --secret=DB_NAME)
         DB_PORT=$(gcloud secrets versions access latest --secret=DB_PORT)
+        
 
         # Jalankan migrasi di container Docker
         docker run \
@@ -54,9 +52,7 @@ steps:
   entrypoint: 'bash'
   args:
     - '-c'
-    - |
-      # Ambil nilai-nilai dari Secret Manager
-      DB_USERNAME=$(gcloud secrets versions access latest --secret=DB_USERNAME)
+    -DB_USERNAME=$(gcloud secrets versions access latest --secret=DB_USERNAME)
       DB_PASSWORD=$(gcloud secrets versions access latest --secret=DB_PASSWORD)
       DB_HOST=$(gcloud secrets versions access latest --secret=DB_HOST)
       DB_NAME=$(gcloud secrets versions access latest --secret=DB_NAME)
@@ -67,6 +63,7 @@ steps:
       MODEL_BASE_URL=$(gcloud secrets versions access latest --secret=MODEL_BASE_URL)
       GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json
       GCS_BUCKET_NAME=destinasyikfile
+      
 
       # Deploy ke Cloud Run dengan variabel lingkungan yang sudah diambil
       gcloud run deploy ${_SERVICE_NAME} \
