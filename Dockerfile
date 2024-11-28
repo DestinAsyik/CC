@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install --production
+RUN npm install 
 
 # Salin semua file proyek ke dalam container
 COPY . .
@@ -20,4 +20,4 @@ ENV NODE_ENV=production
 EXPOSE 3000
 
 # Jalankan aplikasi
-CMD ["node", "app.js"]
+CMD ["npm", "run", "start"]
