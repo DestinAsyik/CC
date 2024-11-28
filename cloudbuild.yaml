@@ -40,3 +40,12 @@ steps:
 substitutions:
   _SERVICE_NAME: 'destinasyikapi-service'
   _IMAGE_NAME: 'destinasyikapi'
+  _DB_USERNAME: $(gcloud secrets versions access latest --secret=DB_USERNAME)
+  _DB_PASSWORD: $(gcloud secrets versions access latest --secret=DB_PASSWORD)
+  _DB_HOST: $(gcloud secrets versions access latest --secret=DB_HOST)
+  _DB_NAME: $(gcloud secrets versions access latest --secret=DB_NAME)
+  _DB_PORT: $(gcloud secrets versions access latest --secret=DB_PORT)
+  _NODE_ENV: $(gcloud secrets versions access latest --secret=NODE_ENV)
+  _SECRET_KEY: $(gcloud secrets versions access latest --secret=SECRET_KEY)
+  _PORT: $(gcloud secrets versions access latest --secret=PORT)
+  _MODEL_BASE_URL: $(gcloud secrets versions access latest --secret=MODEL_BASE_URL)
