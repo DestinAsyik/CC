@@ -1,4 +1,5 @@
 const { Destination } = require('../Models');
+const { uploadToGCS } = require('../midleware/imageMidleware');
 
 const sendResponse = (res, statusCode, status, message, data = null) => {
     return res.status(statusCode).json({ status, message, data });
@@ -24,6 +25,11 @@ const validateDestinationInput = ({ place_name, description, category, city, lat
 exports.addDestination = async (req, res) => {
     try {
         const { place_name, description, category, city, price, latitude, longitude } = req.body;
+        
+        const imageUrl = req.file ? req.file.gcsUrl : null;
+        if (!imageUrl) {
+            return sendResponse(res, 400, 'error', 'Gambar tidak diupload');
+        }
 
         const validationError = validateDestinationInput({ place_name, description, category, city, latitude, longitude });
         if (validationError) {
@@ -33,7 +39,7 @@ exports.addDestination = async (req, res) => {
         const newDestination = await Destination.create({
             place_name,
             description,
-            gambar: req.file.gcsUrl,
+            gambar: imageUrl,
             category,
             city,
             price: price || 0,

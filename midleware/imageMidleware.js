@@ -41,8 +41,8 @@ const uploadToGCS = async (req, res, next) => {
     });
 
     blobStream.on('error', (err) => {
-        console.error(err);
-        next(err);
+        console.error('Error uploading to GCS:', err);
+        return res.status(500).json({ message: 'Error uploading image to cloud storage', error: err.message });
     });
 
     blobStream.on('finish', () => {
