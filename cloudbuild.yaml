@@ -2,7 +2,7 @@ options:
   logging: CLOUD_LOGGING_ONLY
 
 steps:
-  # Step 1: Ambil kredensial aplikasi dari Secret Manager
+  # Step 1: Ambil kredensial dari Secret Manager
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args:
@@ -25,29 +25,18 @@ steps:
       - 'push'
       - 'gcr.io/$PROJECT_ID/destinasyikapi'
 
-  # Step 4: Deploy aplikasi ke Cloud Run
+  # Step 4: Deploy aplikasi ke Cloud Run dengan environment variables
   - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        DB_USERNAME=$(gcloud secrets versions access latest --secret=DB_USERNAME)
-        DB_PASSWORD=$(gcloud secrets versions access latest --secret=DB_PASSWORD)
-        DB_HOST=$(gcloud secrets versions access latest --secret=DB_HOST)
-        DB_NAME=$(gcloud secrets versions access latest --secret=DB_NAME)
-        DB_PORT=$(gcloud secrets versions access latest --secret=DB_PORT)
-        NODE_ENV=$(gcloud secrets versions access latest --secret=NODE_ENV)
-        SECRET_KEY=$(gcloud secrets versions access latest --secret=SECRET_KEY)
-        PORT=$(gcloud secrets versions access latest --secret=PORT)
-        GOOGLE_APPLICATION_CREDENTIALS=/workspace/destinasyik-API.json
-        GCS_BUCKET_NAME="destinasyikfile"
+    args: [
+      'run', 'deploy', '${_SERVICE_NAME}',
+      '--image', 'gcr.io/$PROJECT_ID/destinasyikapi',
+      '--region', 'asia-southeast2',  
+      '--platform', 'managed',
+      '--allow-unauthenticated',
+      '--set-env-vars', 
+      'GCS_BUCKET_NAME=destinasyifile,GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json'
+    ]
 
-        # Deploy ke Cloud Run
-        gcloud run deploy destinasyikreccomenders-service \
-          --image gcr.io/$PROJECT_ID/destinasyikapi \
-          --region asia-southeast2 \
-          --platform managed \
-          --allow-unauthenticated \
-          --timeout=600 \
-          --set-env-vars \
-          DB_USERNAME="$DB_USERNAME",DB_PASSWORD="$DB_PASSWORD",DB_HOST="$DB_HOST",DB_NAME="$DB_NAME",DB_PORT="$DB_PORT",NODE_ENV="$NODE_ENV",SECRET_KEY="$SECRET_KEY",PORT="$PORT",GOOGLE_APPLICATION_CREDENTIALS="$GOOGLE_APPLICATION_CREDENTIALS",GCS_BUCKET_NAME=destinasyikfile
+substitutions:
+  _SERVICE_NAME: 'destinasyikreccomenders-service'
+  _IMAGE_NAME: 'destinasyikapi'
