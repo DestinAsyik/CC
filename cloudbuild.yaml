@@ -64,6 +64,7 @@ steps:
         GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json
         GCS_BUCKET_NAME=destinasyikfile
 
+        # Deploy Cloud Run service with environment variables set
         gcloud run deploy destinasyikreccomenders-service \
           --image gcr.io/$PROJECT_ID/destinasyikapi \
           --region asia-southeast2 \
@@ -71,4 +72,4 @@ steps:
           --allow-unauthenticated \
           --timeout=600 \
           --set-env-vars \
-          DB_USERNAME=$DB_USERNAME,DB_PASSWORD=$DB_PASSWORD,DB_HOST=$DB_HOST,DB_NAME=$DB_NAME,DB_PORT=$DB_PORT,NODE_ENV=$NODE_ENV,SECRET_KEY=$SECRET_KEY,PORT=$PORT,MODEL_BASE_URL=$MODEL_BASE_URL,GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS,GCS_BUCKET_NAME=$GCS_BUCKET_NAME
+          DB_USERNAME="$DB_USERNAME",DB_PASSWORD="$DB_PASSWORD",DB_HOST="$DB_HOST",DB_NAME="$DB_NAME",DB_PORT="$DB_PORT",NODE_ENV="$NODE_ENV",SECRET_KEY="$SECRET_KEY",PORT="$PORT",MODEL_BASE_URL="$MODEL_BASE_URL",GOOGLE_APPLICATION_CREDENTIALS="$GOOGLE_APPLICATION_CREDENTIALS",GCS_BUCKET_NAME="$GCS_BUCKET_NAME"
