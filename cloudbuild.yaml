@@ -2,7 +2,7 @@ options:
   logging: CLOUD_LOGGING_ONLY
 
 steps:
-  # Step 1: Akses Service Key dari Secret Manager
+  # Step 1: Akses Service Key dari Secret Manager (misalnya, jika menggunakan kredensial GCP)
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args:
@@ -10,7 +10,7 @@ steps:
       - |
         gcloud secrets versions access latest --secret=GOOGLE_APPLICATION_CREDENTIALS > /app/destinasyik-API.json
 
-  # Step 2: Build Docker image
+  # Step 2: Build Docker Image
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
@@ -18,13 +18,13 @@ steps:
       - 'gcr.io/$PROJECT_ID/destinasyikapi'
       - '.'
 
-  # Step 3: Push Docker image ke Container Registry
+  # Step 3: Push Docker Image ke Container Registry
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
       - 'gcr.io/$PROJECT_ID/destinasyikapi'
 
-  # Step 4: Jalankan migrasi database
+  # Step 4: Jalankan Migrasi Database
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args:
