@@ -31,14 +31,12 @@ steps:
     args:
       - '-c'
       - |
-        # Ambil nilai dari secrets
         DB_USERNAME=$(gcloud secrets versions access latest --secret=DB_USERNAME)
         DB_PASSWORD=$(gcloud secrets versions access latest --secret=DB_PASSWORD)
         DB_HOST=$(gcloud secrets versions access latest --secret=DB_HOST)
         DB_NAME=$(gcloud secrets versions access latest --secret=DB_NAME)
         DB_PORT=$(gcloud secrets versions access latest --secret=DB_PORT)
 
-        # Jalankan migrasi database dalam container Docker dengan variabel yang sudah di-set
         docker run \
           --rm \
           -e DB_USERNAME="$DB_USERNAME" \
