@@ -1,6 +1,3 @@
-options:
-  logging: CLOUD_LOGGING_ONLY
-
 steps:
   # Step 1: Akses Service Key dari Secret Manager
   - name: 'gcr.io/cloud-builders/gcloud'
@@ -25,53 +22,51 @@ steps:
       - 'push'
       - 'gcr.io/$PROJECT_ID/destinasyikapi'
 
-  # # Step 4: Menjalankan migrasi database
-  # - name: 'gcr.io/cloud-builders/gcloud'
-  #   entrypoint: 'bash'
-  #   args:
-  #     - '-c'
-  #     - |
-  #       DB_USERNAME=$(gcloud secrets versions access latest --secret=DB_USERNAME)
-  #       DB_PASSWORD=$(gcloud secrets versions access latest --secret=DB_PASSWORD)
-  #       DB_HOST=$(gcloud secrets versions access latest --secret=DB_HOST)
-  #       DB_NAME=$(gcloud secrets versions access latest --secret=DB_NAME)
-  #       DB_PORT=$(gcloud secrets versions access latest --secret=DB_PORT)
-
-  #       docker run \
-  #         --rm \
-  #         -e DB_USERNAME="$DB_USERNAME" \
-  #         -e DB_PASSWORD="$DB_PASSWORD" \
-  #         -e DB_HOST="$DB_HOST" \
-  #         -e DB_NAME="$DB_NAME" \
-  #         -e DB_PORT="$DB_PORT" \
-  #         gcr.io/$PROJECT_ID/destinasyikapi \
-  #         npm run migrate:production
-
-  # Step 5: Deploy ke Cloud Run setelah migrasi berhasil
+  # Step 4: Menjalankan migrasi database
   - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
     args:
-      - 'run'
-      - 'deploy'
-      - '${_SERVICE_NAME}'
-      - '--image'
-      - 'gcr.io/$PROJECT_ID/destinasyikapi'
-      - '--region'
-      - 'asia-southeast2'
-      - '--platform'
-      - 'managed'
-      - '--allow-unauthenticated'
-      - '--set-env-vars'
-      - 'DB_USERNAME=$(gcloud secrets versions access latest --secret=DB_USERNAME)'
-      - 'DB_PASSWORD=$(gcloud secrets versions access latest --secret=DB_PASSWORD)'
-      - 'DB_HOST=$(gcloud secrets versions access latest --secret=DB_HOST)'
-      - 'DB_NAME=$(gcloud secrets versions access latest --secret=DB_NAME)'
-      - 'DB_PORT=$(gcloud secrets versions access latest --secret=DB_PORT)'
-      - 'NODE_ENV=$(gcloud secrets versions access latest --secret=NODE_ENV)'
-      - 'SECRET_KEY=$(gcloud secrets versions access latest --secret=SECRET_KEY)'
-      - 'PORT=$(gcloud secrets versions access latest --secret=PORT)'
-      - 'MODEL_BASE_URL=$(gcloud secrets versions access latest --secret=MODEL_BASE_URL)'
-      - 'GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json'
-      - 'GCS_BUCKET_NAME=destinasyikfile'
+      - '-c'
+      - |
+        DB_USERNAME=$(gcloud secrets versions access latest --secret=DB_USERNAME)
+        DB_PASSWORD=$(gcloud secrets versions access latest --secret=DB_PASSWORD)
+        DB_HOST=$(gcloud secrets versions access latest --secret=DB_HOST)
+        DB_NAME=$(gcloud secrets versions access latest --secret=DB_NAME)
+        DB_PORT=$(gcloud secrets versions access latest --secret=DB_PORT)
 
-substitutions:
-  _SERVICE_NAME: 'destinasyikapi-service'
+        docker run \
+          --rm \
+          -e DB_USERNAME="$DB_USERNAME" \
+          -e DB_PASSWORD="$DB_PASSWORD" \
+          -e DB_HOST="$DB_HOST" \
+          -e DB_NAME="$DB_NAME" \
+          -e DB_PORT="$DB_PORT" \
+          gcr.io/$PROJECT_ID/destinasyikapi \
+          npm run migrate:production
+
+  # Step 5: Ambil nilai-nilai dari Secret Manager terlebih dahulu
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        DB_USERNAME=$(gcloud secrets versions access latest --secret=DB_USERNAME)
+        DB_PASSWORD=$(gcloud secrets versions access latest --secret=DB_PASSWORD)
+        DB_HOST=$(gcloud secrets versions access latest --secret=DB_HOST)
+        DB_NAME=$(gcloud secrets versions access latest --secret=DB_NAME)
+        DB_PORT=$(gcloud secrets versions access latest --secret=DB_PORT)
+        NODE_ENV=$(gcloud secrets versions access latest --secret=NODE_ENV)
+        SECRET_KEY=$(gcloud secrets versions access latest --secret=SECRET_KEY)
+        PORT=$(gcloud secrets versions access latest --secret=PORT)
+        MODEL_BASE_URL=$(gcloud secrets versions access latest --secret=MODEL_BASE_URL)
+        GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json
+        GCS_BUCKET_NAME=destinasyikfile
+        
+        # Deploy ke Cloud Run dengan variabel lingkungan yang sudah diambil
+        gcloud run deploy ${_SERVICE_NAME} \
+          --image gcr.io/$PROJECT_ID/destinasyikapi \
+          --region asia-southeast2 \
+          --platform managed \
+          --allow-unauthenticated \
+          --set-env-vars \
+          DB_USERNAME=$DB_USERNAME,DB_PASSWORD=$DB_PASSWORD,DB_HOST=$DB_HOST,DB_NAME=$DB_NAME,DB_PORT=$DB_PORT,NODE_ENV=$NODE_ENV,SECRET_KEY=$SECRET_KEY,PORT=$PORT,MODEL_BASE_URL=$MODEL_BASE_URL,GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS,GCS_BUCKET_NAME=$GCS_BUCKET_NAME
