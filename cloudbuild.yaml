@@ -1,6 +1,6 @@
 options:
   logging: CLOUD_LOGGING_ONLY
-  
+
 steps:
   # Step 1: Akses Service Key dari Secret Manager
   - name: 'gcr.io/cloud-builders/gcloud'
@@ -31,12 +31,14 @@ steps:
     args:
       - '-c'
       - |
+        # Ambil nilai-nilai dari Secret Manager untuk migrasi
         DB_USERNAME=$(gcloud secrets versions access latest --secret=DB_USERNAME)
         DB_PASSWORD=$(gcloud secrets versions access latest --secret=DB_PASSWORD)
         DB_HOST=$(gcloud secrets versions access latest --secret=DB_HOST)
         DB_NAME=$(gcloud secrets versions access latest --secret=DB_NAME)
         DB_PORT=$(gcloud secrets versions access latest --secret=DB_PORT)
 
+        # Jalankan migrasi di container Docker
         docker run \
           --rm \
           -e DB_USERNAME="$DB_USERNAME" \
@@ -47,12 +49,13 @@ steps:
           gcr.io/$PROJECT_ID/destinasyikapi \
           npm run migrate:production
 
-  # Step 5: Ambil nilai-nilai dari Secret Manager terlebih dahulu
+  # Step 5: Ambil nilai-nilai dari Secret Manager terlebih dahulu untuk deploy
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
+        # Ambil nilai-nilai dari Secret Manager
         DB_USERNAME=$(gcloud secrets versions access latest --secret=DB_USERNAME)
         DB_PASSWORD=$(gcloud secrets versions access latest --secret=DB_PASSWORD)
         DB_HOST=$(gcloud secrets versions access latest --secret=DB_HOST)
