@@ -30,11 +30,11 @@ steps:
     args:
       - '-c'
       - |
-        export DB_USERNAME=$(gcloud secrets versions access latest --secret=DB_USERNAME)
-        export DB_PASSWORD=$(gcloud secrets versions access latest --secret=DB_PASSWORD)
-        export DB_HOST=$(gcloud secrets versions access latest --secret=DB_HOST)
-        export DB_NAME=$(gcloud secrets versions access latest --secret=DB_NAME)
-        export DB_PORT=$(gcloud secrets versions access latest --secret=DB_PORT)
+        DB_USERNAME=$(gcloud secrets versions access latest --secret=DB_USERNAME)
+        DB_PASSWORD=$(gcloud secrets versions access latest --secret=DB_PASSWORD)
+        DB_HOST=$(gcloud secrets versions access latest --secret=DB_HOST)
+        DB_NAME=$(gcloud secrets versions access latest --secret=DB_NAME)
+        DB_PORT=$(gcloud secrets versions access latest --secret=DB_PORT)
 
         docker run \
           --rm \
@@ -52,17 +52,17 @@ steps:
     args:
       - '-c'
       - |
-        export DB_USERNAME=$(gcloud secrets versions access latest --secret=DB_USERNAME)
-        export DB_PASSWORD=$(gcloud secrets versions access latest --secret=DB_PASSWORD)
-        export DB_HOST=$(gcloud secrets versions access latest --secret=DB_HOST)
-        export DB_NAME=$(gcloud secrets versions access latest --secret=DB_NAME)
-        export DB_PORT=$(gcloud secrets versions access latest --secret=DB_PORT)
-        export NODE_ENV=$(gcloud secrets versions access latest --secret=NODE_ENV)
-        export SECRET_KEY=$(gcloud secrets versions access latest --secret=SECRET_KEY)
-        export PORT=$(gcloud secrets versions access latest --secret=PORT)
-        export MODEL_BASE_URL=$(gcloud secrets versions access latest --secret=MODEL_BASE_URL)
-        export GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json
-        export GCS_BUCKET_NAME=destinasyikfile
+        DB_USERNAME=$(gcloud secrets versions access latest --secret=DB_USERNAME)
+        DB_PASSWORD=$(gcloud secrets versions access latest --secret=DB_PASSWORD)
+        DB_HOST=$(gcloud secrets versions access latest --secret=DB_HOST)
+        DB_NAME=$(gcloud secrets versions access latest --secret=DB_NAME)
+        DB_PORT=$(gcloud secrets versions access latest --secret=DB_PORT)
+        NODE_ENV=$(gcloud secrets versions access latest --secret=NODE_ENV)
+        SECRET_KEY=$(gcloud secrets versions access latest --secret=SECRET_KEY)
+        PORT=$(gcloud secrets versions access latest --secret=PORT)
+        MODEL_BASE_URL=$(gcloud secrets versions access latest --secret=MODEL_BASE_URL)
+        GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json
+        GCS_BUCKET_NAME=destinasyikfile
 
         gcloud run deploy destinasyikreccomenders-service \
           --image gcr.io/$PROJECT_ID/destinasyikapi \
