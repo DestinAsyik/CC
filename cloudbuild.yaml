@@ -1,3 +1,6 @@
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 steps:
   # Step 1: Akses Service Key dari Secret Manager
   - name: 'gcr.io/cloud-builders/gcloud'
@@ -5,8 +8,7 @@ steps:
     args:
       - '-c'
       - |
-        gcloud secrets versions access latest --secret=GOOGLE_APPLICATION_CREDENTIALS > /workspace/destinasyik-API.json
-        # Ambil service key dari Secret Manager
+        gcloud secrets versions access latest --secret=GOOGLE_APPLICATION_CREDENTIALS > /app/destinasyik-API.json
 
   # Step 2: Build Docker image
   - name: 'gcr.io/cloud-builders/docker'
@@ -22,7 +24,7 @@ steps:
       - 'push'
       - 'gcr.io/$PROJECT_ID/destinasyikapi'
 
-  # Step 4: Menjalankan migrasi database
+  # Step 4: Jalankan migrasi database
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args:
@@ -34,7 +36,6 @@ steps:
         DB_NAME=$(gcloud secrets versions access latest --secret=DB_NAME)
         DB_PORT=$(gcloud secrets versions access latest --secret=DB_PORT)
 
-        # Jalankan migrasi di container Docker
         docker run \
           --rm \
           -e DB_USERNAME="$DB_USERNAME" \
@@ -45,7 +46,7 @@ steps:
           gcr.io/$PROJECT_ID/destinasyikapi \
           npm run migrate:production
 
-  # Step 5: Ambil nilai-nilai dari Secret Manager dan deploy
+  # Step 5: Deploy ke Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args:
@@ -63,11 +64,11 @@ steps:
         GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json
         GCS_BUCKET_NAME=destinasyikfile
 
-        # Deploy ke Cloud Run dengan variabel lingkungan yang sudah diambil
         gcloud run deploy destinasyikreccomenders-service \
           --image gcr.io/$PROJECT_ID/destinasyikapi \
           --region asia-southeast2 \
           --platform managed \
           --allow-unauthenticated \
+          --timeout=600 \
           --set-env-vars \
           DB_USERNAME=$DB_USERNAME,DB_PASSWORD=$DB_PASSWORD,DB_HOST=$DB_HOST,DB_NAME=$DB_NAME,DB_PORT=$DB_PORT,NODE_ENV=$NODE_ENV,SECRET_KEY=$SECRET_KEY,PORT=$PORT,MODEL_BASE_URL=$MODEL_BASE_URL,GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS,GCS_BUCKET_NAME=$GCS_BUCKET_NAME
