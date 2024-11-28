@@ -34,7 +34,7 @@ steps:
       '--platform', 'managed',
       '--allow-unauthenticated',
       '--set-env-vars', 
-      'PORT=3000,GCS_BUCKET_NAME=destinasyifile,GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json'
+      'GCS_BUCKET_NAME=destinasyifile,GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json'
     ]
 
 substitutions:
