@@ -31,11 +31,9 @@ steps:
     args:
       - '-c'
       - |
-        # Ambil kredensial dan pastikan Cloud Storage diakses untuk upload gambar
         STORAGE_BUCKET_NAME="destinasyikfile"
         gcloud auth activate-service-account --key-file /workspace/destinasyik-API.json
         
-        # Pastikan Cloud Storage bucket sudah ada dan dapat diakses
         gcloud storage buckets list --filter="name:$STORAGE_BUCKET_NAME"
 
   # Step 5: Deploy aplikasi ke Cloud Run
@@ -44,7 +42,6 @@ steps:
     args:
       - '-c'
       - |
-        # Ambil variabel environment untuk aplikasi dari Secret Manager
         DB_USERNAME=$(gcloud secrets versions access latest --secret=DB_USERNAME)
         DB_PASSWORD=$(gcloud secrets versions access latest --secret=DB_PASSWORD)
         DB_HOST=$(gcloud secrets versions access latest --secret=DB_HOST)
