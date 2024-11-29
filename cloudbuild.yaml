@@ -10,8 +10,6 @@ steps:
       - |
         # Ambil kredensial untuk akses Google Cloud Storage
         gcloud secrets versions access latest --secret=GOOGLE_APPLICATION_CREDENTIALS > /workspace/destinasyik-API.json
-        # Ambil file SECRET.txt yang berisi variabel lingkungan sensitif
-        gcloud secrets versions access latest --secret=CREDENTIALS > /workspace/SECRET.txt
 
   # Step 2: Build Docker Image untuk aplikasi Express
   - name: 'gcr.io/cloud-builders/docker'
@@ -29,36 +27,16 @@ steps:
 
   # Step 4: Deploy aplikasi ke Cloud Run dengan environment variables
   - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        # Ekstrak variabel-variabel dari file SECRET.txt
-        export DB_USERNAME=$(grep 'DB_USERNAME' /workspace/SECRET.txt | cut -d '=' -f2)
-        export DB_PASSWORD=$(grep 'DB_PASSWORD' /workspace/SECRET.txt | cut -d '=' -f2)
-        export DB_NAME=$(grep 'DB_NAME' /workspace/SECRET.txt | cut -d '=' -f2)
-        export DB_HOST=$(grep 'DB_HOST' /workspace/SECRET.txt | cut -d '=' -f2)
-        export NODE_ENV=$(grep 'NODE_ENV' /workspace/SECRET.txt | cut -d '=' -f2)
-        export MODEL_BASE_URL=$(grep 'MODEL_BASE_URL' /workspace/SECRET.txt | cut -d '=' -f2)
-        export SECRET_KEY=$(grep 'SECRET_KEY' /workspace/SECRET.txt | cut -d '=' -f2)
-
-        # Deploy aplikasi ke Cloud Run dan set environment variables
-        gcloud run deploy ${_SERVICE_NAME} \
-          --image gcr.io/$PROJECT_ID/destinasyikapi \
-          --region asia-southeast2 \
-          --platform managed \
-          --allow-unauthenticated \
-          --set-env-vars \
-            GCS_BUCKET_NAME=destinasyikfile, \
-            GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json, \
-            DB_USERNAME=$DB_USERNAME, \
-            DB_PASSWORD=$DB_PASSWORD, \
-            DB_NAME=$DB_NAME, \
-            DB_HOST=$DB_HOST, \
-            NODE_ENV=$NODE_ENV, \
-            MODEL_BASE_URL=$MODEL_BASE_URL, \
-            SECRET_KEY=$SECRET_KEY \
-          --timeout 300s
+    args: [
+      'run', 'deploy', '${_SERVICE_NAME}',
+      '--image', 'gcr.io/$PROJECT_ID/destinasyikapi',
+      '--region', 'asia-southeast2',  
+      '--platform', 'managed',
+      '--allow-unauthenticated',
+      '--set-env-vars', 
+      'GCS_BUCKET_NAME=destinasyikfile,GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json',  
+      '--timeout', '300s'
+    ]
 
 #service
 substitutions:
