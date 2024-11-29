@@ -34,7 +34,7 @@ steps:
       '--platform', 'managed',
       '--allow-unauthenticated',
       '--set-env-vars', 
-      'GCS_BUCKET_NAME=destinasyikfile,GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json',  
+      'GCS_BUCKET_NAME=destinasyikfile, GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json, DB_USERNAME=root, DB_PASSWORD=bangkit2024, DB_NAME=destinasyik, DB_HOST=34.101.244.119, NODE_ENV=production, MODEL_BASE_URL=https://destinasyikreccomenders-service-478353399681.asia-southeast2.run.app, SECRET_KEY=a6fvv759jbg90bkyn56',  
       '--timeout', '300s'
     ]
 
