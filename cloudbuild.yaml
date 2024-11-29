@@ -38,6 +38,7 @@ steps:
       '--timeout', '300s'
     ]
 
+#service
 substitutions:
   _SERVICE_NAME: 'destinasyikapi-service'
   _IMAGE_NAME: 'destinasyikapi'
