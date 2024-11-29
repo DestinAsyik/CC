@@ -34,7 +34,8 @@ steps:
       '--platform', 'managed',
       '--allow-unauthenticated',
       '--set-env-vars', 
-      'GCS_BUCKET_NAME=destinasyifile,GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json'
+      'GCS_BUCKET_NAME=destinasyifile,GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json',
+      '--add-cloudsql-instances', 'destinasyik:asia-southeast2:destinasyik-db',
       '--timeout', '300s'
     ]
 
