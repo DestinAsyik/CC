@@ -1,5 +1,4 @@
 const { Destination } = require('../Models');
-const { uploadToGCS } = require('../midleware/imageMidleware');
 
 const sendResponse = (res, statusCode, status, message, data = null) => {
     return res.status(statusCode).json({ status, message, data });

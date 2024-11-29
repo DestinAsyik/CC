@@ -4,7 +4,7 @@ const path = require('path');
 
 const serverUrl =
   process.env.NODE_ENV === 'production'
-    ? 'https://destinasyikapi-service-478353399681.asia-southeast2.run.app'
+    ? 'https://destinasyikapi-service-478353399681.asia-southeast2.run.app/api/destinAsyik/v1'
     : 'http://localhost:3000/api/destinAsyik/v1';
 
 const options = {
