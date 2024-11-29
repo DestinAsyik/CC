@@ -17,7 +17,7 @@ exports.reccomByContent = async (req, res) => {
 
         const preferredCategory = content.prefered_category;
 
-        const reccomResponseContent = await axios.post(`${BASE_URL}recommendations/category`, {
+        const reccomResponseContent = await axios.post(`${BASE_URL}/recommendations/category`, {
             category: preferredCategory
         });
 
@@ -45,7 +45,7 @@ exports.reccomByJarak = async (req, res) => {
         const { latitude, longitude } = req.body;
 
         // Memanggil endpoint ML untuk rekomendasi berdasarkan lokasi
-        const reccomResponseJarak = await axios.post(`${BASE_URL}recommendations/nearby`, {
+        const reccomResponseJarak = await axios.post(`${BASE_URL}/recommendations/nearby`, {
             user_lat: latitude,
             user_long: longitude
         });
@@ -122,7 +122,7 @@ exports.reccomHybrid = async (req, res) => {
 
         console.log(hybridData)
 
-        const reccomResponse = await axios.post(`${BASE_URL}recommendations/collaborative`, hybridData);
+        const reccomResponse = await axios.post(`${BASE_URL}/recommendations/collaborative`, hybridData);
         const recommendedItemIds = reccomResponse.data.collaborative_recommendations;
 
         console.log(recommendedItemIds)
