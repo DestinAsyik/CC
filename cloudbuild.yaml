@@ -34,19 +34,10 @@ steps:
       '--platform', 'managed',
       '--allow-unauthenticated',
       '--set-env-vars', 
-      'GCS_BUCKET_NAME=destinasyifile,GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json',
-      '--add-cloudsql-instances', 'destinasyik:asia-southeast2:destinasyik-db',
+      'GCS_BUCKET_NAME=destinasyikfile,GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json',  
       '--timeout', '300s'
     ]
 
 substitutions:
   _SERVICE_NAME: 'destinasyikapi-service'
   _IMAGE_NAME: 'destinasyikapi'
-  _DB_USERNAME: 'root'
-  _DB_PASSWORD: 'banngkit2024'
-  _DB_HOST: '/cloudsql/destinasyik:asia-southeast2:destinasyik-db'
-  _DB_NAME: 'destinasyik'
-  _DB_PORT: '3306'
-  _NODE_ENV: 'production'
-  _SECRET_KEY: 'a6fvv759jbg90bkyn56'
-  _MODEL_BASE_URL: 'https://destinasyikreccomenders-service-478353399681.asia-southeast2.run.app'
