@@ -35,6 +35,7 @@ steps:
       '--allow-unauthenticated',
       '--set-env-vars', 
       'GCS_BUCKET_NAME=destinasyifile,GOOGLE_APPLICATION_CREDENTIALS=/app/destinasyik-API.json'
+      '--timeout', '300s'
     ]
 
 substitutions:
