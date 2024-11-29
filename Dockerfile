@@ -17,7 +17,7 @@ COPY . .
 ENV NODE_ENV=production
 
 # Ekspose port yang digunakan aplikasi
-#EXPOSE 3000
+EXPOSE 3000
 
 # Jalankan aplikasi
 CMD ["npm", "run", "start"]

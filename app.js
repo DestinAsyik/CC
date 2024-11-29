@@ -10,9 +10,7 @@ const setupSwagger = require('./docs/swagger');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+
 // Allowed Origins for CORS
 const allowedOrigins = ['https://bangkit2024.up.railway.app', 'http://localhost:8000', 'http://localhost:3000'];
 
