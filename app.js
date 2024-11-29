@@ -12,7 +12,11 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Allowed Origins for CORS
-const allowedOrigins = ['https://bangkit2024.up.railway.app', 'http://localhost:8000', 'http://localhost:3000'];
+const allowedOrigins = ['https://bangkit2024.up.railway.app', 
+                        'http://localhost:8000', 
+                        'http://localhost:3000', 
+                        'https://destinasyikreccomenders-service-478353399681.asia-southeast2.run.app',
+                        'https://destinasyikapi-service-478353399681.asia-southeast2.run.app'];
 
 // CORS Configuration
 app.use(cors({
@@ -50,13 +54,13 @@ app.use(session({
   cookie: { secure: process.env.NODE_ENV === 'production' }, 
 }));
 
-app.get('/', async (req, res) => {
-  try {
-    res.send("API BERHASIL");
-  } catch (error) {
-    res.status(500).send('Error fetching image');
-  }
-});
+// app.get('/', async (req, res) => {
+//   try {
+//     res.send("API BERHASIL");
+//   } catch (error) {
+//     res.status(500).send('Error fetching image');
+//   }
+// });
 
 // Routes
 app.use('/api/destinAsyik/v1', routes);

@@ -4,7 +4,7 @@ const path = require('path');
 
 const serverUrl =
   process.env.NODE_ENV === 'production'
-    ? 'https://bangkit2024.up.railway.app/api/destinAsyik/v1'
+    ? 'https://destinasyikapi-service-478353399681.asia-southeast2.run.app'
     : 'http://localhost:3000/api/destinAsyik/v1';
 
 const options = {
