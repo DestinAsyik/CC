@@ -50,6 +50,14 @@ app.use(session({
   cookie: { secure: process.env.NODE_ENV === 'production' }, 
 }));
 
+app.get('/', async (req, res) => {
+  try {
+    res.send("API BERHASIL");
+  } catch (error) {
+    res.status(500).send('Error fetching image');
+  }
+});
+
 // Routes
 app.use('/api/destinAsyik/v1', routes);
 setupSwagger(app);
