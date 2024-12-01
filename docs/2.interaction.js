@@ -189,7 +189,7 @@
 
 /**
  * @swagger
- * /destination/toggle-like:
+ * /likes/toggle-like:
  *   post:
  *     summary: Menambahkan atau menghapus like untuk sebuah destinasi berdasarkan `item_id`
  *     tags: [Interaction]
