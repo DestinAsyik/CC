@@ -17,10 +17,10 @@ exports.toggleBookmark = async (req, res) => {
 
         if (existingBookmark) {
             await existingBookmark.destroy();
-            return res.status(200).json({ message: 'Bookmark berhasil dihapus' });
+            return res.status(200).json({ isBookmarked : true, message: 'Bookmark berhasil dihapus' });
         } else {
             const newBookmark = await Bookmark.create({ user_id, item_id });
-            return res.status(201).json({ message: 'Bookmark berhasil ditambahkan', newBookmark });
+            return res.status(201).json({ message: 'Bookmark berhasil ditambahkan', isBookmarked : false, newBookmark });
         }
     } catch (error) {
         console.error(error);
