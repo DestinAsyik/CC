@@ -38,6 +38,11 @@ function formatNumber(value, unit = '') {
   return `${value.toFixed(2)} ${unit}`;
 }
 
+// Fungsi untuk memeriksa apakah koordinat dalam format desimal
+function isDecimal(coordinate) {
+  return Math.abs(coordinate) <= 180;  
+}
+
 exports.fuelReccomendations = async (req, res) => {
   try {
     const { userLat, userLon } = req.body;
@@ -54,11 +59,17 @@ exports.fuelReccomendations = async (req, res) => {
     }
 
     // Mengonversi nilai latitude dan longitude yang disimpan dalam mikroderajat menjadi desimal
-    const lat = destination.latitude / 10000000;  
-    const lon = destination.longitude / 10000000; 
+    let lat = destination.latitude;
+    let lon = destination.longitude;
 
-    console.log(lat);
-    console.log(lon);
+    // Mengecek apakah koordinat dalam format desimal atau mikroderajat
+    if (!isDecimal(lat)) {
+      lat = lat / 10000000;  
+    }
+
+    if (!isDecimal(lon)) {
+      lon = lon / 10000000;  
+    }
 
     // Menghitung jarak antara pengguna dan destinasi
     const distance = calculateDistance(userLat, userLon, lat, lon);
@@ -67,7 +78,7 @@ exports.fuelReccomendations = async (req, res) => {
     const fuelCalculations = Object.keys(FUEL_TYPES).map(fuelType => {
       const { fuelNeeded, fuelCost } = calculateFuelCost(distance, fuelType);
       return {
-        fuelType: fuelType.charAt(0).toUpperCase() + fuelType.slice(1),  // Kapitalisasi nama bahan bakar
+        fuelType: fuelType.charAt(0).toUpperCase() + fuelType.slice(1),  
         fuelNeeded: formatNumber(fuelNeeded, 'liter'),
         fuelCost: formatCurrency(fuelCost),
       };
@@ -81,7 +92,7 @@ exports.fuelReccomendations = async (req, res) => {
       const totalCost = (parseFloat(fuelCalculation.fuelCost.replace('Rp ', '').replace(/\./g, '')) + ticketPrice).toFixed(2);
       return {
         ...fuelCalculation,
-        totalCost: formatCurrency(totalCost),
+        totalCost: formatCurrency(parseFloat(totalCost)),
       };
     });
 
