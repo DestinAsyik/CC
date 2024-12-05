@@ -431,7 +431,7 @@
 
 /**
  * @swagger
- * /reviews/destination:
+ * /reviews/destination/:item_id:
  *   post:
  *     summary: Menambahkan review dan rating untuk destinasi berdasarkan `item_id`
  *     tags: [Interaction]
