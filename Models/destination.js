@@ -43,11 +43,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },    
     latitude: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DOUBLE,
       allowNull: false,
     },
     longitude: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DOUBLE,
       allowNull: false,
     },
     coordinate: {
