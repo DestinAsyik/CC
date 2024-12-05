@@ -36,8 +36,13 @@ exports.fuelReccomendations = async (req, res) => {
       return res.status(404).json({ error: 'Destinasi tidak ditemukan' });
     }
 
-    const distance = calculateDistance(userLat, userLon, destination.latitude, destination.longitude);
+    const lat = destination.latitude / 1000000;  
+    const lon = destination.longitude / 1000000; 
 
+    // Menghitung jarak antara user dan destinasi
+    const distance = calculateDistance(userLat, userLon, lat, lon);
+
+    // Menghitung biaya bahan bakar untuk setiap jenis bahan bakar
     const fuelCalculations = Object.keys(FUEL_TYPES).map(fuelType => {
       const { fuelNeeded, fuelCost } = calculateFuelCost(distance, fuelType);
       return {
@@ -47,8 +52,10 @@ exports.fuelReccomendations = async (req, res) => {
       };
     });
 
+    // Mendapatkan harga tiket destinasi
     const ticketPrice = destination.price || 0;
 
+    // Menghitung total biaya (biaya bahan bakar + harga tiket)
     const totalCosts = fuelCalculations.map(fuelCalculation => {
       const totalCost = parseFloat(fuelCalculation.fuelCost) + ticketPrice;
       return {
@@ -57,8 +64,9 @@ exports.fuelReccomendations = async (req, res) => {
       };
     });
 
+    // Mengirimkan response ke client
     res.status(200).json({
-      destination: destination.name,
+      destination: destination.place_name, 
       distance: distance.toFixed(2),
       ticketPrice: ticketPrice.toFixed(2),
       fuelDetails: totalCosts
