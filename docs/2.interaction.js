@@ -469,7 +469,7 @@
  *                 description: Longitude pengguna untuk memverifikasi lokasi
  *                 example: 110.3650
  *     parameters:
- *       - in: query
+ *       - in: path
  *         name: item_id
  *         required: true
  *         schema:
