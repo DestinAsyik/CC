@@ -8,13 +8,13 @@ const storage = new Storage({
 });
 
 // bucket tempat menyimpan file
-const bucket = storage.bucket('destinasyikfile'); 
+const bucket = storage.bucket('destinasyikfile');
 
 // Middleware Multer untuk menangani upload
 const multerStorage = multer.memoryStorage();
 const upload = multer({
     storage: multerStorage,
-    limits: { fileSize: 30 * 1024 * 1024 }, 
+    limits: { fileSize: 30 * 1024 * 1024 },  // Max size 30MB
     fileFilter: (req, file, cb) => {
         const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
         if (!allowedTypes.includes(file.mimetype)) {
@@ -36,8 +36,8 @@ const uploadToGCS = async (req, res, next) => {
     const blob = bucket.file(fileName);
     const blobStream = blob.createWriteStream({
         resumable: false,
-        contentType: req.file.mimetype,
-        predefinedAcl: 'publicRead',
+        contentType: req.file.mimetype,  
+        
     });
 
     blobStream.on('error', (err) => {
@@ -46,7 +46,7 @@ const uploadToGCS = async (req, res, next) => {
     });
 
     blobStream.on('finish', () => {
-        req.file.gcsUrl = `https://storage.googleapis.com/${bucket.name}/image/${blob.name}`;
+        req.file.gcsUrl = `https://storage.googleapis.com/${bucket.name}/image/${fileName}`;  
         next();
     });
 
@@ -54,6 +54,6 @@ const uploadToGCS = async (req, res, next) => {
 };
 
 module.exports = {
-    upload: upload.single('image'), 
-    uploadToGCS,
+    upload: upload.single('image'),  
+    uploadToGCS,  
 };
