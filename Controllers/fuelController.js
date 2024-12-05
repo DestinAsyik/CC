@@ -28,6 +28,16 @@ function calculateFuelCost(distance, fuelType) {
   return { fuelNeeded, fuelCost };
 }
 
+// Fungsi untuk format angka dengan pemisah ribuan
+function formatCurrency(value) {
+  return `Rp ${value.toLocaleString('id-ID')}`;
+}
+
+// Fungsi untuk format angka dengan 2 angka desimal dan tambahkan satuan
+function formatNumber(value, unit = '') {
+  return `${value.toFixed(2)} ${unit}`;
+}
+
 exports.fuelReccomendations = async (req, res) => {
   try {
     const { userLat, userLon } = req.body;
@@ -44,8 +54,11 @@ exports.fuelReccomendations = async (req, res) => {
     }
 
     // Mengonversi nilai latitude dan longitude yang disimpan dalam mikroderajat menjadi desimal
-    const lat = destination.latitude / 1000000;  
-    const lon = destination.longitude / 1000000; 
+    const lat = destination.latitude / 10000000;  
+    const lon = destination.longitude / 10000000; 
+
+    console.log(lat);
+    console.log(lon);
 
     // Menghitung jarak antara pengguna dan destinasi
     const distance = calculateDistance(userLat, userLon, lat, lon);
@@ -54,9 +67,9 @@ exports.fuelReccomendations = async (req, res) => {
     const fuelCalculations = Object.keys(FUEL_TYPES).map(fuelType => {
       const { fuelNeeded, fuelCost } = calculateFuelCost(distance, fuelType);
       return {
-        fuelType,
-        fuelNeeded: fuelNeeded.toFixed(2),
-        fuelCost: fuelCost.toFixed(2),
+        fuelType: fuelType.charAt(0).toUpperCase() + fuelType.slice(1),  // Kapitalisasi nama bahan bakar
+        fuelNeeded: formatNumber(fuelNeeded, 'liter'),
+        fuelCost: formatCurrency(fuelCost),
       };
     });
 
@@ -65,18 +78,18 @@ exports.fuelReccomendations = async (req, res) => {
 
     // Menghitung total biaya (biaya bahan bakar + harga tiket)
     const totalCosts = fuelCalculations.map(fuelCalculation => {
-      const totalCost = (parseFloat(fuelCalculation.fuelCost) + ticketPrice).toFixed(2);
+      const totalCost = (parseFloat(fuelCalculation.fuelCost.replace('Rp ', '').replace(/\./g, '')) + ticketPrice).toFixed(2);
       return {
         ...fuelCalculation,
-        totalCost,
+        totalCost: formatCurrency(totalCost),
       };
     });
 
     // Mengirimkan response ke client
     res.status(200).json({
       destination: destination.place_name,
-      distance: distance.toFixed(2),
-      ticketPrice: ticketPrice.toFixed(2),
+      distance: formatNumber(distance, 'km'),
+      ticketPrice: formatCurrency(ticketPrice),
       fuelDetails: totalCosts,
     });
 
