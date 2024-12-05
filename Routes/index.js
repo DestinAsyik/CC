@@ -20,7 +20,7 @@ router.use('/reviews', authenticateToken, reviewRoutes);
 router.use('/recommendation', authenticateToken, recomRoutes);
 router.use('/likes', authenticateToken, likeRoutes);
 router.use('/fuel', authenticateToken, costRoutes);
-router.use('/destinations', authenticateToken, destinationRoutes);
+router.use('/destination', authenticateToken, destinationRoutes);
 router.use('/search', authenticateToken, searchRoutes);
 
 module.exports = router;
