@@ -2,6 +2,6 @@ const express = require('express');
 const searchbarController = require('../Controllers/searchbarController');
 const router = express.Router();
 
-router.get('/search', searchbarController.searchAnything); 
+router.get('/', searchbarController.searchAnything); 
 
 module.exports = router;

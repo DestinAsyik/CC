@@ -1,4 +1,4 @@
-const { Likes } = require('../Models');
+const { Likes, Destination } = require('../Models');
 
 const sendResponse = (res, statusCode, status, message, data = null) => {
     return res.status(statusCode).json({ status, message, data });

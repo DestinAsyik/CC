@@ -56,7 +56,7 @@ app.use(session({
 
 app.get('/', async (req, res) => {
   try {
-    res.send("API BERHASIL");
+    res.send("NGAPAIN LU DONGOK");
   } catch (error) {
     res.status(500).send('Error fetching image');
   }
