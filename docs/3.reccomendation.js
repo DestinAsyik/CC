@@ -102,12 +102,12 @@
  *               latitude:
  *                 type: number
  *                 format: float
- *                 example: -7.797068
+ *                 example: -8.173073590748519
  *                 description: Latitude lokasi pengguna
  *               longitude:
  *                 type: number
  *                 format: float
- *                 example: 110.370529
+ *                 example: 115.10513024047802
  *                 description: Longitude lokasi pengguna
  *     responses:
  *       200:
@@ -284,12 +284,12 @@
  *               userLat:
  *                 type: number
  *                 format: float
- *                 example: -7.797068
+ *                 example: -8.173073590748519
  *                 description: Latitude lokasi pengguna
  *               userLon:
  *                 type: number
  *                 format: float
- *                 example: 110.370529
+ *                 example: 115.10513024047802
  *                 description: Longitude lokasi pengguna
  *     responses:
  *       200:
