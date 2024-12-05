@@ -429,3 +429,102 @@
  *                   example: null
  */
 
+/**
+ * @swagger
+ * /reviews/destination:
+ *   post:
+ *     summary: Menambahkan review dan rating untuk destinasi berdasarkan `item_id`
+ *     tags: [Interaction]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - rating
+ *               - review
+ *               - userLat
+ *               - userLon
+ *             properties:
+ *               rating:
+ *                 type: number
+ *                 format: float
+ *                 description: Rating destinasi (1-5)
+ *                 example: 4.5
+ *               review:
+ *                 type: string
+ *                 description: Ulasan atau komentar dari pengguna
+ *                 example: "Tempat yang sangat indah, pemandangannya luar biasa!"
+ *               userLat:
+ *                 type: number
+ *                 format: float
+ *                 description: Latitude pengguna untuk memverifikasi lokasi
+ *                 example: -7.8057
+ *               userLon:
+ *                 type: number
+ *                 format: float
+ *                 description: Longitude pengguna untuk memverifikasi lokasi
+ *                 example: 110.3650
+ *     parameters:
+ *       - in: query
+ *         name: item_id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           example: 5
+ *         description: ID destinasi yang ingin diberi ulasan
+ *     responses:
+ *       201:
+ *         description: Review berhasil ditambahkan
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 item_id:
+ *                   type: integer
+ *                   example: 5
+ *                 user_id:
+ *                   type: integer
+ *                   example: 10
+ *                 rating:
+ *                   type: number
+ *                   format: float
+ *                   example: 4.5
+ *                 review:
+ *                   type: string
+ *                   example: "Tempat yang sangat indah, pemandangannya luar biasa!"
+ *       400:
+ *         description: Pengguna tidak berada dalam radius yang valid atau data tidak lengkap
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "kamu harus ada di lokasi"
+ *       404:
+ *         description: Destinasi tidak ditemukan
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "tidak ada destinasi tersebut"
+ *       500:
+ *         description: Kesalahan server
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Terjadi kesalahan pada server"
+ */
