@@ -16,7 +16,8 @@ const allowedOrigins = ['https://bangkit2024.up.railway.app',
                         'http://localhost:8000', 
                         'http://localhost:3000', 
                         'https://destinasyikreccomenders-service-478353399681.asia-southeast2.run.app',
-                        'https://destinasyikapi-service-478353399681.asia-southeast2.run.app'];
+                        'https://destinasyikapi-service-478353399681.asia-southeast2.run.app',
+                        'https://storage.cloud.google.com/destinasyikfile'];
 
 // CORS Configuration
 app.use(cors({
