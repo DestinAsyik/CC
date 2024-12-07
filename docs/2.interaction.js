@@ -498,15 +498,22 @@
  *                   type: string
  *                   example: "Tempat yang sangat indah, pemandangannya luar biasa!"
  *       400:
- *         description: Pengguna tidak berada dalam radius yang valid atau data tidak lengkap
+ *         description: Pengguna tidak berada dalam radius yang valid atau data sudah memberikan review
  *         content:
  *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 error:
- *                   type: string
- *                   example: "kamu harus ada di lokasi"
+ *             oneOf:
+ *               - schema:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string
+ *                       example: "kamu harus ada di lokasi"
+ *               - schema:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string
+ *                       example: "Kamu sudah memberikan review untuk destinasi ini"
  *       404:
  *         description: Destinasi tidak ditemukan
  *         content:
@@ -517,6 +524,68 @@
  *                 error:
  *                   type: string
  *                   example: "tidak ada destinasi tersebut"
+ *       500:
+ *         description: Kesalahan server
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Terjadi kesalahan pada server"
+ */
+
+/**
+ * @swagger
+ * /reviews/destination/getreviews/{item_id}:
+ *   get:
+ *     summary: Mendapatkan daftar review untuk destinasi berdasarkan `item_id`
+ *     tags: [Interaction]
+ *     parameters:
+ *       - in: path
+ *         name: item_id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           example: 5
+ *         description: ID destinasi yang ingin dilihat review-nya
+ *     responses:
+ *       200:
+ *         description: Daftar review untuk destinasi ditemukan
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   item_id:
+ *                     type: integer
+ *                     example: 5
+ *                   user_id:
+ *                     type: integer
+ *                     example: 10
+ *                   username:
+ *                     type: string
+ *                     example: "john_doe"
+ *                   rating:
+ *                     type: number
+ *                     format: float
+ *                     example: 4.5
+ *                   review:
+ *                     type: string
+ *                     example: "Tempat yang sangat indah, pemandangannya luar biasa!"
+ *       404:
+ *         description: Tidak ada review untuk destinasi tersebut
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Tidak ada review untuk destinasi ini"
  *       500:
  *         description: Kesalahan server
  *         content:
