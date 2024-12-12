@@ -71,7 +71,7 @@ exports.login = async (req, res) => {
     const match = await bcrypt.compare(password, user.password);
     if (!match) return sendErrorResponse(res, 401, 'Kata sandi salah');
 
-    const token = jwt.sign({ user_id: user.user_id, username: user.username }, process.env.SECRET_KEY, { expiresIn: '1h' });
+    const token = jwt.sign({ user_id: user.user_id, username: user.username }, process.env.SECRET_KEY, { expiresIn: '2m' });
 
     res.status(200).json({ message: 'Login berhasil', user, token });
   } catch (error) {
